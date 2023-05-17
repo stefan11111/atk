@@ -7875,10 +7875,10 @@ index 63986dd..707b2e1 100644
 -  return;
  }
 diff --git a/atk/atkobjectfactory.c b/atk/atkobjectfactory.c
-index 298f3c2..800ae93 100644
+index 298f3c2..c7da6d8 100644
 --- a/atk/atkobjectfactory.c
 +++ b/atk/atkobjectfactory.c
-@@ -1,147 +1,22 @@
+@@ -1,147 +1,28 @@
 -/* ATK - Accessibility Toolkit
 - * Copyright 2001 Sun Microsystems Inc.
 - *
@@ -8020,12 +8020,17 @@ index 298f3c2..800ae93 100644
 -  AtkObjectFactoryClass *klass;
 -
 -  g_return_val_if_fail (ATK_OBJECT_FACTORY (factory), G_TYPE_INVALID);
--
++    return G_TYPE_INVALID;
++}
+ 
 -  klass = ATK_OBJECT_FACTORY_GET_CLASS (factory);
 -  if (klass->get_accessible_type)
 -     return (klass->get_accessible_type) ();
 -  else
 -     return G_TYPE_INVALID;
++GType
++atk_object_factory_get_type(void)
++{
 +    return G_TYPE_INVALID;
  }
 diff --git a/atk/atkobjectfactory.h b/atk/atkobjectfactory.h
