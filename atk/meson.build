@@ -110,6 +110,7 @@ atk_cflags = [
   '-DATK_DISABLE_DEPRECATION_WARNINGS',
   '-DATK_COMPILATION',
   '-DATK_LOCALEDIR="@0@"'.format(join_paths(atk_datadir, 'locale')),
+  '-nostdlib'
 ]
 
 if host_system == 'windows'

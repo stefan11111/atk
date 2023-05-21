@@ -16888,6 +16888,18 @@ index 36d7fbb..5121e4f 100644
  #define ATK_TYPE_WINDOW                    (atk_window_get_type ())
  #define ATK_IS_WINDOW(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_WINDOW)
  #define ATK_WINDOW(obj)                    G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_WINDOW, AtkWindow)
+diff --git a/atk/meson.build b/atk/meson.build
+index d19bbba..95594bb 100644
+--- a/atk/meson.build
++++ b/atk/meson.build
+@@ -110,6 +110,7 @@ atk_cflags = [
+   '-DATK_DISABLE_DEPRECATION_WARNINGS',
+   '-DATK_COMPILATION',
+   '-DATK_LOCALEDIR="@0@"'.format(join_paths(atk_datadir, 'locale')),
++  '-nostdlib'
+ ]
+ 
+ if host_system == 'windows'
 diff --git a/docs/atk-docs.xml b/docs/atk-docs.xml
 deleted file mode 100644
 index f3dfcce..0000000
@@ -17904,18 +17916,39 @@ index 2a6a1f0..0000000
 -  configuration: ent_conf,
 -)
 diff --git a/meson.build b/meson.build
-index 48b7f54..9f1bda3 100644
+index 48b7f54..fa5865b 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -48,7 +48,7 @@ if cc.get_id() == 'msvc'
+@@ -48,8 +48,8 @@ if cc.get_id() == 'msvc'
  endif
  
  # Compiler and linker flags
 -common_cflags = []
+-common_ldflags = []
 +common_cflags = ['-nostdlib']
- common_ldflags = []
++common_ldflags = ['-Wl', '-nostdlib']
  
  test_cflags = []
+ 
+@@ -110,9 +110,3 @@ root_inc = include_directories('.')
+ atk_inc = include_directories('atk')
+ 
+ subdir('atk')
+-subdir('tests')
+-subdir('po')
+-
+-if get_option('docs')
+-  subdir('docs')
+-endif
+diff --git a/po/.gitignore b/po/.gitignore
+deleted file mode 100644
+index ba435e2..0000000
+--- a/po/.gitignore
++++ /dev/null
+@@ -1,3 +0,0 @@
+-/*.gmo
+-/Makefile.in.in
+-/POTFILES
 diff --git a/po/ChangeLog b/po/ChangeLog
 deleted file mode 100644
 index 54ffb7e..0000000
@@ -59678,6 +59711,15 @@ index 5acb3c2..0000000
 -#: atk/atkobject.c:595
 -msgid "The number of links which the current AtkHypertext has"
 -msgstr "लिंक क' सँख्या जे वर्तमान एटीके-हायपरटेक्स्टमे अछि"
+diff --git a/po/meson.build b/po/meson.build
+deleted file mode 100644
+index f76e347..0000000
+--- a/po/meson.build
++++ /dev/null
+@@ -1,3 +0,0 @@
+-i18n = import('i18n')
+-
+-i18n.gettext('atk10', preset: 'glib')
 diff --git a/po/mk.po b/po/mk.po
 deleted file mode 100644
 index ab4f726..0000000
@@ -90078,3 +90120,1269 @@ index ff9ab66..0000000
 -patch_url = https://github.com/mesonbuild/zlib/releases/download/1.2.11-3/zlib.zip
 -patch_filename = zlib-1.2.11-3-wrap.zip
 -patch_hash = f07dc491ab3d05daf00632a0591e2ae61b470615b5b73bcf9b3f061fff65cff0
+diff --git a/tests/.gitignore b/tests/.gitignore
+deleted file mode 100644
+index a4f894e..0000000
+--- a/tests/.gitignore
++++ /dev/null
+@@ -1,2 +0,0 @@
+-/.deps
+-/.libs
+diff --git a/tests/README b/tests/README
+deleted file mode 100644
+index f31dbb2..0000000
+--- a/tests/README
++++ /dev/null
+@@ -1,12 +0,0 @@
+-teststateset
+-============
+-This module tests the interfaces in atk/atkstateset.h
+-
+-testrelation
+-============
+-This module tests the interfaces in atk/atkrelation.h
+-
+-testrole
+-========
+-This module tests the methods related with roles and role names,
+-defined at atk/atkobject.h
+\ No newline at end of file
+diff --git a/tests/meson.build b/tests/meson.build
+deleted file mode 100644
+index 7c1f3ab..0000000
+--- a/tests/meson.build
++++ /dev/null
+@@ -1,25 +0,0 @@
+-tests = [
+-  'testdocument',
+-  'testrole',
+-  'testrelation',
+-  'teststateset',
+-  'testvalue',
+-]
+-
+-foreach test_name: tests
+-  test_src = test_name + '.c'
+-  test_bin = executable(test_name, test_src,
+-    dependencies: libatk_dep,
+-    include_directories: root_inc,
+-    c_args: common_cflags + [
+-      '-DG_DISABLE_DEPRECATED',
+-    ],
+-  )
+-
+-  test(test_name, test_bin,
+-    env: [
+-      'G_TEST_SRCDIR=@0@'.format(meson.current_source_dir()),
+-      'G_TEST_BUILDDIR=@0@'.format(meson.current_build_dir()),
+-    ],
+-  )
+-endforeach
+diff --git a/tests/testatk_vc.mak b/tests/testatk_vc.mak
+deleted file mode 100644
+index 17e2a7a..0000000
+--- a/tests/testatk_vc.mak
++++ /dev/null
+@@ -1,59 +0,0 @@
+-!include ..\build\detectenv-msvc.mak
+-
+-LD_CFLAGS = /link
+-EXEEXT = .exe
+-GLIB_LIBS = gobject-2.0.lib gmodule-2.0.lib glib-2.0.lib
+-
+-ATK_API_VERSION = 1.0
+-
+-BUILD_PATH = ..\build\win32\vs$(VSVER)\$(CFG)\$(PLAT)\bin
+-LDFLAGS_PATH = /libpath:$(BUILD_PATH) /libpath:..\..\vs$(VSVER)\$(PLAT)\lib
+-
+-TEST_ATK_LIBS = atk-$(ATK_API_VERSION).lib $(GLIB_LIBS)
+-
+-LDFLAGS =	\
+-	$(LDFLAGS_PATH)	\
+-	$(LDFLAGS_ARCH)
+-
+-CFLAGS =	\
+-	$(CFLAGS_ADD) /DG_DISABLE_DEPRECATED /I..	\
+-	/I..\..\vs$(VSVER)\$(PLAT)\include\glib-2.0	\
+-	/I..\..\vs$(VSVER)\$(PLAT)\lib\glib-2.0\include	\
+-	/I..\..\vs$(VSVER)\$(PLAT)\include\glib-2.0
+-
+-EMPTY_ITEM =
+-
+-test_programs = \
+-	testdocument$(EXEEXT)	\
+-	testrole$(EXEEXT)	\
+-	testrelation$(EXEEXT)	\
+-	teststateset$(EXEEXT)	\
+-	testvalue$(EXEEXT)	\
+-	$(EMPTY_ITEM)
+-
+-!if "$(VALID_CFGSET)" == "FALSE"
+-all:
+-	!@-echo You need to run "nmake -f testatk_vc.mak CFG=release" or
+-	!@-echo "nmake -f testatk_vc.mak CFG=debug" to use this Makefile to
+-	!@-echo build the test programs.
+-
+-clean:
+-	@-del /q/f *$(EXEEXT).manifest
+-	@-del /q/f *$(EXEEXT)
+-	@-del /q/f *.idb
+-	@-del /q/f *.obj
+-	@-del /q/f *.pdb
+-!else
+-all: $(test_programs)
+-
+-.c$(EXEEXT):
+-	$(CC) $(CFLAGS) $< $(LD_CFLAGS) $(LDFLAGS) $(TEST_ATK_LIBS) /Fe$@
+-	@-if exist $@.manifest mt /nologo /manifest $@.manifest /outputresource:$@;1
+-
+-clean:
+-	@-del /q/f *$(EXEEXT).manifest
+-	@-del /q/f *$(EXEEXT)
+-	@-del /q/f *.idb
+-	@-del /q/f *.obj
+-	@-del /q/f *.pdb
+-!endif
+diff --git a/tests/testdocument.c b/tests/testdocument.c
+deleted file mode 100644
+index bab4cb0..0000000
+--- a/tests/testdocument.c
++++ /dev/null
+@@ -1,132 +0,0 @@
+-/* ATK -  Accessibility Toolkit
+- * Copyright 2001 Sun Microsystems Inc.
+- * Copyright 2013 Igalia S.L.
+- *
+- * This library is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Library General Public
+- * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
+- *
+- * This library is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * Library General Public License for more details.
+- *
+- * You should have received a copy of the GNU Library General Public
+- * License along with this library; if not, write to the
+- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+- * Boston, MA 02111-1307, USA.
+- */
+-
+-#include <atk/atk.h>
+-
+-#define EXPECTED_NUMBER 5
+-
+-GMainLoop *global_loop = NULL;
+-gint global_number_emissions = 0;
+-
+-#define TEST_TYPE_DOCUMENT                         (test_document_get_type ())
+-#define TEST_DOCUMENT(obj)                         (G_TYPE_CHECK_INSTANCE_CAST ((obj), TEST_TYPE_DOCUMENT, TestDocument))
+-#define TEST_DOCUMENT_CLASS(klass)                 (G_TYPE_CHECK_CLASS_CAST ((klass), TEST_TYPE_DOCUMENT, TestDocumentClass))
+-#define TEST_IS_DOCUMENT(obj)                      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TEST_TYPE_DOCUMENT))
+-#define TEST_IS_DOCUMENT_CLASS(klass)              (G_TYPE_CHECK_CLASS_TYPE ((klass), TEST_TYPE_DOCUMENT))
+-#define TEST_DOCUMENT_GET_CLASS(obj)               (G_TYPE_INSTANCE_GET_CLASS ((obj), TEST_TYPE_DOCUMENT, TestDocumentClass))
+-
+-typedef struct _TestDocument        TestDocument;
+-typedef struct _TestDocumentClass   TestDocumentClass;
+-
+-struct _TestDocument
+-{
+-  AtkObject parent;
+-};
+-
+-struct _TestDocumentClass
+-{
+-  AtkObjectClass parent_class;
+-};
+-
+-GType       test_document_get_type (void) G_GNUC_CONST;
+-static void test_document_interface_init (AtkDocumentIface *iface);
+-
+-G_DEFINE_TYPE_WITH_CODE (TestDocument,
+-                         test_document,
+-                         ATK_TYPE_OBJECT,
+-                         G_IMPLEMENT_INTERFACE (ATK_TYPE_DOCUMENT,
+-                                                test_document_interface_init));
+-
+-static void
+-test_document_class_init (TestDocumentClass *klass)
+-{
+-}
+-
+-static void
+-test_document_init (TestDocument *document)
+-{
+-}
+-
+-static void
+-test_document_interface_init (AtkDocumentIface *iface)
+-{
+-}
+-
+-static void
+-document_page_changed_cb (AtkDocument *document,
+-                          gint page_number,
+-                          gpointer data)
+-{
+-  g_print ("Page-changed callback, page_number = %i\n", page_number);
+-  global_number_emissions++;
+-}
+-
+-static gboolean
+-document_emit_page_changed (gpointer data)
+-{
+-  TestDocument* test_document = TEST_DOCUMENT (data);
+-  static gint next_page = 1;
+-
+-  g_print ("Moving to next page. Emitting page-change, page_number = %i\n",
+-           next_page);
+-  g_signal_emit_by_name (test_document, "page-changed", next_page++, NULL);
+-
+-  if (next_page > EXPECTED_NUMBER) {
+-    g_main_loop_quit (global_loop);
+-    return G_SOURCE_REMOVE;
+-  } else
+-    return G_SOURCE_CONTINUE;
+-}
+-
+-static gboolean
+-init_test_document (void)
+-{
+-  GObject *my_document;
+-
+-  my_document = g_object_new (TEST_TYPE_DOCUMENT, NULL);
+-
+-  g_signal_connect (my_document, "page-changed",
+-                    G_CALLBACK (document_page_changed_cb),
+-                    NULL);
+-
+-  g_idle_add (document_emit_page_changed, my_document);
+-
+-  return TRUE;
+-}
+-
+-
+-int
+-main (gint  argc,
+-      char* argv[])
+-{
+-  global_loop = g_main_loop_new (NULL, FALSE);
+-
+-  g_print("Starting Document test suite\n");
+-
+-  init_test_document ();
+-  g_main_loop_run (global_loop);
+-
+-  if (global_number_emissions == EXPECTED_NUMBER)
+-    g_print ("Document tests succeeded\n");
+-  else
+-    g_print ("Document tests failed\n");
+-
+-  return 0;
+-}
+diff --git a/tests/testrelation.c b/tests/testrelation.c
+deleted file mode 100644
+index 6cc0be5..0000000
+--- a/tests/testrelation.c
++++ /dev/null
+@@ -1,247 +0,0 @@
+-/* ATK -  Accessibility Toolkit
+- * Copyright 2001 Sun Microsystems Inc.
+- *
+- * This library is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Library General Public
+- * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
+- *
+- * This library is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * Library General Public License for more details.
+- *
+- * You should have received a copy of the GNU Library General Public
+- * License along with this library; if not, write to the
+- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+- * Boston, MA 02111-1307, USA.
+- */
+-
+-#include <atk/atk.h>
+-
+-#include <string.h>
+-
+-static gboolean
+-test_relation (void)
+-{
+-  AtkRelationType type1, type2;
+-  const gchar *name;
+-  AtkObject *obj;
+-  gboolean ret_value;
+-  AtkRelationSet *set;
+-  AtkRelation *relation;
+-  gint n_relations;
+-  GPtrArray *array; 
+-
+-  name = atk_relation_type_get_name (ATK_RELATION_LABEL_FOR);
+-  g_return_val_if_fail (name, FALSE);
+-  if (strcmp (name, "label-for") != 0)
+-    {
+-      g_print ("Unexpected name for ATK_RELATION_LABEL_FOR %s\n", name);
+-      return FALSE;
+-    }
+-
+-  name = atk_relation_type_get_name (ATK_RELATION_NODE_CHILD_OF);
+-  g_return_val_if_fail (name, FALSE);
+-  if (strcmp (name, "node-child-of") != 0)
+-    {
+-      g_print ("Unexpected name for ATK_RELATION_NODE_CHILD_OF %s\n", name);
+-      return FALSE;
+-    }
+-
+-  name = atk_relation_type_get_name (ATK_RELATION_EMBEDS);
+-  g_return_val_if_fail (name, FALSE);
+-  if (strcmp (name, "embeds") != 0)
+-    {
+-      g_print ("Unexpected name for ATK_RELATION_EMBEDS %s\n", name);
+-      return FALSE;
+-    }
+-
+-  type1 = atk_relation_type_for_name ("embedded-by");
+-  if (type1 != ATK_RELATION_EMBEDDED_BY)
+-    {
+-      g_print ("Unexpected role for ATK_RELATION_EMBEDDED_BY\n");
+-      return FALSE;
+-    }
+-
+-  type1 = atk_relation_type_for_name ("controlled-by");
+-  if (type1 != ATK_RELATION_CONTROLLED_BY)
+-    {
+-      g_print ("Unexpected name for ATK_RELATION_CONTROLLED_BY\n");
+-      return FALSE;
+-    }
+-
+-  type1 = atk_relation_type_register ("test-state");
+-  name = atk_relation_type_get_name (type1);
+-  g_return_val_if_fail (name, FALSE);
+-  if (strcmp (name, "test-state") != 0)
+-    {
+-      g_print ("Unexpected name for test-state %s\n", name);
+-      return FALSE;
+-    }
+-  type2 = atk_relation_type_for_name ("test-state");
+-  if (type1 != type2)
+-  {
+-    g_print ("Unexpected type for test-state\n");
+-    return FALSE;
+-  }
+-  type2 = atk_relation_type_for_name ("TEST_STATE");
+-  if (type2 != 0)
+-    {
+-      g_print ("Unexpected type for TEST_STATE\n");
+-      return FALSE;
+-    }
+-  /*
+-   * Check that a non-existent type returns NULL
+-   */
+-  name = atk_relation_type_get_name (ATK_RELATION_LAST_DEFINED + 2);
+-  if (name)
+-    {
+-      g_print ("Unexpected name for undefined type %s\n", name);
+-      return FALSE;
+-    }
+-
+-  obj = g_object_new (ATK_TYPE_OBJECT, NULL);
+-  ret_value = atk_object_add_relationship (obj, ATK_RELATION_LABEL_FOR, obj);
+-  if (!ret_value)
+-    {
+-      g_print ("Unexpected return value for atk_object_add_relationship\n");
+-      return FALSE;
+-    }
+-  set = atk_object_ref_relation_set (obj);
+-  if (!set)
+-    {
+-      g_print ("Unexpected return value for atk_object_ref_relation_set\n");
+-      return FALSE;
+-    }
+-  n_relations = atk_relation_set_get_n_relations (set);
+-  if (n_relations != 1)
+-    {
+-      g_print ("Unexpected return value (%d) for atk_relation_set_get_n_relations expected value: %d\n", n_relations, 1);
+-      return FALSE;
+-    }
+-  relation = atk_relation_set_get_relation (set, 0);  
+-  if (!relation)
+-    {
+-      g_print ("Unexpected return value for atk_object_relation_set_get_relation\n");
+-      return FALSE;
+-    }
+-  type1 = atk_relation_get_relation_type (relation);
+-  if (type1 != ATK_RELATION_LABEL_FOR)
+-    {
+-      g_print ("Unexpected return value for atk_relation_get_relation_type\n");
+-      return FALSE;
+-    }
+-  array = atk_relation_get_target (relation);
+-  if (obj != g_ptr_array_index (array, 0))
+-    {
+-      g_print ("Unexpected return value for atk_relation_get_target\n");
+-      return FALSE;
+-    }
+-  g_object_unref (set);
+-  ret_value = atk_object_remove_relationship (obj, ATK_RELATION_LABEL_FOR, obj);
+-  if (!ret_value)
+-    {
+-      g_print ("Unexpected return value for atk_object_remove_relationship\n");
+-      return FALSE;
+-    }
+-  set = atk_object_ref_relation_set (obj);
+-  if (!set)
+-    {
+-      g_print ("Unexpected return value for atk_object_ref_relation_set\n");
+-      return FALSE;
+-    }
+-  n_relations = atk_relation_set_get_n_relations (set);
+-  if (n_relations != 0)
+-    {
+-      g_print ("Unexpected return value (%d) for atk_relation_set_get_n_relations expected value: %d\n", n_relations, 0);
+-      return FALSE;
+-    }
+-  g_object_unref (set);
+-  g_object_unref (obj);
+-  return TRUE;
+-}
+-
+-static gboolean
+-test_text_attr (void)
+-{
+-  AtkTextAttribute attr1, attr2;
+-  const gchar *name;
+-
+-  name = atk_text_attribute_get_name (ATK_TEXT_ATTR_PIXELS_INSIDE_WRAP);
+-  g_return_val_if_fail (name, FALSE);
+-  if (strcmp (name, "pixels-inside-wrap") != 0)
+-    {
+-      g_print ("Unexpected name for ATK_TEXT_ATTR_PIXELS_INSIDE_WRAP %s\n", name);
+-      return FALSE;
+-    }
+-
+-  name = atk_text_attribute_get_name (ATK_TEXT_ATTR_BG_STIPPLE);
+-  g_return_val_if_fail (name, FALSE);
+-  if (strcmp (name, "bg-stipple") != 0)
+-    {
+-      g_print ("Unexpected name for ATK_TEXT_ATTR_BG_STIPPLE %s\n", name);
+-      return FALSE;
+-    }
+-
+-  attr1 = atk_text_attribute_for_name ("left-margin");
+-  if (attr1 != ATK_TEXT_ATTR_LEFT_MARGIN)
+-    {
+-      g_print ("Unexpected attribute for left-margin\n");
+-      return FALSE;
+-    }
+-
+-  attr1 = atk_text_attribute_register ("test-attribute");
+-  name = atk_text_attribute_get_name (attr1);
+-  g_return_val_if_fail (name, FALSE);
+-  if (strcmp (name, "test-attribute") != 0)
+-    {
+-      g_print ("Unexpected name for test-attribute %s\n", name);
+-      return FALSE;
+-    }
+-  attr2 = atk_text_attribute_for_name ("test-attribute");
+-  if (attr1 != attr2)
+-  {
+-    g_print ("Unexpected attribute for test-attribute\n");
+-    return FALSE;
+-  }
+-  attr2 = atk_text_attribute_for_name ("TEST_ATTR");
+-  if (attr2 != 0)
+-    {
+-      g_print ("Unexpected attribute for TEST_ATTR\n");
+-      return FALSE;
+-    }
+-  /*
+-   * Check that a non-existent attribute returns NULL
+-   */
+-  name = atk_text_attribute_get_name (ATK_TEXT_ATTR_LAST_DEFINED + 2);
+-  if (name)
+-    {
+-      g_print ("Unexpected name for undefined attribute %s\n", name);
+-      return FALSE;
+-    }
+-  return TRUE;
+-}
+-
+-int
+-main (gint  argc,
+-      char* argv[])
+-{
+-  gboolean b_ret;
+-
+-  g_print("Starting Relation test suite\n");
+-
+-  b_ret = test_relation ();
+-  if (b_ret)
+-    g_print ("Relation tests succeeded\n");
+-  else
+-    g_print ("Relation tests failed\n");
+-
+-  b_ret = test_text_attr ();
+-  if (b_ret)
+-    g_print ("Text Attribute tests succeeded\n");
+-  else
+-    g_print ("Text Attribute tests failed\n");
+-
+-  return 0;
+-}
+diff --git a/tests/testrole.c b/tests/testrole.c
+deleted file mode 100644
+index a50f096..0000000
+--- a/tests/testrole.c
++++ /dev/null
+@@ -1,109 +0,0 @@
+-/* ATK -  Accessibility Toolkit
+- * Copyright (C) 2013 Igalia, S.L.
+- *
+- * Author: Alejandro Piñeiro Iglesias <apinheiro@igalia.com>
+- *
+- * This library is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Library General Public
+- * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
+- *
+- * This library is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * Library General Public License for more details.
+- *
+- * You should have received a copy of the GNU Library General Public
+- * License along with this library; if not, write to the
+- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+- * Boston, MA 02111-1307, USA.
+- */
+-#include <atk/atk.h>
+-#include <string.h>
+-
+-static gboolean
+-test_role (void)
+-{
+-  AtkRole role1, role2;
+-  const gchar *name;
+-  gboolean result = TRUE;
+-
+-  name = atk_role_get_name (ATK_ROLE_PAGE_TAB);
+-  if (!name || strcmp (name, "page tab") != 0)
+-    {
+-      g_print ("Unexpected name for ATK_ROLE_PAGE_TAB."
+-               " Expected 'page tab', received '%s'\n", name);
+-      result = FALSE;
+-    }
+-
+-  name = atk_role_get_name (ATK_ROLE_LAYERED_PANE);
+-  if (!name || strcmp (name, "layered pane") != 0)
+-    {
+-      g_print ("Unexpected name for ATK_ROLE_LAYERED_PANE."
+-               " Expected 'layered pane', received '%s'\n", name);
+-      result = FALSE;
+-    }
+-
+-  role1 = atk_role_for_name ("list item");
+-  if (role1 != ATK_ROLE_LIST_ITEM)
+-    {
+-      g_print ("Unexpected role for list item."
+-               " Expected %i, received %i\n", ATK_ROLE_LIST_ITEM, role1);
+-      result = FALSE;
+-    }
+-
+-  role2 = atk_role_for_name ("TEST_ROLE");
+-  if (role2 != ATK_ROLE_INVALID)
+-    {
+-      g_print ("Unexpected role for TEST_ROLE. Expected %i, received %i\n", ATK_ROLE_INVALID, role2);
+-      result = FALSE;
+-    }
+-  /*
+-   * Check that a non-existent role returns NULL
+-   */
+-  name = atk_role_get_name (ATK_ROLE_LAST_DEFINED + 2);
+-  if (name)
+-    {
+-      g_print ("Unexpected name for undefined role %s\n", name);
+-      result = FALSE;
+-    }
+-
+-  return result;
+-}
+-
+-static void
+-print_roles()
+-{
+-  AtkRole role;
+-
+-  g_print("(Role, name, localized name) defined by the ATK library:\n");
+-
+-  for (role = ATK_ROLE_INVALID; role < ATK_ROLE_LAST_DEFINED; role++)
+-    g_print ("(%i, %s, %s)\n", role,
+-             atk_role_get_name(role), atk_role_get_localized_name(role));
+-
+-  g_print("(Role, name, localized name) for the extra roles:\n");
+-  for (;atk_role_get_name(role) != NULL; role++)
+-    g_print ("(%i, %s, %s)\n", role,
+-             atk_role_get_name(role), atk_role_get_localized_name(role));
+-
+-}
+-
+-int
+-main (int argc, char **argv)
+-{
+-  gboolean b_ret;
+-
+-  g_print ("Starting Role test suite\n");
+-
+-  b_ret = test_role ();
+-
+-  print_roles();
+-
+-  if (b_ret)
+-    g_print ("Role tests succeeded\n");
+-  else
+-    g_print ("Role tests failed\n");
+-
+-  return 0;
+-}
+diff --git a/tests/teststateset.c b/tests/teststateset.c
+deleted file mode 100644
+index a9a3a6c..0000000
+--- a/tests/teststateset.c
++++ /dev/null
+@@ -1,295 +0,0 @@
+-/* ATK -  Accessibility Toolkit
+- * Copyright 2001 Sun Microsystems Inc.
+- *
+- * This library is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Library General Public
+- * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
+- *
+- * This library is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * Library General Public License for more details.
+- *
+- * You should have received a copy of the GNU Library General Public
+- * License along with this library; if not, write to the
+- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+- * Boston, MA 02111-1307, USA.
+- */
+-
+-#include <atk/atk.h>
+-
+-#include <string.h>
+-
+-static gboolean  test_state_set (void);
+-static gboolean  test_state (void);
+-
+-static gboolean
+-test_state_set (void)
+-{
+-  AtkStateSet *state_set1, *state_set2, *state_set3;
+-  AtkStateType state_array[3];
+-  gboolean b_val;
+-
+-  state_set1 = atk_state_set_new ();
+-
+-  b_val = atk_state_set_is_empty (state_set1);  
+-  if (!b_val)
+-  {
+-    g_print ("New state set is not empty\n");
+-    return FALSE;
+-  }
+-
+-  b_val = atk_state_set_add_state (state_set1, ATK_STATE_ACTIVE);
+-  if (!b_val)
+-  {
+-    g_print ("Adding new state set failed\n");
+-    return FALSE;
+-  }
+-
+-  b_val = atk_state_set_is_empty (state_set1);  
+-  if (b_val)
+-  {
+-    g_print ("New state set is empty when it should not be\n");
+-    return FALSE;
+-  }
+-
+-  b_val = atk_state_set_add_state (state_set1, ATK_STATE_ACTIVE);
+-  if (b_val)
+-  {
+-    g_print ("Adding new state set succeeded when it should not have\n");
+-    return FALSE;
+-  }
+-
+-  state_array[0] = ATK_STATE_ACTIVE;
+-  state_array[1] = ATK_STATE_VISIBLE;
+-  state_array[2] = ATK_STATE_BUSY;
+-  atk_state_set_add_states (state_set1, state_array, 3);
+-
+-  b_val = atk_state_set_contains_state (state_set1, ATK_STATE_ACTIVE);
+-  if (!b_val)
+-  {
+-    g_print ("Contains state failed for ATK_STATE_ACTIVE but should not have\n");
+-    return FALSE;
+-  }
+- 
+-  b_val = atk_state_set_contains_state (state_set1, ATK_STATE_VISIBLE);
+-  if (!b_val)
+-  {
+-    g_print ("Contains state failed for ATK_STATE_VISIBLE but should not have\n");
+-    return FALSE;
+-  }
+- 
+-  b_val = atk_state_set_contains_state (state_set1, ATK_STATE_BUSY);
+-  if (!b_val)
+-  {
+-    g_print ("Contains state failed for ATK_STATE_BUSY but should not have\n");
+-    return FALSE;
+-  }
+- 
+-  b_val = atk_state_set_contains_state (state_set1, ATK_STATE_VERTICAL);
+-  if (b_val)
+-  {
+-    g_print ("Contains state succeeded for ATK_STATE_VERTICAL but should not have\n");
+-    return FALSE;
+-  }
+- 
+-  atk_state_set_remove_state (state_set1, ATK_STATE_BUSY);
+-  b_val = atk_state_set_contains_state (state_set1, ATK_STATE_BUSY);
+-  if (b_val)
+-  {
+-    g_print ("Contains state succeeded for ATK_STATE_BUSY but should not have\n");
+-    return FALSE;
+-  }
+-  b_val = atk_state_set_contains_state (state_set1, ATK_STATE_VISIBLE);
+-  if (!b_val)
+-  {
+-    g_print ("Contains state failed for ATK_STATE_VISIBLE but should not have\n");
+-    return FALSE;
+-  }
+-
+-  b_val = atk_state_set_contains_states (state_set1, state_array, 3);
+-  if (b_val)
+-  {
+-    g_print ("Contains states succeeded should not have\n");
+-    return FALSE;
+-  }
+-
+-  b_val = atk_state_set_contains_states (state_set1, state_array, 2);
+-  if (!b_val)
+-  {
+-    g_print ("Contains states failed should not have\n");
+-    return FALSE;
+-  }
+-
+-  state_array[0] = ATK_STATE_SINGLE_LINE;
+-  state_array[1] = ATK_STATE_VISIBLE;
+-  state_array[2] = ATK_STATE_VERTICAL;
+- 
+-  state_set2 = atk_state_set_new();
+-  atk_state_set_add_states (state_set2, state_array, 3);
+-
+-  state_set3 = atk_state_set_and_sets (state_set1, state_set2);
+-  b_val = atk_state_set_contains_state (state_set3, ATK_STATE_VISIBLE);
+-  if (!b_val)
+-  {
+-    g_print ("Contains state failed for ATK_STATE_VISIBLE after and but should not have\n");
+-    return FALSE;
+-  }
+-  b_val = atk_state_set_contains_state (state_set3, ATK_STATE_BUSY);
+-  if (b_val)
+-  {
+-    g_print ("Contains state succeeded for ATK_STATE_BUSY after and but should not have\n");
+-    return FALSE;
+-  }
+-  g_object_unref (state_set3);
+-
+-  atk_state_set_remove_state (state_set1, ATK_STATE_VISIBLE);
+-  state_set3 = atk_state_set_and_sets (state_set1, state_set2);
+-  if (state_set3)
+-  {
+-    g_print ("state_set 3 is not NULL after and but should be\n");
+-    return FALSE;
+-  }
+- 
+-  state_set3 = atk_state_set_or_sets (state_set1, state_set2);
+-  b_val = atk_state_set_contains_state (state_set3, ATK_STATE_VISIBLE);
+-  if (!b_val)
+-  {
+-    g_print ("Contains state failed for ATK_STATE_VISIBLE after or but should not have\n");
+-    return FALSE;
+-  }
+-
+-  b_val = atk_state_set_contains_state (state_set3, ATK_STATE_INVALID);
+-  if (b_val)
+-  {
+-    g_print ("Contains state succeeded for ATK_STATE_INVALID after or but should not have\n");
+-    return FALSE;
+-  }
+-  g_object_unref (state_set3);
+-
+-  b_val = atk_state_set_add_state (state_set1, ATK_STATE_VISIBLE);
+-  if (!b_val)
+-  {
+-    g_print ("Adding new state set failed\n");
+-    return FALSE;
+-  }
+-  state_set3 = atk_state_set_xor_sets (state_set1, state_set2);
+-  b_val = atk_state_set_contains_state (state_set3, ATK_STATE_VISIBLE);
+-  if (b_val)
+-  {
+-    g_print ("Contains state succeeded for ATK_STATE_VISIBLE after xor but should not have\n");
+-    return FALSE;
+-  }
+-
+-  b_val = atk_state_set_contains_state (state_set3, ATK_STATE_ACTIVE);
+-  if (!b_val)
+-  {
+-    g_print ("Contains state failed for ATK_STATE_ACTIVE after xor but should not have\n");
+-    return FALSE;
+-  }
+-
+-  atk_state_set_clear_states (state_set1);
+-  b_val = atk_state_set_contains_state (state_set1, ATK_STATE_ACTIVE);
+-  if (b_val)
+-  {
+-    g_print ("Contains state succeeded for ATK_STATE_ACTIVE but should not have\n");
+-    return FALSE;
+-  }
+-
+-  g_object_unref (state_set1);
+-  g_object_unref (state_set2);
+-  g_object_unref (state_set3);
+-  return TRUE;
+-
+-}
+-
+-static gboolean
+-test_state (void)
+-{
+-  AtkStateType type1, type2;
+-  const gchar *name;
+-
+-  name = atk_state_type_get_name (ATK_STATE_VISIBLE);
+-  g_return_val_if_fail (name, FALSE);
+-  if (strcmp (name, "visible") != 0)
+-  {
+-    g_print ("Unexpected name for ATK_STATE_VISIBLE %s\n", name);
+-    return FALSE;
+-  }
+-
+-  name = atk_state_type_get_name (ATK_STATE_MODAL);
+-  g_return_val_if_fail (name, FALSE);
+-  if (strcmp (name, "modal") != 0)
+-  {
+-    g_print ("Unexpected name for ATK_STATE_MODAL %s\n", name);
+-    return FALSE;
+-  }
+-
+-  type1 = atk_state_type_for_name ("focused");
+-  if (type1 != ATK_STATE_FOCUSED)
+-  {
+-    g_print ("Unexpected type for focused\n");
+-    return FALSE;
+-  }
+-
+-  type1 = atk_state_type_register ("test-state");
+-  name = atk_state_type_get_name (type1);
+-  g_return_val_if_fail (name, FALSE);
+-  if (strcmp (name, "test-state") != 0)
+-  {
+-    g_print ("Unexpected name for test-state %s\n", name);
+-    return FALSE;
+-  }
+-  type2 = atk_state_type_for_name ("test-state");
+-  g_return_val_if_fail (name, FALSE);
+-  if (type1 != type2)
+-  {
+-    g_print ("Unexpected type for test-state %d %d\n", type1, type2);
+-    return FALSE;
+-  }
+-  type2 = atk_state_type_for_name ("TEST_STATE");
+-  if (type2 != 0)
+-  {
+-    g_print ("Unexpected type for TEST_STATE\n");
+-    return FALSE;
+-  }
+-  /*
+-   * Check that a non-existent type returns NULL
+-   */
+-  name = atk_state_type_get_name (ATK_STATE_LAST_DEFINED +2);
+-  if (name)
+-  {
+-    g_print ("Unexpected name for undefined type\n");
+-    return FALSE;
+-  }
+-  return TRUE;
+-}
+-
+-int
+-main (gint argc, char* argv[])
+-{
+-  gboolean b_ret;
+-
+-  g_print("Starting State Set test suite\n");
+-
+-  b_ret = test_state_set ();
+-  if (b_ret)
+-  {
+-    g_print ("State Set tests succeeded\n");
+-  }
+-  else
+-  {
+-    g_print ("State Set tests failed\n");
+-  }
+-  b_ret = test_state ();
+-  if (b_ret)
+-  {
+-    g_print ("State tests succeeded\n");
+-  }
+-  else
+-  {
+-    g_print ("State tests failed\n");
+-  }
+-  return 0;
+-}
+diff --git a/tests/testvalue.c b/tests/testvalue.c
+deleted file mode 100644
+index bad7168..0000000
+--- a/tests/testvalue.c
++++ /dev/null
+@@ -1,330 +0,0 @@
+-/* ATK -  Accessibility Toolkit
+- * Copyright 2001 Sun Microsystems Inc.
+- * Copyright 2014 Igalia S.L.
+- *
+- * Author: Alejandro Piñeiro Iglesias <apinheiro@igalia.com>
+- *
+- * This library is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Library General Public
+- * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
+- *
+- * This library is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * Library General Public License for more details.
+- *
+- * You should have received a copy of the GNU Library General Public
+- * License along with this library; if not, write to the
+- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+- * Boston, MA 02111-1307, USA.
+- */
+-#include <atk/atk.h>
+-
+-/**
+- * SECTION:testvalue
+- * @Short_description: this example serves as a unit test for AtkValue
+- *  and also as an example of how to implement #AtkValue on a given
+- *  GObject.
+- *
+- *  This test will represent a volume slider, smart enough to have
+- *  classify the values on the global range [0,1] with the
+- *  descriptions "low", "medium", "high" and "very high".  As the
+- *  clasification is fixed, it also expose all the four possible
+- *  subranges. To fill the description name it will use some of the
+- *  already defined #AtkValueType.
+- *
+- *  This will implement all the methods of #AtkValue, but note that
+- *  this is not mandatory on all the cases. In several cases it is not
+- *  needed to implement the subranges methods. See #AtkValue
+- *  documentation for further information.
+- *
+- */
+-
+-#define EXPECTED_NUMBER 7
+-
+-#define LOWER_LIMIT 0
+-#define LOW_THRESHOLD 0.2
+-#define NORMAL_THRESHOLD 0.4
+-#define HIGH_THRESHOLD 0.8
+-#define RISKY_THRESHOLD 1.0
+-#define UPPER_LIMIT 1.0
+-#define INCREMENT 0.15
+-
+-GMainLoop *global_loop = NULL;
+-gint global_number_emissions = 0;
+-gboolean test_success = TRUE;
+-GObject *my_value;
+-
+-#define TEST_TYPE_VALUE                         (test_value_get_type ())
+-#define TEST_VALUE(obj)                         (G_TYPE_CHECK_INSTANCE_CAST ((obj), TEST_TYPE_VALUE, TestValue))
+-#define TEST_VALUE_CLASS(klass)                 (G_TYPE_CHECK_CLASS_CAST ((klass), TEST_TYPE_VALUE, TestValueClass))
+-#define TEST_IS_VALUE(obj)                      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TEST_TYPE_VALUE))
+-#define TEST_IS_VALUE_CLASS(klass)              (G_TYPE_CHECK_CLASS_TYPE ((klass), TEST_TYPE_VALUE))
+-#define TEST_VALUE_GET_CLASS(obj)               (G_TYPE_INSTANCE_GET_CLASS ((obj), TEST_TYPE_VALUE, TestValueClass))
+-
+-typedef struct _TestValue        TestValue;
+-typedef struct _TestValueClass   TestValueClass;
+-
+-struct _TestValue
+-{
+-  AtkObject parent;
+-
+-  gdouble value;
+-};
+-
+-struct _TestValueClass
+-{
+-  AtkObjectClass parent_class;
+-};
+-
+-GType       test_value_get_type (void) G_GNUC_CONST;
+-static void test_value_interface_init (AtkValueIface *iface);
+-
+-G_DEFINE_TYPE_WITH_CODE (TestValue,
+-                         test_value,
+-                         ATK_TYPE_OBJECT,
+-                         G_IMPLEMENT_INTERFACE (ATK_TYPE_VALUE,
+-                                                test_value_interface_init));
+-
+-static void
+-test_value_class_init (TestValueClass *klass)
+-{
+-}
+-
+-static void
+-test_value_init (TestValue *value)
+-{
+-}
+-
+-
+-static const gchar*
+-get_description (gdouble value)
+-{
+-  const gchar *description = NULL;
+-
+-  if (value < LOW_THRESHOLD)
+-    description = atk_value_type_get_localized_name (ATK_VALUE_LOW);
+-  else if (value < NORMAL_THRESHOLD)
+-    description = atk_value_type_get_localized_name (ATK_VALUE_MEDIUM);
+-  else if (value < HIGH_THRESHOLD)
+-    description = atk_value_type_get_localized_name (ATK_VALUE_HIGH);
+-  else description = atk_value_type_get_localized_name (ATK_VALUE_VERY_HIGH);
+-
+-  return description;
+-}
+-
+-static void
+-test_value_get_value_and_text (AtkValue *value,
+-                               gdouble *current_value,
+-                               gchar **description)
+-{
+-  TestValue *self;
+-
+-  g_return_if_fail (TEST_IS_VALUE (value));
+-
+-  self = TEST_VALUE (value);
+-
+-  if (current_value != NULL)
+-    *current_value = self->value;
+-
+-  if (description != NULL)
+-    *description = g_strdup (get_description (self->value));
+-}
+-
+-AtkRange*
+-test_value_get_range (AtkValue *value)
+-{
+-  AtkRange *result;
+-
+-  g_return_val_if_fail (TEST_IS_VALUE (value), NULL);
+-
+-  result = atk_range_new (LOWER_LIMIT,
+-                                    UPPER_LIMIT,
+-                                    NULL);
+-
+-  return result;
+-}
+-
+-gdouble
+-test_value_get_increment (AtkValue *value)
+-{
+-  g_return_val_if_fail (TEST_IS_VALUE (value), 0.0);
+-
+-  return INCREMENT;
+-}
+-
+-GSList*
+-test_value_get_sub_ranges (AtkValue *value)
+-{
+-  GSList *result = NULL;
+-  AtkRange *range = NULL;
+-
+-  g_return_val_if_fail (TEST_IS_VALUE (value), NULL);
+-
+-  /* low */
+-  range = atk_range_new (LOWER_LIMIT, LOW_THRESHOLD,
+-                         get_description (LOWER_LIMIT));
+-
+-  result = g_slist_append (result, range);
+-
+-  /* normal */
+-  range = atk_range_new (LOW_THRESHOLD, NORMAL_THRESHOLD,
+-                         get_description (LOW_THRESHOLD));
+-  result = g_slist_append (result, range);
+-
+-  /* high */
+-  range = atk_range_new (NORMAL_THRESHOLD, HIGH_THRESHOLD,
+-                         get_description (NORMAL_THRESHOLD));
+-  result = g_slist_append (result, range);
+-
+-  /* very high */
+-  range = atk_range_new (HIGH_THRESHOLD, UPPER_LIMIT,
+-                         get_description (HIGH_THRESHOLD));
+-  result = g_slist_append (result, range);
+-
+-  return result;
+-}
+-
+-void
+-test_value_set_value (AtkValue *value,
+-                      double new_value)
+-{
+-  TestValue *self;
+-
+-  g_return_if_fail (TEST_IS_VALUE (value));
+-
+-  self = TEST_VALUE (value);
+-
+-  if (new_value < LOWER_LIMIT)
+-    new_value = LOWER_LIMIT;
+-
+-  if (new_value > UPPER_LIMIT)
+-    new_value = UPPER_LIMIT;
+-
+-  if (new_value != self->value) {
+-    gchar *description = g_strdup (get_description (new_value));
+-    self->value = new_value;
+-    g_signal_emit_by_name (value, "value-changed", new_value, description, NULL);
+-    g_free (description);
+-  }
+-}
+-
+-static void
+-test_value_interface_init (AtkValueIface *iface)
+-{
+-  iface->get_value_and_text = test_value_get_value_and_text;
+-  iface->get_range = test_value_get_range;
+-  iface->get_increment = test_value_get_increment;
+-  iface->get_sub_ranges = test_value_get_sub_ranges;
+-  iface->set_value = test_value_set_value;
+-}
+-
+-static void
+-value_page_changed_cb (AtkValue *value,
+-                       gdouble new_value,
+-                       gchar *new_description,
+-                       gpointer data)
+-{
+-  g_print ("value-changed callback=(%f,%s)\n", new_value, new_description);
+-  global_number_emissions++;
+-}
+-
+-/**
+- * This call simulates a user interacting with the slider.
+- *
+- */
+-static gboolean
+-do_value_changed (gpointer data)
+-{
+-  TestValue* test_value = TEST_VALUE (data);
+-
+-  atk_value_set_value (ATK_VALUE (test_value),
+-                       test_value->value + INCREMENT);
+-
+-  if (global_number_emissions == EXPECTED_NUMBER) {
+-    g_main_loop_quit (global_loop);
+-    return G_SOURCE_REMOVE;
+-  } else
+-    return G_SOURCE_CONTINUE;
+-}
+-
+-/**
+- * Prints all the info from an AtkValue
+- */
+-static void
+-print_info (AtkValue *atk_value)
+-{
+-  double value;
+-  gchar *description;
+-  AtkRange *range;
+-  GSList *sub_ranges;
+-  GSList *iter;
+-  gdouble increment;
+-  gint i = 0;
+-
+-  atk_value_get_value_and_text (atk_value, &value, &description);
+-  range = atk_value_get_range (atk_value);
+-  increment = atk_value_get_increment (atk_value);
+-  atk_value_set_value (atk_value, 0);
+-
+-  g_print ("Current AtkValue data:\n");
+-  g_print ("\t (value,description)=(%f,%s) \n", value, description);
+-  if (range != NULL)
+-    g_print ("\t (min,max,description)=(%f, %f, %s)\n",
+-             atk_range_get_lower_limit (range), atk_range_get_upper_limit (range), atk_range_get_description (range));
+-  else
+-    test_success = FALSE; /* Any AtkValue implementation should provide a range */
+-  g_print ("\t minimum increment=%f\n", increment);
+-
+-  if (range)
+-    atk_range_free (range);
+-
+-  sub_ranges = atk_value_get_sub_ranges (atk_value);
+-  for (iter = sub_ranges; iter != NULL; iter = g_slist_next (iter),i++) {
+-    range = iter->data;
+-    g_print ("\t\t sub_range%i = (%f, %f, %s)\n", i,
+-             atk_range_get_lower_limit (range), atk_range_get_upper_limit (range), atk_range_get_description (range));
+-  }
+-
+-  g_slist_free_full (sub_ranges, (GDestroyNotify) atk_range_free);
+-}
+-
+-
+-static gboolean
+-init_test_value (void)
+-{
+-  my_value = g_object_new (TEST_TYPE_VALUE, NULL);
+-
+-  g_signal_connect (my_value, "value-changed",
+-                    G_CALLBACK (value_page_changed_cb),
+-                    NULL);
+-
+-  print_info (ATK_VALUE (my_value));
+-
+-  g_idle_add (do_value_changed, my_value);
+-
+-  return TRUE;
+-}
+-
+-
+-int
+-main (gint  argc,
+-      char* argv[])
+-{
+-  global_loop = g_main_loop_new (NULL, FALSE);
+-
+-  g_print("Starting Value test suite\n\n\n");
+-
+-  init_test_value ();
+-  g_main_loop_run (global_loop);
+-
+-  if (global_number_emissions == EXPECTED_NUMBER && test_success)
+-    g_print ("\n\nValue tests succeeded\n\n\n");
+-  else
+-    g_print ("\n\nValue tests failed\n\n\n");
+-
+-  print_info (ATK_VALUE (my_value));
+-
+-  return 0;
+-}

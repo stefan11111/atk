@@ -49,7 +49,7 @@ endif
 
 # Compiler and linker flags
 common_cflags = ['-nostdlib']
-common_ldflags = []
+common_ldflags = ['-Wl', '-nostdlib']
 
 test_cflags = []
 
@@ -110,9 +110,3 @@ root_inc = include_directories('.')
 atk_inc = include_directories('atk')
 
 subdir('atk')
-subdir('tests')
-subdir('po')
-
-if get_option('docs')
-  subdir('docs')
-endif
