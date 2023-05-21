@@ -17903,6 +17903,19 @@ index 2a6a1f0..0000000
 -  output: 'gtkdocentities.ent',
 -  configuration: ent_conf,
 -)
+diff --git a/meson.build b/meson.build
+index 48b7f54..9f1bda3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -48,7 +48,7 @@ if cc.get_id() == 'msvc'
+ endif
+ 
+ # Compiler and linker flags
+-common_cflags = []
++common_cflags = ['-nostdlib']
+ common_ldflags = []
+ 
+ test_cflags = []
 diff --git a/po/ChangeLog b/po/ChangeLog
 deleted file mode 100644
 index 54ffb7e..0000000
