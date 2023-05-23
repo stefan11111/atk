@@ -48,8 +48,8 @@ if cc.get_id() == 'msvc'
 endif
 
 # Compiler and linker flags
-common_cflags = ['-nostdlib']
-common_ldflags = ['-Wl', '-nostdlib']
+common_cflags = []
+common_ldflags = []
 
 test_cflags = []
 

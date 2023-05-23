@@ -16888,18 +16888,6 @@ index 36d7fbb..5121e4f 100644
  #define ATK_TYPE_WINDOW                    (atk_window_get_type ())
  #define ATK_IS_WINDOW(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_WINDOW)
  #define ATK_WINDOW(obj)                    G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_WINDOW, AtkWindow)
-diff --git a/atk/meson.build b/atk/meson.build
-index d19bbba..95594bb 100644
---- a/atk/meson.build
-+++ b/atk/meson.build
-@@ -110,6 +110,7 @@ atk_cflags = [
-   '-DATK_DISABLE_DEPRECATION_WARNINGS',
-   '-DATK_COMPILATION',
-   '-DATK_LOCALEDIR="@0@"'.format(join_paths(atk_datadir, 'locale')),
-+  '-nostdlib'
- ]
- 
- if host_system == 'windows'
 diff --git a/docs/atk-docs.xml b/docs/atk-docs.xml
 deleted file mode 100644
 index f3dfcce..0000000
@@ -17916,20 +17904,9 @@ index 2a6a1f0..0000000
 -  configuration: ent_conf,
 -)
 diff --git a/meson.build b/meson.build
-index 48b7f54..fa5865b 100644
+index 48b7f54..968f8f7 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -48,8 +48,8 @@ if cc.get_id() == 'msvc'
- endif
- 
- # Compiler and linker flags
--common_cflags = []
--common_ldflags = []
-+common_cflags = ['-nostdlib']
-+common_ldflags = ['-Wl', '-nostdlib']
- 
- test_cflags = []
- 
 @@ -110,9 +110,3 @@ root_inc = include_directories('.')
  atk_inc = include_directories('atk')
  
@@ -17940,6 +17917,16 @@ index 48b7f54..fa5865b 100644
 -if get_option('docs')
 -  subdir('docs')
 -endif
+diff --git a/meson_options.txt b/meson_options.txt
+index c4542dc..4f50711 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -5,4 +5,4 @@ option('docs',
+ option('introspection',
+        description: 'Whether to build introspection files',
+        type: 'boolean',
+-       value: true)
++       value: false)
 diff --git a/po/.gitignore b/po/.gitignore
 deleted file mode 100644
 index ba435e2..0000000

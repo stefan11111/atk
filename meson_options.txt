@@ -5,4 +5,4 @@ option('docs',
 option('introspection',
        description: 'Whether to build introspection files',
        type: 'boolean',
-       value: true)
+       value: false)
