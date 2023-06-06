@@ -3,8 +3,6 @@
 #include "atkutil.h"
 #include "atkmarshal.h"
 
-static void atk_util_class_init (AtkUtilClass *klass);
-
 typedef struct _AtkUtilListenerInfo AtkUtilListenerInfo;
 struct _AtkUtilListenerInfo
 {
@@ -16,32 +14,13 @@ struct _AtkUtilListenerInfo
 GType
 atk_util_get_type (void)
 {
-  static GType type = 0;
-
-  if (!type)
-    {
-      static const GTypeInfo typeInfo =
-      {
-        sizeof (AtkUtilClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) atk_util_class_init,
-        (GClassFinalizeFunc) NULL,
-        NULL,
-        sizeof (AtkUtil),
-        0,
-        (GInstanceInitFunc) NULL,
-      } ;
-      type = g_type_register_static (G_TYPE_OBJECT, "AtkUtil", &typeInfo, 0) ;
-    }
-  return type;
+  return G_TYPE_OBJECT;
 }
 
 typedef struct _FocusTracker FocusTracker;
 
 struct _FocusTracker {
   guint index;
-  AtkEventListener func;
 };
 
 void
@@ -115,9 +94,4 @@ const gchar *
 atk_get_version (void)
 {
   return VERSION;
-}
-
-static void
-atk_util_class_init (AtkUtilClass *klass)
-{
 }
