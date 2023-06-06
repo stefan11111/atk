@@ -5,43 +5,43 @@ XCFLAGS = ${CPPFLAGS} ${CFLAGS} -nostdlib -std=c99 -fPIC -pthread -D_XOPEN_SOURC
 		  -Wno-unused-parameter
 XLDFLAGS = ${LDFLAGS} -shared -Wl,-soname,libatk-1.0.so.0
 
-INCLUDE = -I. -I.. -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include
+INCLUDE = -I. -Iatk -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include
 
 OBJ = \
-	atkaction.o\
-	atkcomponent.o\
-	atkdocument.o\
-	atkeditabletext.o\
-	atk-enum-types.o\
-	atkgobjectaccessible.o\
-	atkhyperlink.o\
-	atkhyperlinkimpl.o\
-	atkhypertext.o\
-	atkimage.o\
-	atkmarshal.o\
-	atkmisc.o\
-	atknoopobject.o\
-	atknoopobjectfactory.o\
-	atkobject.o\
-	atkobjectfactory.o\
-	atkplug.o\
-	atkprivate.o\
-	atkrange.o\
-	atkregistry.o\
-	atkrelation.o\
-	atkrelationset.o\
-	atkselection.o\
-	atksocket.o\
-	atkstate.o\
-	atkstateset.o\
-	atkstreamablecontent.o\
-	atktable.o\
-	atktablecell.o\
-	atktext.o\
-	atkutil.o\
-	atkvalue.o\
-	atkversion.o\
-	atkwindow.o\
+	atk/atkaction.o\
+	atk/atkcomponent.o\
+	atk/atkdocument.o\
+	atk/atkeditabletext.o\
+	atk/atk-enum-types.o\
+	atk/atkgobjectaccessible.o\
+	atk/atkhyperlink.o\
+	atk/atkhyperlinkimpl.o\
+	atk/atkhypertext.o\
+	atk/atkimage.o\
+	atk/atkmarshal.o\
+	atk/atkmisc.o\
+	atk/atknoopobject.o\
+	atk/atknoopobjectfactory.o\
+	atk/atkobject.o\
+	atk/atkobjectfactory.o\
+	atk/atkplug.o\
+	atk/atkprivate.o\
+	atk/atkrange.o\
+	atk/atkregistry.o\
+	atk/atkrelation.o\
+	atk/atkrelationset.o\
+	atk/atkselection.o\
+	atk/atksocket.o\
+	atk/atkstate.o\
+	atk/atkstateset.o\
+	atk/atkstreamablecontent.o\
+	atk/atktable.o\
+	atk/atktablecell.o\
+	atk/atktext.o\
+	atk/atkutil.o\
+	atk/atkvalue.o\
+	atk/atkversion.o\
+	atk/atkwindow.o\
 
 all: libatk-1.0.so.0
 
