@@ -5,7 +5,7 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
-#include <atk/atkobject.h>
+#include "atk/atkobject.h"
 #include <atk/atkutil.h>
 
 G_BEGIN_DECLS

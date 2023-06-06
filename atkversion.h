@@ -7,15 +7,15 @@
 
 #include <glib.h>
 
-#define ATK_MAJOR_VERSION (@ATK_MAJOR_VERSION@)
+#define ATK_MAJOR_VERSION (2)
 
-#define ATK_MINOR_VERSION (@ATK_MINOR_VERSION@)
+#define ATK_MINOR_VERSION (38)
 
-#define ATK_MICRO_VERSION (@ATK_MICRO_VERSION@)
+#define ATK_MICRO_VERSION (1)
 
-#define ATK_BINARY_AGE    (@ATK_BINARY_AGE@)
+#define ATK_BINARY_AGE    (23811)
 
-#define ATK_INTERFACE_AGE (@ATK_INTERFACE_AGE@)
+#define ATK_INTERFACE_AGE (1)
 
 #define ATK_CHECK_VERSION(major,minor,micro)                          \
     (ATK_MAJOR_VERSION > (major) ||                                   \
