@@ -55,6 +55,8 @@ install: libatk-1.0.so.0
 	ln -rsf ${DESTDIR}/usr/lib64/libatk-1.0.so ${DESTDIR}/usr/lib64/libatk-1.0.so.0
 	mkdir -p ${DESTDIR}/usr/include/atk-1.0/atk
 	cp atk/*.h ${DESTDIR}/usr/include/atk-1.0/atk
+	mkdir -p ${DESTDIR}/usr/lib64/pkgconfig
+	cp atk.pc ${DESTDIR}/usr/lib64/pkgconfig
 
 uninstall:
 	rm -f ${DESTDIR}/usr/lib64/libatk-1.0.so.0 ${DESTDIR}/usr/lib64/libatk-1.0.so
