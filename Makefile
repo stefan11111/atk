@@ -51,8 +51,8 @@ libatk-1.0.so.0: ${OBJ}
 
 install: libatk-1.0.so.0
 	mkdir -p ${DESTDIR}/usr/lib64
-	cp -f libatk-1.0.so.0 ${DESTDIR}/usr/lib64/libatk-1.0.so
-	ln -rsf ${DESTDIR}/usr/lib64/libatk-1.0.so ${DESTDIR}/usr/lib64/libatk-1.0.so.0
+	cp -f libatk-1.0.so.0 ${DESTDIR}/usr/lib64
+	ln -rsf ${DESTDIR}/usr/lib64/libatk-1.0.so.0 ${DESTDIR}/usr/lib64/libatk-1.0.so
 	mkdir -p ${DESTDIR}/usr/include/atk-1.0/atk
 	cp atk/*.h ${DESTDIR}/usr/include/atk-1.0/atk
 	mkdir -p ${DESTDIR}/usr/lib64/pkgconfig
