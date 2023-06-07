@@ -41,17 +41,18 @@ OBJ = \
 	atk/atkversion.o\
 	atk/atkwindow.o\
 
-all: libatk-1.0.so.0
+all: libatk-1.0.so.0.1
 
 .c.o:
 	${CC} ${INCLUDE} ${XCFLAGS} -c -o $@ $<
 
-libatk-1.0.so.0: ${OBJ}
+libatk-1.0.so.0.1: ${OBJ}
 	${CC} ${INCLUDE} ${XCFLAGS} -o $@ ${OBJ} ${XLDFLAGS}
 
-install: libatk-1.0.so.0
+install: libatk-1.0.so.0.1
 	mkdir -p ${DESTDIR}/usr/lib64
-	cp -f libatk-1.0.so.0 ${DESTDIR}/usr/lib64
+	cp -f libatk-1.0.so.0.1 ${DESTDIR}/usr/lib64
+	ln -rsf ${DESTDIR}/usr/lib64/libatk-1.0.so.0.1 ${DESTDIR}/usr/lib64/libatk-1.0.so.0
 	ln -rsf ${DESTDIR}/usr/lib64/libatk-1.0.so.0 ${DESTDIR}/usr/lib64/libatk-1.0.so
 	mkdir -p ${DESTDIR}/usr/include/atk-1.0/atk
 	cp atk/*.h ${DESTDIR}/usr/include/atk-1.0/atk
@@ -59,9 +60,9 @@ install: libatk-1.0.so.0
 	cp atk.pc ${DESTDIR}/usr/lib64/pkgconfig
 
 uninstall:
-	rm -f ${DESTDIR}/usr/lib64/libatk-1.0.so.0 ${DESTDIR}/usr/lib64/libatk-1.0.so
+	rm -f ${DESTDIR}/usr/lib64/libatk-1.0.so.0.1 ${DESTDIR}/usr/lib64/libatk-1.0.so.0 ${DESTDIR}/usr/lib64/libatk-1.0.so
 
 clean:
-	rm -f libatk-1.0.so.0 ${OBJ}
+	rm -f libatk-1.0.so.0.1 ${OBJ}
 
 .PHONY: all clean install uninstall
