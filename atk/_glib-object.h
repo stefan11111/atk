@@ -22,11 +22,20 @@
 # define NULL 0
 #endif
 */
+
+#ifndef G_GNUC_UNUSED
+# define G_GNUC_UNUSED
+#endif
+
 typedef char gchar;
-/*
+
 typedef unsigned int guint;
 typedef void* gpointer;
 
+typedef struct _GValue                  GValue;
+typedef struct _GClosure                 GClosure;
+
+/*
 typedef GObject;
 typedef GObjectClass;
 typedef long unsigned int GType;
