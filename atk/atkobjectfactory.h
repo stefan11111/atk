@@ -5,7 +5,7 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
-#include <glib-object.h>
+#include <atk/_glib-object.h>
 #include <atk/atkobject.h>
 
 G_BEGIN_DECLS

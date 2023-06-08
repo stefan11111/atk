@@ -1,6 +1,6 @@
 .POSIX:
 
-XCFLAGS = ${CPPFLAGS} ${CFLAGS} -O1 -nostdlib -std=c99 -fPIC
+XCFLAGS = ${CPPFLAGS} ${CFLAGS} -O1 -nostdlib -std=c99 -fPIC -Wno-pedantic
 XLDFLAGS = ${LDFLAGS} -shared -Wl,-soname,libatk-1.0.so.0
 
 INCLUDE = -I. -Iatk -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include

@@ -1,7 +1,5 @@
 #include "config.h"
 
-#include <string.h>
-
 #include "atkvalue.h"
 #include "atkmarshal.h"
 #include "atk-enum-types.h"

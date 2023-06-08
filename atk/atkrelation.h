@@ -7,7 +7,7 @@
 
 G_BEGIN_DECLS
 
-#include <glib-object.h>
+#include <atk/_glib-object.h>
 #include <atk/atkrelationtype.h>
 #include <atk/atkversion.h>
 

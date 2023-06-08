@@ -1,7 +1,6 @@
 #include "config.h"
 
-#include <string.h>
-#include <glib-object.h>
+#include <atk/_glib-object.h>
 #include "atk.h"
 
 enum {

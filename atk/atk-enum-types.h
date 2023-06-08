@@ -9,7 +9,7 @@
 #define __ATK_ENUM_TYPES_H__
 
 #include <atk/atkversion.h>
-#include <glib-object.h>
+#include <atk/_glib-object.h>
 
 G_BEGIN_DECLS
 

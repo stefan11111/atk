@@ -2,8 +2,6 @@
 
 #include "atk.h"
 
-#include <string.h>
-
 #define NUM_POSSIBLE_STATES               (sizeof(AtkState)*8)
 
 AtkStateType

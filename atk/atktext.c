@@ -3,8 +3,6 @@
 #include "atk.h"
 #include "atkmarshal.h"
 
-#include <string.h>
-
 enum {
   TEXT_CHANGED,
   TEXT_CARET_MOVED,

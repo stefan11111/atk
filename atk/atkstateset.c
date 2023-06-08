@@ -1,6 +1,6 @@
 #include "config.h"
 
-#include <glib-object.h>
+#include <atk/_glib-object.h>
 
 #include "atkobject.h"
 #include "atkstateset.h"
