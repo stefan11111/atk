@@ -5,8 +5,6 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
-#include <glib.h>
-
 G_BEGIN_DECLS
 
 typedef enum

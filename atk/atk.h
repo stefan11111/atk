@@ -3,6 +3,8 @@
 
 #define __ATK_H_INSIDE__
 
+#define  _(String) ((char *) g_dgettext (GETTEXT_PACKAGE, String))
+
 #include <atk/atkobject.h>
 #include <atk/atkaction.h>
 #include <atk/atkcomponent.h>

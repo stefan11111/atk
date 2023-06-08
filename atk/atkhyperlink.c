@@ -1,6 +1,5 @@
 #include "config.h"
 #include "atkhyperlink.h"
-#include <glib/gi18n-lib.h>
 
 enum
 {

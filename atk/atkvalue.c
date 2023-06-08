@@ -1,7 +1,6 @@
 #include "config.h"
 
 #include <string.h>
-#include <glib/gi18n-lib.h>
 
 #include "atkvalue.h"
 #include "atkmarshal.h"

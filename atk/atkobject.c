@@ -1,10 +1,6 @@
 #include "config.h"
 
-#include <string.h>
-#include <locale.h>
-
 #include <glib-object.h>
-#include <glib/gi18n-lib.h>
 
 #include "atk.h"
 #include "atkmarshal.h"

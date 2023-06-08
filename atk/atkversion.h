@@ -5,8 +5,6 @@
 #ifndef __ATK_VERSION_H__
 #define __ATK_VERSION_H__
 
-#include <glib.h>
-
 #define ATK_MAJOR_VERSION (2)
 
 #define ATK_MINOR_VERSION (38)
