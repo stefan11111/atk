@@ -10,9 +10,9 @@
 G_BEGIN_DECLS
 
 #define ATK_TYPE_ACTION                    (atk_action_get_type ())
-#define ATK_IS_ACTION(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_ACTION)
-#define ATK_ACTION(obj)                    G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_ACTION, AtkAction)
-#define ATK_ACTION_GET_IFACE(obj)          (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_ACTION, AtkActionIface))
+#define ATK_IS_ACTION(obj)                 ((obj), ATK_TYPE_ACTION)
+#define ATK_ACTION(obj)                    ((obj), ATK_TYPE_ACTION, AtkAction)
+#define ATK_ACTION_GET_IFACE(obj)          (((obj), ATK_TYPE_ACTION, AtkActionIface))
 
 #ifndef _TYPEDEF_ATK_ACTION_
 #define _TYPEDEF_ATK_ACTION_
@@ -26,47 +26,33 @@ struct _AtkActionIface
   long unsigned int* parent;
 
   /*< public >*/
-  gboolean                (*do_action)         (AtkAction         *action,
-                                                int              i);
-  int                    (*get_n_actions)     (AtkAction         *action);
-  const char*            (*get_description)   (AtkAction         *action,
-                                                int              i);
-  const char*            (*get_name)          (AtkAction         *action,
-                                                int              i);
-  const char*            (*get_keybinding)    (AtkAction         *action,
-                                                int              i);
-  gboolean                (*set_description)   (AtkAction         *action,
-                                                int              i,
-                                                const char       *desc);
-  const char*            (*get_localized_name)(AtkAction         *action,
-						int              i);
+  unsigned char                (*do_action)         ();
+  int                    (*get_n_actions)     ();
+  const char*            (*get_description)   ();
+  const char*            (*get_name)          ();
+  const char*            (*get_keybinding)    ();
+  unsigned char                (*set_description)   ();
+  const char*            (*get_localized_name)();
 };
 
 ATK_AVAILABLE_IN_ALL
 long unsigned int atk_action_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
-gboolean   atk_action_do_action                (AtkAction         *action,
-                                            int              i);
+unsigned char   atk_action_do_action                ();
 ATK_AVAILABLE_IN_ALL
-int   atk_action_get_n_actions            (AtkAction *action);
+int   atk_action_get_n_actions            ();
 ATK_AVAILABLE_IN_ALL
-const char*          atk_action_get_description  (AtkAction         *action,
-                                                   int              i);
+const char*          atk_action_get_description  ();
 ATK_AVAILABLE_IN_ALL
-const char*          atk_action_get_name         (AtkAction         *action,
-                                                   int              i);
+const char*          atk_action_get_name         ();
 ATK_AVAILABLE_IN_ALL
-const char*          atk_action_get_keybinding   (AtkAction         *action,
-                                                   int              i);
+const char*          atk_action_get_keybinding   ();
 ATK_AVAILABLE_IN_ALL
-gboolean              atk_action_set_description  (AtkAction         *action,
-                                                   int              i,
-                                                   const char       *desc);
+unsigned char              atk_action_set_description  ();
 
 ATK_AVAILABLE_IN_ALL
-const char* atk_action_get_localized_name (AtkAction       *action,
-						     int            i);
+const char* atk_action_get_localized_name ();
 
 G_END_DECLS
 

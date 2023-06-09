@@ -25,7 +25,7 @@ struct _AtkEditableTextIface
 {
   long unsigned int* parent_interface;
 
-  gboolean (* set_run_attributes) (AtkEditableText  *text,
+  unsigned char (* set_run_attributes) (AtkEditableText  *text,
                                    AtkAttributeSet  *attrib_set,
                                    int		    start_offset,
  				   int		    end_offset);
@@ -52,7 +52,7 @@ long unsigned int atk_editable_text_get_type (void);
 
 
 ATK_AVAILABLE_IN_ALL
-gboolean atk_editable_text_set_run_attributes (AtkEditableText          *text,
+unsigned char atk_editable_text_set_run_attributes (AtkEditableText          *text,
                                                AtkAttributeSet  *attrib_set,
                                                int    	        start_offset,
  					       int	        end_offset);

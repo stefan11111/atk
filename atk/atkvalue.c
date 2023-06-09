@@ -72,7 +72,7 @@ atk_value_get_minimum_increment (AtkValue *obj,
 {
 }
 
-gboolean
+unsigned char
 atk_value_set_current_value (AtkValue       *obj, 
                              const void*   *value)
 {

@@ -16,7 +16,7 @@ atk_relation_set_new (void)
     return 0;
 }
 
-gboolean
+unsigned char
 atk_relation_set_contains (AtkRelationSet   *set,
                            AtkRelationType  relationship)
 {
@@ -62,7 +62,7 @@ atk_relation_set_add_relation_by_type (AtkRelationSet  *set,
 {
 }
 
-gboolean
+unsigned char
 atk_relation_set_contains_target (AtkRelationSet  *set,
                                   AtkRelationType relationship,
                                   AtkObject       *target)

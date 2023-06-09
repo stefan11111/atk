@@ -21,17 +21,16 @@
 #ifndef NULL
 # define NULL 0
 #endif
-*/
+
 
 #ifndef G_GNUC_UNUSED
 # define G_GNUC_UNUSED
 #endif
-
+*/
 
 /*
 typedef GObject;
 typedef GObjectClass;
-typedef long unsigned int long unsigned int;
 
 typedef struct _GObject                  GObject;
 typedef struct _GObjectClass             GObjectClass;

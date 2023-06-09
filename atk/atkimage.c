@@ -21,7 +21,7 @@ atk_image_get_image_size (AtkImage *image,
 {
 }
 
-gboolean
+unsigned char
 atk_image_set_image_description (AtkImage        *image,
                                  const char     *description)
 {

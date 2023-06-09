@@ -32,7 +32,7 @@ struct _AtkImageIface
   void                  ( *get_image_size)        (AtkImage              *image,
                                                    int                  *width,
                                                    int                  *height);
-  gboolean              ( *set_image_description) (AtkImage              *image,
+  unsigned char              ( *set_image_description) (AtkImage              *image,
                                                    const char           *description);
   const char*          ( *get_image_locale)      (AtkImage              *image);
 };
@@ -49,7 +49,7 @@ void     atk_image_get_image_size        (AtkImage           *image,
                                           int               *height);
 
 ATK_AVAILABLE_IN_ALL
-gboolean atk_image_set_image_description (AtkImage           *image,
+unsigned char atk_image_set_image_description (AtkImage           *image,
                                           const char       *description);
 ATK_AVAILABLE_IN_ALL
 void     atk_image_get_image_position    (AtkImage	     *image,

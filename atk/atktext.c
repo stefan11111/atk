@@ -135,7 +135,7 @@ atk_text_get_selection (AtkText *text,
     return 0;
 }
 
-gboolean
+unsigned char
 atk_text_add_selection (AtkText *text, 
                         int    start_offset,
                         int    end_offset)
@@ -143,14 +143,14 @@ atk_text_add_selection (AtkText *text,
     return 0;
 }
 
-gboolean
+unsigned char
 atk_text_remove_selection (AtkText *text, 
                            int    selection_num)
 {
     return 0;
 }
 
-gboolean
+unsigned char
 atk_text_set_selection (AtkText *text, 
                         int    selection_num,
                         int    start_offset, 
@@ -159,7 +159,7 @@ atk_text_set_selection (AtkText *text,
     return 0;
 }
 
-gboolean
+unsigned char
 atk_text_set_caret_offset (AtkText *text,
                            int    offset)
 {
@@ -215,7 +215,7 @@ atk_text_attribute_get_value (AtkTextAttribute attr,
     return 0;
 }
 
-gboolean
+unsigned char
 atk_text_scroll_substring_to (AtkText       *text,
                               int          start_offset,
                               int          end_offset,
@@ -224,7 +224,7 @@ atk_text_scroll_substring_to (AtkText       *text,
     return 0;
 }
 
-gboolean
+unsigned char
 atk_text_scroll_substring_to_point (AtkText      *text,
                                     int         start_offset,
                                     int         end_offset,

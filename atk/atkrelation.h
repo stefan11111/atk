@@ -66,7 +66,7 @@ ATK_AVAILABLE_IN_ALL
 void                  atk_relation_add_target         (AtkRelation     *relation,
                                                        AtkObject       *target);
 ATK_AVAILABLE_IN_ALL
-gboolean              atk_relation_remove_target      (AtkRelation     *relation,
+unsigned char              atk_relation_remove_target      (AtkRelation     *relation,
                                                        AtkObject       *target);
 
 G_END_DECLS

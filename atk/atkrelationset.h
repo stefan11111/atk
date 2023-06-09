@@ -42,10 +42,10 @@ long unsigned int atk_relation_set_get_type (void);
 ATK_AVAILABLE_IN_ALL
 AtkRelationSet* atk_relation_set_new                  (void);
 ATK_AVAILABLE_IN_ALL
-gboolean        atk_relation_set_contains             (AtkRelationSet  *set,
+unsigned char        atk_relation_set_contains             (AtkRelationSet  *set,
                                                        AtkRelationType relationship);
 ATK_AVAILABLE_IN_ALL
-gboolean        atk_relation_set_contains_target      (AtkRelationSet  *set,
+unsigned char        atk_relation_set_contains_target      (AtkRelationSet  *set,
                                                        AtkRelationType relationship,
                                                        AtkObject       *target);
 ATK_AVAILABLE_IN_ALL

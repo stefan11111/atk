@@ -499,7 +499,7 @@ atk_object_remove_property_change_handler  (AtkObject *accessible,
 void
 atk_object_notify_state_change (AtkObject *accessible,
                                 unsigned long long  state,
-                                gboolean  value)
+                                unsigned char  value)
 {
 }
 
@@ -652,7 +652,7 @@ atk_role_for_name (const char *name)
     return 0;
 }
 
-gboolean
+unsigned char
 atk_object_add_relationship (AtkObject       *object,
                              AtkRelationType relationship,
                              AtkObject       *target)
@@ -660,7 +660,7 @@ atk_object_add_relationship (AtkObject       *object,
     return 0;
 }
 
-gboolean
+unsigned char
 atk_object_remove_relationship (AtkObject       *object,
                                 AtkRelationType relationship,
                                 AtkObject       *target)
