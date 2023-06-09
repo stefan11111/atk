@@ -23,7 +23,7 @@ typedef struct _AtkActionIface AtkActionIface;
 struct _AtkActionIface
 {
   /*< private >*/
-  GTypeInterface parent;
+  long unsigned int* parent;
 
   /*< public >*/
   gboolean                (*do_action)         (AtkAction         *action,
@@ -43,7 +43,7 @@ struct _AtkActionIface
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_action_get_type (void);
+long unsigned int atk_action_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
 gboolean   atk_action_do_action                (AtkAction         *action,

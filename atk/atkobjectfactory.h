@@ -31,14 +31,14 @@ struct _AtkObjectFactoryClass
 
   AtkObject* (* create_accessible) (GObject          *obj);
   void       (* invalidate)        (AtkObjectFactory *factory);
-  GType      (* get_accessible_type)    (void);
+  long unsigned int      (* get_accessible_type)    (void);
 
   AtkFunction pad1;
   AtkFunction pad2;
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_object_factory_get_type(void);
+long unsigned int atk_object_factory_get_type(void);
 
 
 ATK_AVAILABLE_IN_ALL
@@ -46,7 +46,7 @@ AtkObject* atk_object_factory_create_accessible (AtkObjectFactory *factory, GObj
 ATK_AVAILABLE_IN_ALL
 void       atk_object_factory_invalidate (AtkObjectFactory *factory);
 ATK_AVAILABLE_IN_ALL
-GType      atk_object_factory_get_accessible_type (AtkObjectFactory *factory);
+long unsigned int      atk_object_factory_get_accessible_type (AtkObjectFactory *factory);
 
 G_END_DECLS
 

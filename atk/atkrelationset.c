@@ -4,7 +4,7 @@
 
 #include "atk.h"
 
-GType
+long unsigned int
 atk_relation_set_get_type (void)
 {
     return 0;

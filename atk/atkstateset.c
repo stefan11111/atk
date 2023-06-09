@@ -16,7 +16,7 @@ struct _AtkRealStateSet
 
 typedef struct _AtkRealStateSet      AtkRealStateSet;
 
-GType
+long unsigned int
 atk_state_set_get_type (void)
 {
     return 0;

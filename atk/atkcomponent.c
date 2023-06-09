@@ -7,7 +7,7 @@ enum {
   LAST_SIGNAL
 };
 
-GType
+long unsigned int
 atk_component_get_type (void)
 {
     return 0;
@@ -137,7 +137,7 @@ atk_component_scroll_to_point (AtkComponent *component,
     return 0;
 }
 
-GType
+long unsigned int
 atk_rectangle_get_type (void)
 {
     return 0;

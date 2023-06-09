@@ -44,14 +44,14 @@ struct _AtkRectangle
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_rectangle_get_type (void);
+long unsigned int atk_rectangle_get_type (void);
 
 #define ATK_TYPE_RECTANGLE (atk_rectangle_get_type ())
 
 struct _AtkComponentIface
 {
   /*< private >*/
-  GTypeInterface parent;
+  long unsigned int* parent;
 
   /*< public >*/
   guint          (* add_focus_handler)  (AtkComponent          *component,
@@ -115,7 +115,7 @@ struct _AtkComponentIface
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_component_get_type (void);
+long unsigned int atk_component_get_type (void);
 
 /* convenience functions */
 ATK_DEPRECATED_IN_2_10

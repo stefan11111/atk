@@ -7,7 +7,7 @@ enum {
   LAST_SIGNAL
 };
 
-GType
+long unsigned int
 atk_selection_get_type (void)
 {
     return 0;

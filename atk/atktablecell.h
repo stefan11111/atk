@@ -23,7 +23,7 @@ typedef struct _AtkTableCellIface AtkTableCellIface;
 struct _AtkTableCellIface
 {
   /*< private >*/
-  GTypeInterface parent;
+  long unsigned int* parent;
 
   /*< public >*/
   gint          (*get_column_span)         (AtkTableCell *cell);
@@ -42,7 +42,7 @@ struct _AtkTableCellIface
 };
 
 ATK_AVAILABLE_IN_2_12
-GType atk_table_cell_get_type (void);
+long unsigned int atk_table_cell_get_type (void);
 
 ATK_AVAILABLE_IN_2_12
 gint        atk_table_cell_get_column_span         (AtkTableCell *cell);

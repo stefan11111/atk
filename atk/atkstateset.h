@@ -33,7 +33,7 @@ struct _AtkStateSetClass
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_state_set_get_type (void);
+long unsigned int atk_state_set_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
 AtkStateSet*    atk_state_set_new               (void);

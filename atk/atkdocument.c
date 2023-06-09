@@ -10,7 +10,7 @@ enum {
   LAST_SIGNAL
 };
 
-GType atk_document_get_type(void)
+long unsigned int atk_document_get_type(void)
 {
     return 0;
 }

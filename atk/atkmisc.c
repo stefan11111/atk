@@ -2,7 +2,7 @@
 
 #include "atkmisc.h"
 
-GType
+long unsigned int
 atk_misc_get_type (void)
 {
     return 0;

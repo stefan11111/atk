@@ -30,7 +30,7 @@ struct _AtkNoOpObjectFactoryClass
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_no_op_object_factory_get_type(void);
+long unsigned int atk_no_op_object_factory_get_type(void);
 
 ATK_AVAILABLE_IN_ALL
 AtkObjectFactory *atk_no_op_object_factory_new(void);

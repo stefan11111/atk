@@ -63,7 +63,7 @@ struct _AtkMiscClass
 };
 
 ATK_DEPRECATED_IN_2_12
-GType atk_misc_get_type (void);
+long unsigned int atk_misc_get_type (void);
 
 ATK_DEPRECATED_IN_2_12
 void     atk_misc_threads_enter  (AtkMisc *misc);

@@ -24,13 +24,13 @@ typedef struct _AtkHyperlinkImplIface AtkHyperlinkImplIface;
 
 struct _AtkHyperlinkImplIface
 {
-  GTypeInterface parent;
+  long unsigned int* parent;
     
   AtkHyperlink*  (* get_hyperlink) (AtkHyperlinkImpl *impl);
 };
 
 ATK_AVAILABLE_IN_ALL
-GType            atk_hyperlink_impl_get_type (void);
+long unsigned int            atk_hyperlink_impl_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
 AtkHyperlink    *atk_hyperlink_impl_get_hyperlink (AtkHyperlinkImpl *impl);

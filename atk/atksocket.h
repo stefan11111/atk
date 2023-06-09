@@ -28,7 +28,7 @@ struct _AtkSocket
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_socket_get_type (void);
+long unsigned int atk_socket_get_type (void);
 
 struct _AtkSocketClass
 {

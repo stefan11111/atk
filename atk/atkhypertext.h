@@ -23,7 +23,7 @@ typedef struct _AtkHypertextIface AtkHypertextIface;
 
 struct _AtkHypertextIface
 {
-  GTypeInterface parent;
+  long unsigned int* parent;
 
   AtkHyperlink*(* get_link)                 (AtkHypertext       *hypertext,
                                              gint               link_index);
@@ -38,7 +38,7 @@ struct _AtkHypertextIface
                                              gint               link_index);
 };
 ATK_AVAILABLE_IN_ALL
-GType atk_hypertext_get_type (void);
+long unsigned int atk_hypertext_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
 AtkHyperlink* atk_hypertext_get_link       (AtkHypertext *hypertext,

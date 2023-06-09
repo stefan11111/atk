@@ -23,7 +23,7 @@ typedef struct _AtkDocumentIface AtkDocumentIface;
 
 struct _AtkDocumentIface
 {
-  GTypeInterface parent;
+  long unsigned int* parent;
   const gchar*          ( *get_document_type) (AtkDocument              *document);
   gpointer              ( *get_document)      (AtkDocument              *document);
 
@@ -39,7 +39,7 @@ struct _AtkDocumentIface
 };
 
 ATK_AVAILABLE_IN_ALL
-GType  atk_document_get_type             (void);
+long unsigned int  atk_document_get_type             (void);
 
 ATK_DEPRECATED_IN_2_12
 const gchar*          atk_document_get_document_type (AtkDocument   *document);

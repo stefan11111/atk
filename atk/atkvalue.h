@@ -43,7 +43,7 @@ typedef enum
 
 struct _AtkValueIface
 {
-  GTypeInterface parent;
+  long unsigned int* parent;
 
   /*<deprecated>*/
   void     (* get_current_value) (AtkValue     *obj,
@@ -69,7 +69,7 @@ struct _AtkValueIface
 };
 
 ATK_AVAILABLE_IN_ALL
-GType            atk_value_get_type (void);
+long unsigned int            atk_value_get_type (void);
 
 ATK_DEPRECATED_IN_2_12_FOR(atk_value_get_value_and_text)
 void      atk_value_get_current_value (AtkValue     *obj,

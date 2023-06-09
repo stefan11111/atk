@@ -19,7 +19,7 @@ enum
   PROP_LAST
 };
 
-GType atk_hyperlink_get_type()
+long unsigned int atk_hyperlink_get_type()
 {
     return 0;
 }

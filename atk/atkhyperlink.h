@@ -62,7 +62,7 @@ struct _AtkHyperlinkClass
 };
 
 ATK_AVAILABLE_IN_ALL
-GType            atk_hyperlink_get_type             (void);
+long unsigned int            atk_hyperlink_get_type             (void);
 
 ATK_AVAILABLE_IN_ALL
 gchar*           atk_hyperlink_get_uri              (AtkHyperlink     *link_,

@@ -98,7 +98,7 @@ struct _AtkTextRange {
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_text_range_get_type (void);
+long unsigned int atk_text_range_get_type (void);
 
 typedef enum {
     ATK_TEXT_CLIP_NONE,
@@ -109,7 +109,7 @@ typedef enum {
 
 struct _AtkTextIface
 {
-  GTypeInterface parent;
+  long unsigned int* parent;
 
   gchar*         (* get_text)                     (AtkText          *text,
                                                    gint             start_offset,
@@ -210,7 +210,7 @@ struct _AtkTextIface
 };
 
 ATK_AVAILABLE_IN_ALL
-GType            atk_text_get_type (void);
+long unsigned int            atk_text_get_type (void);
 
 
 ATK_AVAILABLE_IN_ALL

@@ -14,7 +14,7 @@ enum {
   LAST_SIGNAL
 };
 
-GType
+long unsigned int
 atk_table_get_type (void)
 {
     return 0;

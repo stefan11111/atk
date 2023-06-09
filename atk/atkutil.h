@@ -171,7 +171,7 @@ struct _AtkUtilClass
    const gchar* (* get_toolkit_version)          (void);
 };
 ATK_AVAILABLE_IN_ALL
-GType atk_util_get_type (void);
+long unsigned int atk_util_get_type (void);
 
 /**
  *AtkCoordType:
@@ -220,13 +220,13 @@ const gchar *atk_get_toolkit_version (void);
 ATK_AVAILABLE_IN_ALL
 const gchar *atk_get_version (void);
 
-/* --- GType boilerplate --- */
+/* --- long unsigned int boilerplate --- */
 /* convenience macros for atk type implementations, which for a type GtkGadgetAccessible will:
  * - prototype: static void     gtk_gadget_accessible_class_init (GtkGadgetClass *klass);
  * - prototype: static void     gtk_gadget_accessible_init       (GtkGadget      *self);
  * - define:    static gpointer gtk_gadget_accessible_parent_class = NULL;
  *   gtk_gadget_accessible_parent_class is initialized prior to calling gtk_gadget_class_init()
- * - implement: GType           gtk_gadget_accessible_get_type (void) { ... }
+ * - implement: long unsigned int           gtk_gadget_accessible_get_type (void) { ... }
  * - support custom code in gtk_gadget_accessible_get_type() after the type is registered.
  *
  * macro arguments: TypeName, type_name, TYPE_PARENT, CODE
@@ -238,10 +238,10 @@ const gchar *atk_get_version (void);
  * ATK_DEFINE_TYPE:
  * @TN: The name of the new type, in Camel case.
  * @t_n: The name of the new type, in lowercase, with words separated by '_'.
- * @T_P: The #GType of the parent type.
+ * @T_P: The #long unsigned int of the parent type.
  *
  * A convenience macro for type ATK implementations, which declares a class
- * initialization function, an instance initialization function (see #GTypeInfo
+ * initialization function, an instance initialization function (see #long unsigned int
  * for information about these) and a static variable named
  * @t_n _parent_class pointing to the parent class. Furthermore, it
  * defines a _get_type() function.
@@ -254,7 +254,7 @@ const gchar *atk_get_version (void);
  * ATK_DEFINE_TYPE_WITH_CODE:
  * @TN: The name of the new type, in Camel case.
  * @t_n: The name of the new type in lowercase, with words separated by '_'.
- * @T_P: The #GType of the parent type.
+ * @T_P: The #long unsigned int of the parent type.
  * @_C_: Custom code that gets inserted in the _get_type() function.
  *
  * A convenience macro for ATK type implementations.
@@ -269,7 +269,7 @@ const gchar *atk_get_version (void);
  * ATK_DEFINE_ABSTRACT_TYPE:
  * @TN: The name of the new type, in Camel case.
  * @t_n: The name of the new type, in lowercase, with words separated by '_'.
- * @T_P: The #GType of the parent type.
+ * @T_P: The #long unsigned int of the parent type.
  *
  * A convenience macro for ATK type implementations.
  * Similar to ATK_DEFINE_TYPE(), but defines an abstract type.
@@ -282,7 +282,7 @@ const gchar *atk_get_version (void);
  * ATK_DEFINE_ABSTRACT_TYPE_WITH_CODE:
  * @TN: The name of the new type, in Camel case.
  * @t_n: The name of the new type, in lowercase, with words separated by '_'.
- * @T_P: The #GType of the parent type.
+ * @T_P: The #long unsigned int of the parent type.
  * @_C_: Custom code that gets inserted in the _get_type() function.
  *
  * A convenience macro for ATK type implementations.
@@ -296,8 +296,8 @@ const gchar *atk_get_version (void);
  * ATK_DEFINE_TYPE_EXTENDED:
  * @TN: The name of the new type, in Camel case.
  * @t_n: The name of the new type, in lowercase, with words separated by '_'.
- * @T_P: The #GType of the parent type.
- * @_f_: #GTypeFlags to pass to g_type_register_static()
+ * @T_P: The #long unsigned int of the parent type.
+ * @_f_: #long unsigned intFlags to pass to g_type_register_static()
  * @_C_: Custom code that gets inserted in the _get_type() function.
  *
  * The most general convenience macro for ATK type implementations, on which
@@ -319,17 +319,17 @@ static void     type_name##_class_intern_init (gpointer klass) \
 } \
 \
 ATK_AVAILABLE_IN_ALL \
-GType \
+long unsigned int \
 type_name##_get_type (void) \
 { \
   static volatile gsize g_define_type_id__volatile = 0; \
   if (g_once_init_enter (&g_define_type_id__volatile))  \
     { \
       AtkObjectFactory *factory; \
-      GType derived_type; \
-      GTypeQuery query; \
-      GType derived_atk_type; \
-      GType g_define_type_id; \
+      long unsigned int derived_type; \
+      long unsigned intQuery query; \
+      long unsigned int derived_atk_type; \
+      long unsigned int g_define_type_id; \
 \
       /* Figure out the size of the class and instance we are deriving from */ \
       derived_type = g_type_parent (TYPE); \
@@ -345,7 +345,7 @@ type_name##_get_type (void) \
                                        (GClassInitFunc) type_name##_class_intern_init, \
                                        query.instance_size, \
                                        (GInstanceInitFunc) type_name##_init, \
-                                       (GTypeFlags) flags); \
+                                       (long unsigned intFlags) flags); \
       { /* custom code follows */
 #define _ATK_DEFINE_TYPE_EXTENDED_END()	\
         /* following custom code */	\

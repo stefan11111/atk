@@ -25,7 +25,7 @@ struct _AtkNoOpObject
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_no_op_object_get_type (void);
+long unsigned int atk_no_op_object_get_type (void);
 
 struct _AtkNoOpObjectClass
 {

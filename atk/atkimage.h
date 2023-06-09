@@ -23,7 +23,7 @@ typedef struct _AtkImageIface AtkImageIface;
 
 struct _AtkImageIface
 {
-  GTypeInterface parent;
+  long unsigned int* parent;
   void          	( *get_image_position)    (AtkImage		 *image,
                                                    gint                  *x,
 				                   gint	                 *y,
@@ -38,7 +38,7 @@ struct _AtkImageIface
 };
 
 ATK_AVAILABLE_IN_ALL
-GType  atk_image_get_type             (void);
+long unsigned int  atk_image_get_type             (void);
 
 ATK_AVAILABLE_IN_ALL
 const gchar* atk_image_get_image_description (AtkImage   *image);

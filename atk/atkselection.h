@@ -22,7 +22,7 @@ typedef struct _AtkSelectionIface AtkSelectionIface;
 
 struct _AtkSelectionIface
 {
-  GTypeInterface parent;
+  long unsigned int* parent;
 
   gboolean     (* add_selection)        (AtkSelection   *selection,
                                          gint           i);
@@ -42,7 +42,7 @@ struct _AtkSelectionIface
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_selection_get_type (void);
+long unsigned int atk_selection_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
 gboolean     atk_selection_add_selection        (AtkSelection   *selection,

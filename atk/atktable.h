@@ -22,7 +22,7 @@ typedef struct _AtkTableIface AtkTableIface;
 
 struct _AtkTableIface
 {
-  GTypeInterface parent;
+  long unsigned int* parent;
 
   AtkObject*        (* ref_at)                   (AtkTable      *table,
                                                   gint          row,
@@ -110,7 +110,7 @@ struct _AtkTableIface
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_table_get_type (void);
+long unsigned int atk_table_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
 AtkObject*        atk_table_ref_at               (AtkTable         *table,

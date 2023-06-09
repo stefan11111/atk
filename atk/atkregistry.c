@@ -5,21 +5,21 @@
 
 void
 atk_registry_set_factory_type (AtkRegistry *registry,
-                               GType type,
-                               GType factory_type)
+                               long unsigned int type,
+                               long unsigned int factory_type)
 {
 }
 
-GType
+long unsigned int
 atk_registry_get_factory_type (AtkRegistry *registry,
-                               GType type)
+                               long unsigned int type)
 {
     return 0;
 }
 
 AtkObjectFactory*
 atk_registry_get_factory (AtkRegistry *registry,
-                          GType type)
+                          long unsigned int type)
 {
     return 0;
 }

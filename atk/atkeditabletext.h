@@ -23,7 +23,7 @@ typedef struct _AtkEditableTextIface AtkEditableTextIface;
 
 struct _AtkEditableTextIface
 {
-  GTypeInterface parent_interface;
+  long unsigned int* parent_interface;
 
   gboolean (* set_run_attributes) (AtkEditableText  *text,
                                    AtkAttributeSet  *attrib_set,
@@ -48,7 +48,7 @@ struct _AtkEditableTextIface
                                    gint             position);
 };
 ATK_AVAILABLE_IN_ALL
-GType atk_editable_text_get_type (void);
+long unsigned int atk_editable_text_get_type (void);
 
 
 ATK_AVAILABLE_IN_ALL

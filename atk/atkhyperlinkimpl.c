@@ -2,7 +2,7 @@
 
 #include "atkhyperlinkimpl.h"
 
-GType
+long unsigned int
 atk_hyperlink_impl_get_type (void)
 {
     return 0;

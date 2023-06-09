@@ -25,7 +25,7 @@ struct _AtkPlug
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_plug_get_type (void);
+long unsigned int atk_plug_get_type (void);
 
 struct _AtkPlugClass
 {

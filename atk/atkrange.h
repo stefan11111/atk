@@ -16,7 +16,7 @@ typedef struct _AtkRange AtkRange;
 
 /* AtkRange methods */
 ATK_AVAILABLE_IN_2_12
-GType atk_range_get_type (void);
+long unsigned int atk_range_get_type (void);
 
 ATK_AVAILABLE_IN_2_12
 AtkRange*    atk_range_copy (AtkRange *src);

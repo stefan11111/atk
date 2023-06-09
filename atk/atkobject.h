@@ -682,7 +682,7 @@ void                      (* initialize)                         (AtkObject     
 };
 
 ATK_AVAILABLE_IN_ALL
-GType            atk_object_get_type   (void);
+long unsigned int            atk_object_get_type   (void);
 
 /**
  * AtkImplementorIface:
@@ -693,13 +693,13 @@ GType            atk_object_get_type   (void);
  */
 struct _AtkImplementorIface
 {
-  GTypeInterface parent;
+  long unsigned int* parent;
 
   AtkObject*   (*ref_accessible) (AtkImplementor *implementor);
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_implementor_get_type (void);
+long unsigned int atk_implementor_get_type (void);
 ATK_AVAILABLE_IN_ALL
 AtkObject*              atk_implementor_ref_accessible            (AtkImplementor *implementor);
 

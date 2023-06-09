@@ -11,7 +11,7 @@ struct _AtkUtilListenerInfo
   gulong hook_id;
 };
 
-GType
+long unsigned int
 atk_util_get_type (void)
 {
   return G_TYPE_OBJECT;

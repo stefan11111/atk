@@ -37,7 +37,7 @@ struct _AtkRelationSetClass
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_relation_set_get_type (void);
+long unsigned int atk_relation_set_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
 AtkRelationSet* atk_relation_set_new                  (void);

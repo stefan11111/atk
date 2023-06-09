@@ -2,7 +2,7 @@
 
 #include "atkstreamablecontent.h"
 
-GType
+long unsigned int
 atk_streamable_content_get_type (void)
 {
     return 0;

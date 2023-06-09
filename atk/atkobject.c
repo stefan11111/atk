@@ -227,24 +227,36 @@ static const gchar* const atk_object_name_property_table_summary = "accessible-t
 static const gchar* const atk_object_name_property_table_caption_object = "accessible-table-caption-object";
 static const gchar* const atk_object_name_property_hypertext_num_links = "accessible-hypertext-nlinks";
 
-GType
+struct GTypeInfo {
+  short class_size;
+  void* base_init;
+  void* base_finalize;
+  void* class_init;
+  void* class_finalize;
+  void* class_data;
+  short instance_size;
+  short n_preallocs;
+  void* instance_init;
+};
+
+long unsigned int
 atk_object_get_type (void)
 {
-  static GType type = 0;
+  static long unsigned int type = 0;
 
   if (!type)
     {
       static const GTypeInfo typeInfo =
       {
         sizeof (AtkObjectClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) atk_object_class_init,
-        (GClassFinalizeFunc) NULL,
+        NULL,
+        NULL,
+        atk_object_class_init,
+        NULL,
         NULL,
         sizeof (AtkObject),
         0,
-        (GInstanceInitFunc) atk_object_init,
+        atk_object_init,
       } ;
       type = g_type_register_static (G_TYPE_OBJECT, "AtkObject", &typeInfo, 0) ;
 
@@ -611,7 +623,7 @@ atk_object_init  (AtkObject        *accessible,
 {
 }
 
-GType
+long unsigned int
 atk_implementor_get_type (void)
 {
     return 0;

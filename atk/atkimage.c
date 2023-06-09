@@ -2,7 +2,7 @@
 
 #include "atkimage.h"
 
-GType
+long unsigned int
 atk_image_get_type (void)
 {
     return 0;

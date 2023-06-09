@@ -2,7 +2,7 @@
 
 #include "atkaction.h"
 
-GType
+long unsigned int
 atk_action_get_type (void)
 {
     return 0;

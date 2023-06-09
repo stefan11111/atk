@@ -38,7 +38,7 @@ typedef struct _GClosure                 GClosure;
 /*
 typedef GObject;
 typedef GObjectClass;
-typedef long unsigned int GType;
+typedef long unsigned int long unsigned int;
 
 typedef struct _GObject                  GObject;
 typedef struct _GObjectClass             GObjectClass;

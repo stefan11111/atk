@@ -4,7 +4,7 @@
 #include <atk/atkregistry.h>
 #include <atk/atkutil.h>
 
-GType
+long unsigned int
 atk_gobject_accessible_get_type (void)
 {
     return 0;

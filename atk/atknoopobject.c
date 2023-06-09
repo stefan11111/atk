@@ -3,7 +3,7 @@
 #include "atk.h"
 #include "atknoopobject.h"
 
-GType
+long unsigned int
 atk_no_op_object_get_type (void)
 {
     return 0;

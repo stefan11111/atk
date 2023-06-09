@@ -2,7 +2,7 @@
 
 #include "atkeditabletext.h"
 
-GType
+long unsigned int
 atk_editable_text_get_type (void)
 {
     return 0;

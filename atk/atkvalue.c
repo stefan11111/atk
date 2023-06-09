@@ -42,7 +42,7 @@ N_("very good")
 N_("best")
 #endif
 
-GType
+long unsigned int
 atk_value_get_type (void)
 {
     return 0;

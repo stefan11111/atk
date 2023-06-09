@@ -22,7 +22,7 @@ typedef struct _AtkStreamableContentIface AtkStreamableContentIface;
 
 struct _AtkStreamableContentIface
 {
-  GTypeInterface parent;
+  long unsigned int* parent;
 
   /*
    * Get the number of mime types supported by this object
@@ -70,7 +70,7 @@ struct _AtkStreamableContentIface
   AtkFunction               pad3;
 };
 ATK_AVAILABLE_IN_ALL
-GType                  atk_streamable_content_get_type (void);
+long unsigned int                  atk_streamable_content_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
 gint                   atk_streamable_content_get_n_mime_types (AtkStreamableContent     *streamable);

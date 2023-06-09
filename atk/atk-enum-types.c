@@ -7,7 +7,7 @@
 
 /* enumerations from "atkcomponent.h" */
 
-GType
+long unsigned int
 atk_scroll_type_get_type (void)
 {
     return 0;
@@ -15,7 +15,7 @@ atk_scroll_type_get_type (void)
 
 /* enumerations from "atkhyperlink.h" */
 
-GType
+long unsigned int
 atk_hyperlink_state_flags_get_type (void)
 {
     return 0;
@@ -23,13 +23,13 @@ atk_hyperlink_state_flags_get_type (void)
 
 /* enumerations from "atkobject.h" */
 
-GType
+long unsigned int
 atk_role_get_type (void)
 {
     return 0;
 }
 
-GType
+long unsigned int
 atk_layer_get_type (void)
 {
     return 0;
@@ -37,7 +37,7 @@ atk_layer_get_type (void)
 
 /* enumerations from "atkrelationtype.h" */
 
-GType
+long unsigned int
 atk_relation_type_get_type (void)
 {
     return 0;
@@ -45,7 +45,7 @@ atk_relation_type_get_type (void)
 
 /* enumerations from "atkstate.h" */
 
-GType
+long unsigned int
 atk_state_type_get_type (void)
 {
     return 0;
@@ -53,25 +53,25 @@ atk_state_type_get_type (void)
 
 /* enumerations from "atktext.h" */
 
-GType
+long unsigned int
 atk_text_attribute_get_type (void)
 {
     return 0;
 }
 
-GType
+long unsigned int
 atk_text_boundary_get_type (void)
 {
     return 0;
 }
 
-GType
+long unsigned int
 atk_text_granularity_get_type (void)
 {
     return 0;
 }
 
-GType
+long unsigned int
 atk_text_clip_type_get_type (void)
 {
     return 0;
@@ -79,13 +79,13 @@ atk_text_clip_type_get_type (void)
 
 /* enumerations from "atkutil.h" */
 
-GType
+long unsigned int
 atk_key_event_type_get_type (void)
 {
     return 0;
 }
 
-GType
+long unsigned int
 atk_coord_type_get_type (void)
 {
     return 0;
@@ -93,7 +93,7 @@ atk_coord_type_get_type (void)
 
 /* enumerations from "atkvalue.h" */
 
-GType
+long unsigned int
 atk_value_type_get_type (void)
 {
     return 0;

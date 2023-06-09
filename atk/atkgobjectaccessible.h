@@ -25,7 +25,7 @@ struct _AtkGObjectAccessible
 };
 
 ATK_AVAILABLE_IN_ALL
-GType atk_gobject_accessible_get_type (void);
+long unsigned int atk_gobject_accessible_get_type (void);
 
 struct _AtkGObjectAccessibleClass
 {

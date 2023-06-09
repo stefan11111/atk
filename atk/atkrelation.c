@@ -11,7 +11,7 @@ enum {
   PROP_LAST
 };
 
-GType
+long unsigned int
 atk_relation_get_type (void)
 {
     return 0;
