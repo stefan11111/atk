@@ -50,57 +50,37 @@
 #endif /* !G_ENABLE_DEBUG */
 
 /* VOID:INT,INT (../atk/atkmarshal.list:25) */
+
 void
-atk_marshal_VOID__INT_INT (GClosure     *closure,
-                           GValue       *return_value G_GNUC_UNUSED,
-                           guint         n_param_values,
-                           const GValue *param_values,
-                           gpointer      invocation_hint G_GNUC_UNUSED,
-                           gpointer      marshal_data)
+atk_marshal_VOID__INT_INT ()
 {
 }
 
 /* VOID:INT,INT,STRING (../atk/atkmarshal.list:26) */
+
 void
-atk_marshal_VOID__INT_INT_STRING (GClosure     *closure,
-                                  GValue       *return_value G_GNUC_UNUSED,
-                                  guint         n_param_values,
-                                  const GValue *param_values,
-                                  gpointer      invocation_hint G_GNUC_UNUSED,
-                                  gpointer      marshal_data)
+atk_marshal_VOID__INT_INT_STRING ()
 {
 }
 
 /* VOID:INT,INT,INT,STRING (../atk/atkmarshal.list:27) */
+
 void
-atk_marshal_VOID__INT_INT_INT_STRING (GClosure     *closure,
-                                      GValue       *return_value G_GNUC_UNUSED,
-                                      guint         n_param_values,
-                                      const GValue *param_values,
-                                      gpointer      invocation_hint G_GNUC_UNUSED,
-                                      gpointer      marshal_data)
+atk_marshal_VOID__INT_INT_INT_STRING ()
 {
 }
 
 /* VOID:STRING,BOOLEAN (../atk/atkmarshal.list:28) */
+
 void
-atk_marshal_VOID__STRING_BOOLEAN (GClosure     *closure,
-                                  GValue       *return_value G_GNUC_UNUSED,
-                                  guint         n_param_values,
-                                  const GValue *param_values,
-                                  gpointer      invocation_hint G_GNUC_UNUSED,
-                                  gpointer      marshal_data)
+atk_marshal_VOID__STRING_BOOLEAN ()
 {
 }
 
 /* VOID:DOUBLE,STRING (../atk/atkmarshal.list:29) */
+
 void
-atk_marshal_VOID__DOUBLE_STRING (GClosure     *closure,
-                                 GValue       *return_value G_GNUC_UNUSED,
-                                 guint         n_param_values,
-                                 const GValue *param_values,
-                                 gpointer      invocation_hint G_GNUC_UNUSED,
-                                 gpointer      marshal_data)
+atk_marshal_VOID__DOUBLE_STRING ()
 {
 }
 

@@ -24,7 +24,7 @@ struct _AtkSocket
   AtkObject parent;
 
   /*< private >*/
-  gchar* embedded_plug_id;
+  char* embedded_plug_id;
 };
 
 ATK_AVAILABLE_IN_ALL
@@ -37,13 +37,13 @@ struct _AtkSocketClass
   /* to be subscribed to by atk-bridge */
 
   /*< protected >*/
-  void (* embed) (AtkSocket *obj, const gchar* plug_id);
+  void (* embed) (AtkSocket *obj, const char* plug_id);
 };
 
 ATK_AVAILABLE_IN_ALL
 AtkObject*    atk_socket_new           (void);
 ATK_AVAILABLE_IN_ALL
-void          atk_socket_embed         (AtkSocket* obj, const gchar* plug_id);
+void          atk_socket_embed         (AtkSocket* obj, const char* plug_id);
 ATK_AVAILABLE_IN_ALL
 gboolean      atk_socket_is_occupied   (AtkSocket* obj);
 

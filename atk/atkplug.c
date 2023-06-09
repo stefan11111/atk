@@ -14,7 +14,7 @@ atk_plug_set_child (AtkPlug *plug, AtkObject *child)
 {
 }
 
-gchar*
+char*
 atk_plug_get_id (AtkPlug* plug)
 {
     return 0;

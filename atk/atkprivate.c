@@ -30,6 +30,6 @@ _gettext_initialization (void)
 }
 
 void
-_compact_name (gchar *name)
+_compact_name (char *name)
 {
 }

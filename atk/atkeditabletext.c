@@ -11,49 +11,49 @@ atk_editable_text_get_type (void)
 gboolean
 atk_editable_text_set_run_attributes (AtkEditableText *text,
                                       AtkAttributeSet *attrib_set,
-			              gint start_offset,
-                                      gint end_offset)
+			              int start_offset,
+                                      int end_offset)
 {
     return 0;
 }
 
 void 
 atk_editable_text_set_text_contents (AtkEditableText  *text,
-                                     const gchar      *string)
+                                     const char      *string)
 {
 }
 
 void 
 atk_editable_text_insert_text (AtkEditableText  *text,
-                               const gchar      *string,
-                               gint             length,
-                               gint             *position)
+                               const char      *string,
+                               int             length,
+                               int             *position)
 {
 }
 
 void 
 atk_editable_text_copy_text (AtkEditableText  *text,
-                             gint             start_pos,
-                             gint             end_pos)
+                             int             start_pos,
+                             int             end_pos)
 {
 }
 
 void 
 atk_editable_text_cut_text  (AtkEditableText  *text,
-                             gint             start_pos,
-                             gint             end_pos)
+                             int             start_pos,
+                             int             end_pos)
 {
 }
 
 void 
 atk_editable_text_delete_text (AtkEditableText  *text,
-                               gint             start_pos,
-                               gint             end_pos)
+                               int             start_pos,
+                               int             end_pos)
 {
 }
 
 void 
 atk_editable_text_paste_text (AtkEditableText  *text,
-                              gint             position)
+                              int             position)
 {
 }

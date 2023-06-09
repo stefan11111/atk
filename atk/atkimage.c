@@ -8,7 +8,7 @@ atk_image_get_type (void)
     return 0;
 }
 
-const gchar*
+const char*
 atk_image_get_image_description (AtkImage *image)
 {
     return 0;
@@ -23,20 +23,20 @@ atk_image_get_image_size (AtkImage *image,
 
 gboolean
 atk_image_set_image_description (AtkImage        *image,
-                                 const gchar     *description)
+                                 const char     *description)
 {
     return 0;
 }
 
 void     
 atk_image_get_image_position (AtkImage *image,
-                        gint *x,
-		        gint *y,
+                        int *x,
+		        int *y,
     		        AtkCoordType coord_type)
 {
 }
 
-const gchar*
+const char*
 atk_image_get_image_locale (AtkImage   *image)
 {
     return 0;

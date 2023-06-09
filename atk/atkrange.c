@@ -5,7 +5,7 @@
 struct _AtkRange {
   gdouble lower;
   gdouble upper;
-  gchar *description;
+  char *description;
 };
 
 AtkRange *
@@ -25,7 +25,7 @@ G_DEFINE_BOXED_TYPE (AtkRange, atk_range, atk_range_copy,
 AtkRange*
 atk_range_new  (gdouble   lower_limit,
                 gdouble   upper_limit,
-                const gchar *description)
+                const char *description)
 {
     return 0;
 }
@@ -42,7 +42,7 @@ atk_range_get_upper_limit (AtkRange *range)
     return 0;
 }
 
-const gchar*
+const char*
 atk_range_get_description  (AtkRange *range)
 {
     return 0;

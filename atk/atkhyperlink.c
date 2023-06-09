@@ -24,27 +24,27 @@ long unsigned int atk_hyperlink_get_type()
     return 0;
 }
 
-gchar*
+char*
 atk_hyperlink_get_uri (AtkHyperlink *link,
-                       gint         i)
+                       int         i)
 {
     return 0;
 }
 
 AtkObject*
 atk_hyperlink_get_object (AtkHyperlink *link,
-                          gint         i)
+                          int         i)
 {
     return 0;
 }
 
-gint
+int
 atk_hyperlink_get_end_index (AtkHyperlink *link)
 {
     return 0;
 }
 
-gint
+int
 atk_hyperlink_get_start_index (AtkHyperlink *link)
 {
     return 0;
@@ -62,7 +62,7 @@ atk_hyperlink_is_inline (AtkHyperlink *link)
     return 0;
 }
 
-gint
+int
 atk_hyperlink_get_n_anchors (AtkHyperlink *link)
 {
     return 0;

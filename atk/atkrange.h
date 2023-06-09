@@ -28,11 +28,11 @@ gdouble      atk_range_get_lower_limit  (AtkRange    *range);
 ATK_AVAILABLE_IN_2_12
 gdouble      atk_range_get_upper_limit  (AtkRange    *range);
 ATK_AVAILABLE_IN_2_12
-const gchar* atk_range_get_description  (AtkRange    *range);
+const char* atk_range_get_description  (AtkRange    *range);
 ATK_AVAILABLE_IN_2_12
 AtkRange*    atk_range_new              (gdouble      lower_limit,
                                          gdouble      upper_limit,
-                                         const gchar *description);
+                                         const char *description);
 
 G_END_DECLS
 

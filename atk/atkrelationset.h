@@ -55,10 +55,10 @@ ATK_AVAILABLE_IN_ALL
 void            atk_relation_set_add                  (AtkRelationSet  *set,
                                                        AtkRelation     *relation);
 ATK_AVAILABLE_IN_ALL
-gint            atk_relation_set_get_n_relations      (AtkRelationSet  *set);
+int            atk_relation_set_get_n_relations      (AtkRelationSet  *set);
 ATK_AVAILABLE_IN_ALL
 AtkRelation*    atk_relation_set_get_relation         (AtkRelationSet  *set,
-                                                       gint            i);
+                                                       int            i);
 ATK_AVAILABLE_IN_ALL
 AtkRelation*    atk_relation_set_get_relation_by_type (AtkRelationSet  *set,
                                                        AtkRelationType relationship);

@@ -8,7 +8,7 @@
 G_BEGIN_DECLS
 
 void      _gettext_initialization (void);
-void      _compact_name (gchar *name);
+void      _compact_name (char *name);
 
 G_END_DECLS
 

@@ -26,18 +26,18 @@ struct _AtkTableCellIface
   long unsigned int* parent;
 
   /*< public >*/
-  gint          (*get_column_span)         (AtkTableCell *cell);
+  int          (*get_column_span)         (AtkTableCell *cell);
   GPtrArray *   (*get_column_header_cells) (AtkTableCell *cell);
   gboolean      (*get_position)            (AtkTableCell *cell,
-                                            gint         *row,
-                                            gint         *column);
-  gint          (*get_row_span)            (AtkTableCell *cell);
+                                            int         *row,
+                                            int         *column);
+  int          (*get_row_span)            (AtkTableCell *cell);
   GPtrArray *   (*get_row_header_cells)    (AtkTableCell *cell);
   gboolean      (*get_row_column_span)     (AtkTableCell *cell,
-                                            gint         *row,
-                                            gint         *column,
-                                            gint         *row_span,
-                                            gint         *column_span);
+                                            int         *row,
+                                            int         *column,
+                                            int         *row_span,
+                                            int         *column_span);
   AtkObject *   (*get_table)               (AtkTableCell *cell);
 };
 
@@ -45,23 +45,23 @@ ATK_AVAILABLE_IN_2_12
 long unsigned int atk_table_cell_get_type (void);
 
 ATK_AVAILABLE_IN_2_12
-gint        atk_table_cell_get_column_span         (AtkTableCell *cell);
+int        atk_table_cell_get_column_span         (AtkTableCell *cell);
 ATK_AVAILABLE_IN_2_12
 GPtrArray * atk_table_cell_get_column_header_cells (AtkTableCell *cell);
 ATK_AVAILABLE_IN_2_12
 gboolean    atk_table_cell_get_position            (AtkTableCell *cell,
-                                                    gint         *row,
-                                                    gint         *column);
+                                                    int         *row,
+                                                    int         *column);
 ATK_AVAILABLE_IN_2_12
-gint        atk_table_cell_get_row_span            (AtkTableCell *cell);
+int        atk_table_cell_get_row_span            (AtkTableCell *cell);
 ATK_AVAILABLE_IN_2_12
 GPtrArray * atk_table_cell_get_row_header_cells    (AtkTableCell *cell);
 ATK_AVAILABLE_IN_2_12
 gboolean    atk_table_cell_get_row_column_span     (AtkTableCell *cell,
-                                                    gint         *row,
-                                                    gint         *column,
-                                                    gint         *row_span,
-                                                    gint         *column_span);
+                                                    int         *row,
+                                                    int         *column,
+                                                    int         *row_span,
+                                                    int         *column_span);
 ATK_AVAILABLE_IN_2_12
 AtkObject * atk_table_cell_get_table               (AtkTableCell *cell);
 

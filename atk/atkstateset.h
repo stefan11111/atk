@@ -45,7 +45,7 @@ gboolean        atk_state_set_add_state         (AtkStateSet  *set,
 ATK_AVAILABLE_IN_ALL
 void            atk_state_set_add_states        (AtkStateSet  *set,
                                                  AtkStateType *types,
-                                                 gint         n_types);
+                                                 int         n_types);
 ATK_AVAILABLE_IN_ALL
 void            atk_state_set_clear_states      (AtkStateSet  *set);
 ATK_AVAILABLE_IN_ALL
@@ -54,7 +54,7 @@ gboolean        atk_state_set_contains_state    (AtkStateSet  *set,
 ATK_AVAILABLE_IN_ALL
 gboolean        atk_state_set_contains_states   (AtkStateSet  *set,
                                                  AtkStateType *types,
-                                                 gint         n_types);
+                                                 int         n_types);
 ATK_AVAILABLE_IN_ALL
 gboolean        atk_state_set_remove_state      (AtkStateSet  *set,
                                                  AtkStateType type);

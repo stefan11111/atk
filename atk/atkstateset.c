@@ -44,7 +44,7 @@ atk_state_set_add_state (AtkStateSet   *set,
 void
 atk_state_set_add_states (AtkStateSet   *set,
                           AtkStateType  *types,
-                          gint          n_types)
+                          int          n_types)
 {
 }
 
@@ -63,7 +63,7 @@ atk_state_set_contains_state (AtkStateSet   *set,
 gboolean
 atk_state_set_contains_states (AtkStateSet   *set,
                                AtkStateType  *types,
-                               gint          n_types)
+                               int          n_types)
 {
     return 0;
 }

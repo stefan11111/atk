@@ -59,7 +59,7 @@ struct _AtkMiscClass
    GObjectClass parent;
    void   (* threads_enter)                     (AtkMisc *misc);
    void   (* threads_leave)                     (AtkMisc *misc);
-   gpointer vfuncs[32]; /* future bincompat */
+   void* vfuncs[32]; /* future bincompat */
 };
 
 ATK_DEPRECATED_IN_2_12

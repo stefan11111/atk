@@ -6,7 +6,7 @@
 typedef struct _AtkUtilListenerInfo AtkUtilListenerInfo;
 struct _AtkUtilListenerInfo
 {
-  gint key;
+  int key;
   guint signal_id;
   gulong hook_id;
 };
@@ -46,7 +46,7 @@ atk_focus_tracker_notify (AtkObject       *object)
 
 guint
 atk_add_global_event_listener (GSignalEmissionHook listener,
-			       const gchar        *event_type)
+			       const char        *event_type)
 {
     return 0;
 }
@@ -57,7 +57,7 @@ atk_remove_global_event_listener (guint listener_id)
 }
 
 guint
-atk_add_key_event_listener (AtkKeySnoopFunc listener, gpointer data)
+atk_add_key_event_listener (AtkKeySnoopFunc listener, void* data)
 {
     return 0;
 }
@@ -78,19 +78,19 @@ atk_get_focus_object (void)
     return 0;
 }
 
-const gchar*
+const char*
 atk_get_toolkit_name (void)
 {
     return 0;
 }
 
-const gchar*
+const char*
 atk_get_toolkit_version (void)
 {
     return 0;
 }
 
-const gchar *
+const char *
 atk_get_version (void)
 {
   return VERSION;

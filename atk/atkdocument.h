@@ -24,45 +24,45 @@ typedef struct _AtkDocumentIface AtkDocumentIface;
 struct _AtkDocumentIface
 {
   long unsigned int* parent;
-  const gchar*          ( *get_document_type) (AtkDocument              *document);
-  gpointer              ( *get_document)      (AtkDocument              *document);
+  const char*          ( *get_document_type) (AtkDocument              *document);
+  void*              ( *get_document)      (AtkDocument              *document);
 
-  const gchar*          ( *get_document_locale) (AtkDocument              *document);
+  const char*          ( *get_document_locale) (AtkDocument              *document);
   AtkAttributeSet *     ( *get_document_attributes) (AtkDocument        *document);
-  const gchar*          ( *get_document_attribute_value) (AtkDocument   *document,
-                                                          const gchar   *attribute_name);
+  const char*          ( *get_document_attribute_value) (AtkDocument   *document,
+                                                          const char   *attribute_name);
   gboolean              ( *set_document_attribute) (AtkDocument         *document,
-                                                    const gchar         *attribute_name,
-                                                    const gchar         *attribute_value);
-  gint                  ( *get_current_page_number) (AtkDocument *document);
-  gint                  ( *get_page_count) (AtkDocument *document);
+                                                    const char         *attribute_name,
+                                                    const char         *attribute_value);
+  int                  ( *get_current_page_number) (AtkDocument *document);
+  int                  ( *get_page_count) (AtkDocument *document);
 };
 
 ATK_AVAILABLE_IN_ALL
 long unsigned int  atk_document_get_type             (void);
 
 ATK_DEPRECATED_IN_2_12
-const gchar*          atk_document_get_document_type (AtkDocument   *document);
+const char*          atk_document_get_document_type (AtkDocument   *document);
 
 ATK_DEPRECATED_IN_2_12
-gpointer atk_document_get_document (AtkDocument   *document);
+void* atk_document_get_document (AtkDocument   *document);
 
 ATK_DEPRECATED_IN_2_8_FOR(atk_object_get_object_locale)
-const gchar*          atk_document_get_locale (AtkDocument *document);
+const char*          atk_document_get_locale (AtkDocument *document);
 
 ATK_AVAILABLE_IN_ALL
 AtkAttributeSet*      atk_document_get_attributes (AtkDocument *document);
 ATK_AVAILABLE_IN_ALL
-const gchar*          atk_document_get_attribute_value (AtkDocument *document,
-                                                        const gchar *attribute_name);
+const char*          atk_document_get_attribute_value (AtkDocument *document,
+                                                        const char *attribute_name);
 ATK_AVAILABLE_IN_ALL
 gboolean              atk_document_set_attribute_value (AtkDocument *document,
-                                                        const gchar *attribute_name,
-                                                        const gchar *attribute_value);
+                                                        const char *attribute_name,
+                                                        const char *attribute_value);
 ATK_AVAILABLE_IN_2_12
-gint                  atk_document_get_current_page_number (AtkDocument *document);
+int                  atk_document_get_current_page_number (AtkDocument *document);
 ATK_AVAILABLE_IN_2_12
-gint                  atk_document_get_page_count      (AtkDocument *document);
+int                  atk_document_get_page_count      (AtkDocument *document);
 
 G_END_DECLS
 

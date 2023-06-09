@@ -9,7 +9,7 @@ void atk_table_cell_default_init()
 {
 }
 
-gint
+int
 atk_table_cell_get_column_span (AtkTableCell *cell)
 {
     return 0;
@@ -23,13 +23,13 @@ atk_table_cell_get_column_header_cells (AtkTableCell *cell)
 
 gboolean
 atk_table_cell_get_position (AtkTableCell *cell,
-                             gint         *row,
-                             gint         *column)
+                             int         *row,
+                             int         *column)
 {
     return 0;
 }
 
-gint
+int
 atk_table_cell_get_row_span (AtkTableCell *cell)
 {
     return 0;
@@ -43,10 +43,10 @@ atk_table_cell_get_row_header_cells (AtkTableCell *cell)
 
 gboolean
 atk_table_cell_get_row_column_span (AtkTableCell *cell,
-                                    gint         *row,
-                                    gint         *column,
-                                    gint         *row_span,
-                                    gint         *column_span)
+                                    int         *row,
+                                    int         *column,
+                                    int         *row_span,
+                                    int         *column_span)
 {
     return 0;
 }

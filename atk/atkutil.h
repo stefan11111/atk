@@ -83,8 +83,8 @@ typedef void  (*AtkEventListenerInit) (void);
  *
  * see atk_add_key_event_listener.
  **/
-typedef gint  (*AtkKeySnoopFunc)  (AtkKeyEventStruct *event,
-				   gpointer user_data);
+typedef int  (*AtkKeySnoopFunc)  (AtkKeyEventStruct *event,
+				   void* user_data);
 
 /**
  * AtkKeyEventStruct:
@@ -108,11 +108,11 @@ typedef gint  (*AtkKeySnoopFunc)  (AtkKeyEventStruct *event,
  * Encapsulates information about a key event.
  **/
 struct _AtkKeyEventStruct {
-  gint type;
+  int type;
   guint state;
   guint keyval;
-  gint length;
-  gchar *string;
+  int length;
+  char *string;
   guint16 keycode;
   guint32 timestamp;	
 };
@@ -161,14 +161,14 @@ struct _AtkUtilClass
 {
    GObjectClass parent;
    guint        (* add_global_event_listener)    (GSignalEmissionHook listener,
-						  const gchar        *event_type);
+						  const char        *event_type);
    void         (* remove_global_event_listener) (guint               listener_id);
    guint	(* add_key_event_listener) 	 (AtkKeySnoopFunc     listener,
-						  gpointer data);
+						  void* data);
    void         (* remove_key_event_listener)    (guint               listener_id);
    AtkObject*   (* get_root)                     (void);
-   const gchar* (* get_toolkit_name)             (void);
-   const gchar* (* get_toolkit_version)          (void);
+   const char* (* get_toolkit_name)             (void);
+   const char* (* get_toolkit_version)          (void);
 };
 ATK_AVAILABLE_IN_ALL
 long unsigned int atk_util_get_type (void);
@@ -200,11 +200,11 @@ ATK_DEPRECATED_IN_2_10
 void     atk_focus_tracker_notify  (AtkObject            *object);
 ATK_AVAILABLE_IN_ALL
 guint	atk_add_global_event_listener (GSignalEmissionHook listener,
-				       const gchar        *event_type);
+				       const char        *event_type);
 ATK_AVAILABLE_IN_ALL
 void	atk_remove_global_event_listener (guint listener_id);
 ATK_AVAILABLE_IN_ALL
-guint	atk_add_key_event_listener (AtkKeySnoopFunc listener, gpointer data);
+guint	atk_add_key_event_listener (AtkKeySnoopFunc listener, void* data);
 ATK_AVAILABLE_IN_ALL
 void	atk_remove_key_event_listener (guint listener_id);
 
@@ -214,17 +214,17 @@ ATK_AVAILABLE_IN_ALL
 AtkObject* atk_get_focus_object (void);
 
 ATK_AVAILABLE_IN_ALL
-const gchar *atk_get_toolkit_name (void);
+const char *atk_get_toolkit_name (void);
 ATK_AVAILABLE_IN_ALL
-const gchar *atk_get_toolkit_version (void);
+const char *atk_get_toolkit_version (void);
 ATK_AVAILABLE_IN_ALL
-const gchar *atk_get_version (void);
+const char *atk_get_version (void);
 
 /* --- long unsigned int boilerplate --- */
 /* convenience macros for atk type implementations, which for a type GtkGadgetAccessible will:
  * - prototype: static void     gtk_gadget_accessible_class_init (GtkGadgetClass *klass);
  * - prototype: static void     gtk_gadget_accessible_init       (GtkGadget      *self);
- * - define:    static gpointer gtk_gadget_accessible_parent_class = NULL;
+ * - define:    static void* gtk_gadget_accessible_parent_class = NULL;
  *   gtk_gadget_accessible_parent_class is initialized prior to calling gtk_gadget_class_init()
  * - implement: long unsigned int           gtk_gadget_accessible_get_type (void) { ... }
  * - support custom code in gtk_gadget_accessible_get_type() after the type is registered.
@@ -311,8 +311,8 @@ const gchar *atk_get_version (void);
 \
 static void     type_name##_init              (TypeName        *self); \
 static void     type_name##_class_init        (TypeName##Class *klass); \
-static gpointer type_name##_parent_class = NULL; \
-static void     type_name##_class_intern_init (gpointer klass) \
+static void* type_name##_parent_class = NULL; \
+static void     type_name##_class_intern_init (void* klass) \
 { \
   type_name##_parent_class = g_type_class_peek_parent (klass); \
   type_name##_class_init ((TypeName##Class*) klass); \

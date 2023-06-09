@@ -35,7 +35,7 @@ atk_relation_set_add (AtkRelationSet *set,
 {
 }
 
-gint
+int
 atk_relation_set_get_n_relations (AtkRelationSet *set)
 {
     return 0;
@@ -43,7 +43,7 @@ atk_relation_set_get_n_relations (AtkRelationSet *set)
 
 AtkRelation*
 atk_relation_set_get_relation (AtkRelationSet *set,
-                               gint           i)
+                               int           i)
 {
     return 0;
 }

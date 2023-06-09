@@ -27,19 +27,19 @@ struct _AtkActionIface
 
   /*< public >*/
   gboolean                (*do_action)         (AtkAction         *action,
-                                                gint              i);
-  gint                    (*get_n_actions)     (AtkAction         *action);
-  const gchar*            (*get_description)   (AtkAction         *action,
-                                                gint              i);
-  const gchar*            (*get_name)          (AtkAction         *action,
-                                                gint              i);
-  const gchar*            (*get_keybinding)    (AtkAction         *action,
-                                                gint              i);
+                                                int              i);
+  int                    (*get_n_actions)     (AtkAction         *action);
+  const char*            (*get_description)   (AtkAction         *action,
+                                                int              i);
+  const char*            (*get_name)          (AtkAction         *action,
+                                                int              i);
+  const char*            (*get_keybinding)    (AtkAction         *action,
+                                                int              i);
   gboolean                (*set_description)   (AtkAction         *action,
-                                                gint              i,
-                                                const gchar       *desc);
-  const gchar*            (*get_localized_name)(AtkAction         *action,
-						gint              i);
+                                                int              i,
+                                                const char       *desc);
+  const char*            (*get_localized_name)(AtkAction         *action,
+						int              i);
 };
 
 ATK_AVAILABLE_IN_ALL
@@ -47,26 +47,26 @@ long unsigned int atk_action_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
 gboolean   atk_action_do_action                (AtkAction         *action,
-                                            gint              i);
+                                            int              i);
 ATK_AVAILABLE_IN_ALL
-gint   atk_action_get_n_actions            (AtkAction *action);
+int   atk_action_get_n_actions            (AtkAction *action);
 ATK_AVAILABLE_IN_ALL
-const gchar*          atk_action_get_description  (AtkAction         *action,
-                                                   gint              i);
+const char*          atk_action_get_description  (AtkAction         *action,
+                                                   int              i);
 ATK_AVAILABLE_IN_ALL
-const gchar*          atk_action_get_name         (AtkAction         *action,
-                                                   gint              i);
+const char*          atk_action_get_name         (AtkAction         *action,
+                                                   int              i);
 ATK_AVAILABLE_IN_ALL
-const gchar*          atk_action_get_keybinding   (AtkAction         *action,
-                                                   gint              i);
+const char*          atk_action_get_keybinding   (AtkAction         *action,
+                                                   int              i);
 ATK_AVAILABLE_IN_ALL
 gboolean              atk_action_set_description  (AtkAction         *action,
-                                                   gint              i,
-                                                   const gchar       *desc);
+                                                   int              i,
+                                                   const char       *desc);
 
 ATK_AVAILABLE_IN_ALL
-const gchar* atk_action_get_localized_name (AtkAction       *action,
-						     gint            i);
+const char* atk_action_get_localized_name (AtkAction       *action,
+						     int            i);
 
 G_END_DECLS
 

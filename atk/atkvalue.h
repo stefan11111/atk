@@ -59,7 +59,7 @@ struct _AtkValueIface
   /*</deprecated>*/
   void     (* get_value_and_text) (AtkValue *obj,
                                    gdouble *value,
-                                   gchar  **text);
+                                   char  **text);
   AtkRange*(* get_range)          (AtkValue *obj);
   gdouble  (* get_increment)      (AtkValue *obj);
   GSList*  (* get_sub_ranges)     (AtkValue *obj);
@@ -91,7 +91,7 @@ void     atk_value_get_minimum_increment  (AtkValue     *obj,
 ATK_AVAILABLE_IN_2_12
 void      atk_value_get_value_and_text (AtkValue *obj,
                                         gdouble *value,
-                                        gchar  **text);
+                                        char  **text);
 ATK_AVAILABLE_IN_2_12
 AtkRange* atk_value_get_range          (AtkValue *obj);
 ATK_AVAILABLE_IN_2_12
@@ -103,9 +103,9 @@ void      atk_value_set_value          (AtkValue     *obj,
                                         const gdouble new_value);
 /* AtkValueType methods */
 ATK_AVAILABLE_IN_ALL
-const gchar* atk_value_type_get_name           (AtkValueType value_type);
+const char* atk_value_type_get_name           (AtkValueType value_type);
 ATK_AVAILABLE_IN_ALL
-const gchar* atk_value_type_get_localized_name (AtkValueType value_type);
+const char* atk_value_type_get_localized_name (AtkValueType value_type);
 
 G_END_DECLS
 

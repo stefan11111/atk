@@ -10,7 +10,7 @@ atk_socket_new (void)
 }
 
 void
-atk_socket_embed (AtkSocket* obj, const gchar* plug_id)
+atk_socket_embed (AtkSocket* obj, const char* plug_id)
 {
 }
 

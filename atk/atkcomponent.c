@@ -28,8 +28,8 @@ atk_component_remove_focus_handler (AtkComponent    *component,
 
 gboolean
 atk_component_contains (AtkComponent    *component,
-                        gint            x,
-                        gint            y,
+                        int            x,
+                        int            y,
                         AtkCoordType    coord_type)
 {
     return 0;
@@ -37,8 +37,8 @@ atk_component_contains (AtkComponent    *component,
 
 AtkObject*
 atk_component_ref_accessible_at_point (AtkComponent    *component,
-                                       gint            x,
-                                       gint            y,
+                                       int            x,
+                                       int            y,
                                        AtkCoordType    coord_type)
 {
     return 0;
@@ -46,26 +46,26 @@ atk_component_ref_accessible_at_point (AtkComponent    *component,
 
 void
 atk_component_get_extents    (AtkComponent    *component,
-                              gint            *x,
-                              gint            *y,
-                              gint            *width,
-                              gint            *height,
+                              int            *x,
+                              int            *y,
+                              int            *width,
+                              int            *height,
                               AtkCoordType    coord_type)
 {
 }
 
 void
 atk_component_get_position   (AtkComponent    *component,
-                              gint            *x,
-                              gint            *y,
+                              int            *x,
+                              int            *y,
                               AtkCoordType    coord_type)
 {
 }
 
 void
 atk_component_get_size       (AtkComponent    *component,
-                              gint            *width,
-                              gint            *height)
+                              int            *width,
+                              int            *height)
 {
 }
 
@@ -75,7 +75,7 @@ atk_component_get_layer (AtkComponent *component)
     return 0;
 }
 
-gint
+int
 atk_component_get_mdi_zorder (AtkComponent *component) 
 {
     return 0;
@@ -95,10 +95,10 @@ atk_component_grab_focus (AtkComponent    *component)
 
 gboolean
 atk_component_set_extents   (AtkComponent    *component,
-                             gint            x,
-                             gint            y,
-                             gint            width,
-                             gint            height,
+                             int            x,
+                             int            y,
+                             int            width,
+                             int            height,
                              AtkCoordType    coord_type)
 {
     return 0;
@@ -106,8 +106,8 @@ atk_component_set_extents   (AtkComponent    *component,
 
 gboolean
 atk_component_set_position   (AtkComponent    *component,
-                              gint            x,
-                              gint            y,
+                              int            x,
+                              int            y,
                               AtkCoordType    coord_type)
 {
     return 0;
@@ -115,8 +115,8 @@ atk_component_set_position   (AtkComponent    *component,
 
 gboolean
 atk_component_set_size       (AtkComponent    *component,
-                              gint            x,
-                              gint            y)
+                              int            x,
+                              int            y)
 {
     return 0;
 }
@@ -131,8 +131,8 @@ atk_component_scroll_to (AtkComponent  *component,
 gboolean
 atk_component_scroll_to_point (AtkComponent *component,
                                AtkCoordType  coords,
-                               gint          x,
-                               gint          y)
+                               int          x,
+                               int          y)
 {
     return 0;
 }

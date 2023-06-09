@@ -47,7 +47,7 @@ typedef enum
 } AtkTextAttribute;
 
 ATK_AVAILABLE_IN_ALL
-AtkTextAttribute         atk_text_attribute_register   (const gchar *name);
+AtkTextAttribute         atk_text_attribute_register   (const char *name);
 
 
 #define ATK_TYPE_TEXT                    (atk_text_get_type ())
@@ -82,19 +82,19 @@ typedef enum {
 typedef struct _AtkTextRectangle AtkTextRectangle;
 
 struct _AtkTextRectangle {
-  gint x;
-  gint y;
-  gint width;
-  gint height;
+  int x;
+  int y;
+  int width;
+  int height;
 };
 
 typedef struct _AtkTextRange AtkTextRange;
 
 struct _AtkTextRange {
   AtkTextRectangle bounds;
-  gint start_offset;
-  gint end_offset;
-  gchar* content;
+  int start_offset;
+  int end_offset;
+  char* content;
 };
 
 ATK_AVAILABLE_IN_ALL
@@ -111,77 +111,77 @@ struct _AtkTextIface
 {
   long unsigned int* parent;
 
-  gchar*         (* get_text)                     (AtkText          *text,
-                                                   gint             start_offset,
-                                                   gint             end_offset);
-  gchar*         (* get_text_after_offset)        (AtkText          *text,
-                                                   gint             offset,
+  char*         (* get_text)                     (AtkText          *text,
+                                                   int             start_offset,
+                                                   int             end_offset);
+  char*         (* get_text_after_offset)        (AtkText          *text,
+                                                   int             offset,
                                                    AtkTextBoundary  boundary_type,
-						   gint             *start_offset,
-						   gint             *end_offset);
-  gchar*         (* get_text_at_offset)           (AtkText          *text,
-                                                   gint             offset,
+						   int             *start_offset,
+						   int             *end_offset);
+  char*         (* get_text_at_offset)           (AtkText          *text,
+                                                   int             offset,
                                                    AtkTextBoundary  boundary_type,
-						   gint             *start_offset,
-						   gint             *end_offset);
+						   int             *start_offset,
+						   int             *end_offset);
   gunichar       (* get_character_at_offset)      (AtkText          *text,
-                                                   gint             offset);
-  gchar*         (* get_text_before_offset)       (AtkText          *text,
-                                                   gint             offset,
+                                                   int             offset);
+  char*         (* get_text_before_offset)       (AtkText          *text,
+                                                   int             offset,
                                                    AtkTextBoundary  boundary_type,
- 						   gint             *start_offset,
-						   gint             *end_offset);
-  gint           (* get_caret_offset)             (AtkText          *text);
+ 						   int             *start_offset,
+						   int             *end_offset);
+  int           (* get_caret_offset)             (AtkText          *text);
   AtkAttributeSet* (* get_run_attributes)         (AtkText	    *text,
-						   gint	  	    offset,
-						   gint             *start_offset,
-						   gint	 	    *end_offset);
+						   int	  	    offset,
+						   int             *start_offset,
+						   int	 	    *end_offset);
   AtkAttributeSet* (* get_default_attributes)     (AtkText	    *text);
   void           (* get_character_extents)        (AtkText          *text,
-                                                   gint             offset,
-                                                   gint             *x,
-                                                   gint             *y,
-                                                   gint             *width,
-                                                   gint             *height,
+                                                   int             offset,
+                                                   int             *x,
+                                                   int             *y,
+                                                   int             *width,
+                                                   int             *height,
                                                    AtkCoordType	    coords);
-  gint           (* get_character_count)          (AtkText          *text);
-  gint           (* get_offset_at_point)          (AtkText          *text,
-                                                   gint             x,
-                                                   gint             y,
+  int           (* get_character_count)          (AtkText          *text);
+  int           (* get_offset_at_point)          (AtkText          *text,
+                                                   int             x,
+                                                   int             y,
                                                    AtkCoordType	    coords);
-  gint		 (* get_n_selections)		  (AtkText          *text);
-  gchar*         (* get_selection)	          (AtkText          *text,
-						   gint		    selection_num,
-						   gint		    *start_offset,
-						   gint		    *end_offset);
+  int		 (* get_n_selections)		  (AtkText          *text);
+  char*         (* get_selection)	          (AtkText          *text,
+						   int		    selection_num,
+						   int		    *start_offset,
+						   int		    *end_offset);
   gboolean       (* add_selection)		  (AtkText          *text,
-						   gint		    start_offset,
-						   gint		    end_offset);
+						   int		    start_offset,
+						   int		    end_offset);
   gboolean       (* remove_selection)		  (AtkText          *text,
-						   gint             selection_num);
+						   int             selection_num);
   gboolean       (* set_selection)		  (AtkText          *text,
-						   gint		    selection_num,
-						   gint		    start_offset,
-						   gint		    end_offset);
+						   int		    selection_num,
+						   int		    start_offset,
+						   int		    end_offset);
   gboolean       (* set_caret_offset)             (AtkText          *text,
-                                                   gint             offset);
+                                                   int             offset);
 
   /*
    * signal handlers
    */
   void		 (* text_changed)                 (AtkText          *text,
-                                                   gint             position,
-                                                   gint             length);
+                                                   int             position,
+                                                   int             length);
   void           (* text_caret_moved)             (AtkText          *text,
-                                                   gint             location);
+                                                   int             location);
   void           (* text_selection_changed)       (AtkText          *text);
 
   void           (* text_attributes_changed)      (AtkText          *text);
 
 
   void           (* get_range_extents)            (AtkText          *text,
-                                                   gint             start_offset,
-                                                   gint             end_offset,
+                                                   int             start_offset,
+                                                   int             end_offset,
                                                    AtkCoordType     coord_type,
                                                    AtkTextRectangle *rect);
 
@@ -191,22 +191,22 @@ struct _AtkTextIface
                                                    AtkTextClipType  x_clip_type,
                                                    AtkTextClipType  y_clip_type);
 
-  gchar*         (* get_string_at_offset)         (AtkText            *text,
-                                                   gint               offset,
+  char*         (* get_string_at_offset)         (AtkText            *text,
+                                                   int               offset,
                                                    AtkTextGranularity granularity,
-                                                   gint               *start_offset,
-                                                   gint               *end_offset);
+                                                   int               *start_offset,
+                                                   int               *end_offset);
 
   gboolean       (* scroll_substring_to)          (AtkText          *text,
-                                                   gint             start_offset,
-                                                   gint             end_offset,
+                                                   int             start_offset,
+                                                   int             end_offset,
                                                    AtkScrollType    type);
   gboolean       (* scroll_substring_to_point)    (AtkText          *text,
-                                                   gint             start_offset,
-                                                   gint             end_offset,
+                                                   int             start_offset,
+                                                   int             end_offset,
                                                    AtkCoordType     coords,
-                                                   gint             x,
-                                                   gint             y);
+                                                   int             x,
+                                                   int             y);
 };
 
 ATK_AVAILABLE_IN_ALL
@@ -214,87 +214,87 @@ long unsigned int            atk_text_get_type (void);
 
 
 ATK_AVAILABLE_IN_ALL
-gchar*        atk_text_get_text                           (AtkText          *text,
-                                                           gint             start_offset,
-                                                           gint             end_offset);
+char*        atk_text_get_text                           (AtkText          *text,
+                                                           int             start_offset,
+                                                           int             end_offset);
 ATK_AVAILABLE_IN_ALL
 gunichar      atk_text_get_character_at_offset            (AtkText          *text,
-                                                           gint             offset);
+                                                           int             offset);
 ATK_DEPRECATED_IN_2_10_FOR(atk_text_get_string_at_offset)
-gchar*        atk_text_get_text_after_offset              (AtkText          *text,
-                                                           gint             offset,
+char*        atk_text_get_text_after_offset              (AtkText          *text,
+                                                           int             offset,
                                                            AtkTextBoundary  boundary_type,
-							   gint             *start_offset,
-							   gint	            *end_offset);
+							   int             *start_offset,
+							   int	            *end_offset);
 ATK_DEPRECATED_IN_2_10_FOR(atk_text_get_string_at_offset)
-gchar*        atk_text_get_text_at_offset                 (AtkText          *text,
-                                                           gint             offset,
+char*        atk_text_get_text_at_offset                 (AtkText          *text,
+                                                           int             offset,
                                                            AtkTextBoundary  boundary_type,
-							   gint             *start_offset,
-							   gint             *end_offset);
+							   int             *start_offset,
+							   int             *end_offset);
 ATK_DEPRECATED_IN_2_10_FOR(atk_text_get_string_at_offset)
-gchar*        atk_text_get_text_before_offset             (AtkText          *text,
-                                                           gint             offset,
+char*        atk_text_get_text_before_offset             (AtkText          *text,
+                                                           int             offset,
                                                            AtkTextBoundary  boundary_type,
-							   gint             *start_offset,
-							   gint	            *end_offset);
+							   int             *start_offset,
+							   int	            *end_offset);
 ATK_AVAILABLE_IN_2_10
-gchar*        atk_text_get_string_at_offset               (AtkText            *text,
-                                                           gint               offset,
+char*        atk_text_get_string_at_offset               (AtkText            *text,
+                                                           int               offset,
                                                            AtkTextGranularity granularity,
-                                                           gint               *start_offset,
-                                                           gint               *end_offset);
+                                                           int               *start_offset,
+                                                           int               *end_offset);
 ATK_AVAILABLE_IN_ALL
-gint          atk_text_get_caret_offset                   (AtkText          *text);
+int          atk_text_get_caret_offset                   (AtkText          *text);
 ATK_AVAILABLE_IN_ALL
 void          atk_text_get_character_extents              (AtkText          *text,
-                                                           gint             offset,
-                                                           gint             *x,
-                                                           gint             *y,
-                                                           gint             *width,
-                                                           gint             *height,
+                                                           int             offset,
+                                                           int             *x,
+                                                           int             *y,
+                                                           int             *width,
+                                                           int             *height,
                                                            AtkCoordType	    coords);
 ATK_AVAILABLE_IN_ALL
 AtkAttributeSet* atk_text_get_run_attributes              (AtkText	    *text,
-						           gint	  	    offset,
-						           gint             *start_offset,
-						           gint	 	    *end_offset);
+						           int	  	    offset,
+						           int             *start_offset,
+						           int	 	    *end_offset);
 ATK_AVAILABLE_IN_ALL
 AtkAttributeSet* atk_text_get_default_attributes          (AtkText	    *text);
 ATK_AVAILABLE_IN_ALL
-gint          atk_text_get_character_count                (AtkText          *text);
+int          atk_text_get_character_count                (AtkText          *text);
 ATK_AVAILABLE_IN_ALL
-gint          atk_text_get_offset_at_point                (AtkText          *text,
-                                                           gint             x,
-                                                           gint             y,
+int          atk_text_get_offset_at_point                (AtkText          *text,
+                                                           int             x,
+                                                           int             y,
                                                            AtkCoordType	    coords);
 ATK_AVAILABLE_IN_ALL
-gint          atk_text_get_n_selections			  (AtkText          *text);
+int          atk_text_get_n_selections			  (AtkText          *text);
 ATK_AVAILABLE_IN_ALL
-gchar*        atk_text_get_selection			  (AtkText          *text,
-							   gint		    selection_num,
-							   gint             *start_offset,
-							   gint             *end_offset);
+char*        atk_text_get_selection			  (AtkText          *text,
+							   int		    selection_num,
+							   int             *start_offset,
+							   int             *end_offset);
 ATK_AVAILABLE_IN_ALL
 gboolean      atk_text_add_selection                      (AtkText          *text,
-							   gint             start_offset,
-							   gint             end_offset);
+							   int             start_offset,
+							   int             end_offset);
 ATK_AVAILABLE_IN_ALL
 gboolean      atk_text_remove_selection                   (AtkText          *text,
-							   gint		    selection_num);
+							   int		    selection_num);
 ATK_AVAILABLE_IN_ALL
 gboolean      atk_text_set_selection                      (AtkText          *text,
-							   gint		    selection_num,
-							   gint             start_offset,
-							   gint             end_offset);
+							   int		    selection_num,
+							   int             start_offset,
+							   int             end_offset);
 ATK_AVAILABLE_IN_ALL
 gboolean      atk_text_set_caret_offset                   (AtkText          *text,
-                                                           gint             offset);
+                                                           int             offset);
 ATK_AVAILABLE_IN_ALL
 void          atk_text_get_range_extents                  (AtkText          *text,
 
-                                                           gint             start_offset,
-                                                           gint             end_offset,
+                                                           int             start_offset,
+                                                           int             end_offset,
                                                            AtkCoordType     coord_type,
                                                            AtkTextRectangle *rect);
 ATK_AVAILABLE_IN_ALL
@@ -308,26 +308,26 @@ void          atk_text_free_ranges                        (AtkTextRange     **ra
 ATK_AVAILABLE_IN_ALL
 void 	      atk_attribute_set_free                      (AtkAttributeSet  *attrib_set);
 ATK_AVAILABLE_IN_ALL
-const gchar*  atk_text_attribute_get_name                 (AtkTextAttribute attr);
+const char*  atk_text_attribute_get_name                 (AtkTextAttribute attr);
 ATK_AVAILABLE_IN_ALL
-AtkTextAttribute       atk_text_attribute_for_name        (const gchar      *name);
+AtkTextAttribute       atk_text_attribute_for_name        (const char      *name);
 ATK_AVAILABLE_IN_ALL
-const gchar*  atk_text_attribute_get_value                (AtkTextAttribute attr,
-                                                           gint             index_);
+const char*  atk_text_attribute_get_value                (AtkTextAttribute attr,
+                                                           int             index_);
 
 ATK_AVAILABLE_IN_ALL
 gboolean      atk_text_scroll_substring_to                (AtkText          *text,
-                                                           gint             start_offset,
-                                                           gint             end_offset,
+                                                           int             start_offset,
+                                                           int             end_offset,
                                                            AtkScrollType    type);
 
 ATK_AVAILABLE_IN_ALL
 gboolean      atk_text_scroll_substring_to_point          (AtkText          *text,
-                                                           gint             start_offset,
-                                                           gint             end_offset,
+                                                           int             start_offset,
+                                                           int             end_offset,
                                                            AtkCoordType     coords,
-                                                           gint             x,
-                                                           gint             y);
+                                                           int             x,
+                                                           int             y);
 
 G_END_DECLS
 

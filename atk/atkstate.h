@@ -62,12 +62,12 @@ typedef enum
 typedef guint64      AtkState;
 
 ATK_AVAILABLE_IN_ALL
-AtkStateType atk_state_type_register            (const gchar *name);
+AtkStateType atk_state_type_register            (const char *name);
 
 ATK_AVAILABLE_IN_ALL
-const gchar*          atk_state_type_get_name   (AtkStateType type);
+const char*          atk_state_type_get_name   (AtkStateType type);
 ATK_AVAILABLE_IN_ALL
-AtkStateType          atk_state_type_for_name   (const gchar  *name);
+AtkStateType          atk_state_type_for_name   (const char  *name);
 
 G_END_DECLS
 

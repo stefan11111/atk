@@ -26,28 +26,28 @@ struct _AtkHypertextIface
   long unsigned int* parent;
 
   AtkHyperlink*(* get_link)                 (AtkHypertext       *hypertext,
-                                             gint               link_index);
-  gint         (* get_n_links)              (AtkHypertext       *hypertext);
-  gint         (* get_link_index)           (AtkHypertext       *hypertext,
-                                             gint               char_index);
+                                             int               link_index);
+  int         (* get_n_links)              (AtkHypertext       *hypertext);
+  int         (* get_link_index)           (AtkHypertext       *hypertext,
+                                             int               char_index);
 
   /*
    * signal handlers
    */
   void         (* link_selected)            (AtkHypertext       *hypertext,
-                                             gint               link_index);
+                                             int               link_index);
 };
 ATK_AVAILABLE_IN_ALL
 long unsigned int atk_hypertext_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
 AtkHyperlink* atk_hypertext_get_link       (AtkHypertext *hypertext,
-                                            gint          link_index);
+                                            int          link_index);
 ATK_AVAILABLE_IN_ALL
-gint          atk_hypertext_get_n_links    (AtkHypertext *hypertext);
+int          atk_hypertext_get_n_links    (AtkHypertext *hypertext);
 ATK_AVAILABLE_IN_ALL
-gint          atk_hypertext_get_link_index (AtkHypertext *hypertext,
-                                            gint          char_index);
+int          atk_hypertext_get_link_index (AtkHypertext *hypertext,
+                                            int          char_index);
 
 G_END_DECLS
 

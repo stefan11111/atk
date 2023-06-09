@@ -25,40 +25,40 @@ struct _AtkImageIface
 {
   long unsigned int* parent;
   void          	( *get_image_position)    (AtkImage		 *image,
-                                                   gint                  *x,
-				                   gint	                 *y,
+                                                   int                  *x,
+				                   int	                 *y,
     			                           AtkCoordType	         coord_type);
-  const gchar*          ( *get_image_description) (AtkImage              *image);
+  const char*          ( *get_image_description) (AtkImage              *image);
   void                  ( *get_image_size)        (AtkImage              *image,
-                                                   gint                  *width,
-                                                   gint                  *height);
+                                                   int                  *width,
+                                                   int                  *height);
   gboolean              ( *set_image_description) (AtkImage              *image,
-                                                   const gchar           *description);
-  const gchar*          ( *get_image_locale)      (AtkImage              *image);
+                                                   const char           *description);
+  const char*          ( *get_image_locale)      (AtkImage              *image);
 };
 
 ATK_AVAILABLE_IN_ALL
 long unsigned int  atk_image_get_type             (void);
 
 ATK_AVAILABLE_IN_ALL
-const gchar* atk_image_get_image_description (AtkImage   *image);
+const char* atk_image_get_image_description (AtkImage   *image);
 
 ATK_AVAILABLE_IN_ALL
 void     atk_image_get_image_size        (AtkImage           *image,
-                                          gint               *width,
-                                          gint               *height);
+                                          int               *width,
+                                          int               *height);
 
 ATK_AVAILABLE_IN_ALL
 gboolean atk_image_set_image_description (AtkImage           *image,
-                                          const gchar       *description);
+                                          const char       *description);
 ATK_AVAILABLE_IN_ALL
 void     atk_image_get_image_position    (AtkImage	     *image,
-                                          gint               *x,
-					  gint	             *y,
+                                          int               *x,
+					  int	             *y,
     					  AtkCoordType	     coord_type);
 
 ATK_AVAILABLE_IN_ALL
-const gchar* atk_image_get_image_locale (AtkImage   *image);
+const char* atk_image_get_image_locale (AtkImage   *image);
 
 G_END_DECLS
 

@@ -18,26 +18,26 @@ atk_relation_get_type (void)
 }
 
 AtkRelationType
-atk_relation_type_register (const gchar *name)
+atk_relation_type_register (const char *name)
 {
     return 0;
 }
 
-const gchar*
+const char*
 atk_relation_type_get_name (AtkRelationType type)
 {
     return 0;
 }
 
 AtkRelationType
-atk_relation_type_for_name (const gchar *name)
+atk_relation_type_for_name (const char *name)
 {
     return 0;
 }
 
 AtkRelation*
 atk_relation_new (AtkObject       **targets,
-                  gint            n_targets,
+                  int            n_targets,
                   AtkRelationType relationship)
 {
     return 0;

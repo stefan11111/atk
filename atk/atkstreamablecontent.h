@@ -27,7 +27,7 @@ struct _AtkStreamableContentIface
   /*
    * Get the number of mime types supported by this object
    */
-  gint                      (* get_n_mime_types)  (AtkStreamableContent     *streamable);
+  int                      (* get_n_mime_types)  (AtkStreamableContent     *streamable);
   /*
    * Gets the specified mime type supported by this object.
    * The mime types are 0-based so the first mime type is 
@@ -39,8 +39,8 @@ struct _AtkStreamableContentIface
    * and the caller would be responsible for calling g_free() on the
    * returned value.
    */
-  const gchar*              (* get_mime_type)     (AtkStreamableContent     *streamable,
-                                                   gint                     i);
+  const char*              (* get_mime_type)     (AtkStreamableContent     *streamable,
+                                                   int                     i);
   /*
    * One possible implementation for this method is that it constructs the
    * content appropriate for the mime type and then creates a temporary
@@ -48,7 +48,7 @@ struct _AtkStreamableContentIface
    * g_io_channel_unix_new_fd().
    */
   GIOChannel*               (* get_stream)        (AtkStreamableContent     *streamable,
-                                                   const gchar              *mime_type);
+                                                   const char              *mime_type);
 
 /*
  * Returns a string representing a URI in IETF standard format
@@ -61,8 +61,8 @@ struct _AtkStreamableContentIface
  * constructed.  Note that it is possible for get_uri to return NULL but for
  * get_stream to work nonetheless, since not all GIOChannels connect to URIs.
  */
-    const  gchar*           (* get_uri)           (AtkStreamableContent     *streamable,
-                                                   const gchar              *mime_type);
+    const  char*           (* get_uri)           (AtkStreamableContent     *streamable,
+                                                   const char              *mime_type);
 
 
   AtkFunction               pad1;
@@ -73,18 +73,18 @@ ATK_AVAILABLE_IN_ALL
 long unsigned int                  atk_streamable_content_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
-gint                   atk_streamable_content_get_n_mime_types (AtkStreamableContent     *streamable);
+int                   atk_streamable_content_get_n_mime_types (AtkStreamableContent     *streamable);
 
 ATK_AVAILABLE_IN_ALL
-const gchar*           atk_streamable_content_get_mime_type    (AtkStreamableContent     *streamable,
-                                                                gint                     i);
+const char*           atk_streamable_content_get_mime_type    (AtkStreamableContent     *streamable,
+                                                                int                     i);
 ATK_AVAILABLE_IN_ALL
 GIOChannel*             atk_streamable_content_get_stream       (AtkStreamableContent     *streamable,
-                                                                 const gchar              *mime_type);
+                                                                 const char              *mime_type);
 
 ATK_AVAILABLE_IN_ALL
-const gchar*           atk_streamable_content_get_uri          (AtkStreamableContent     *streamable,
-                                                                const gchar              *mime_type);
+const char*           atk_streamable_content_get_uri          (AtkStreamableContent     *streamable,
+                                                                const char              *mime_type);
 
 G_END_DECLS
 

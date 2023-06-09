@@ -435,8 +435,8 @@ typedef GSList AtkAttributeSet;
 typedef struct _AtkAttribute AtkAttribute;
 
 struct _AtkAttribute {
-  gchar* name;
-  gchar* value;
+  char* name;
+  char* value;
 };
 
 #define ATK_TYPE_OBJECT                           (atk_object_get_type ())
@@ -474,7 +474,7 @@ typedef struct _AtkStateSet               AtkStateSet;
  **/
 struct _AtkPropertyValues
 {
-  const gchar  *property_name;
+  const char  *property_name;
   GValue old_value;
   GValue new_value;
 };
@@ -491,7 +491,7 @@ typedef struct _AtkPropertyValues        AtkPropertyValues;
  *
  * Returns: not used
  */
-typedef gboolean (*AtkFunction)          (gpointer user_data);
+typedef gboolean (*AtkFunction)          (void* user_data);
 /*
  * For most properties the old_value field of AtkPropertyValues will
  * not contain a valid value.
@@ -523,8 +523,8 @@ struct _AtkObject
 {
   GObject parent;
 
-  gchar *description;
-  gchar *name;
+  char *description;
+  char *name;
   AtkObject *accessible_parent;
   AtkRole role;
   AtkRelationSet *relation_set;
@@ -553,11 +553,11 @@ struct _AtkObjectClass
   /*
    * Gets the accessible name of the object
    */
-  const gchar*             (* get_name)            (AtkObject                *accessible);
+  const char*             (* get_name)            (AtkObject                *accessible);
   /*
    * Gets the accessible description of the object
    */
-  const gchar*             (* get_description)     (AtkObject                *accessible);
+  const char*             (* get_description)     (AtkObject                *accessible);
   /*
    * Gets the accessible parent of the object
    */
@@ -566,19 +566,19 @@ struct _AtkObjectClass
   /*
    * Gets the number of accessible children of the object
    */
-  gint                    (* get_n_children)       (AtkObject                *accessible);
+  int                    (* get_n_children)       (AtkObject                *accessible);
   /*
    * Returns a reference to the specified accessible child of the object.
    * The accessible children are 0-based so the first accessible child is
    * at index 0, the second at index 1 and so on.
    */
   AtkObject*              (* ref_child)            (AtkObject                *accessible,
-                                                    gint                      i);
+                                                    int                      i);
   /*
    * Gets the 0-based index of this object in its parent; returns -1 if the
    * object does not have an accessible parent.
    */
-  gint                    (* get_index_in_parent) (AtkObject                 *accessible);
+  int                    (* get_index_in_parent) (AtkObject                 *accessible);
   /*
    * Gets the RelationSet associated with the object
    */
@@ -588,7 +588,7 @@ struct _AtkObjectClass
    */
   AtkRole                 (* get_role)            (AtkObject                 *accessible);
   AtkLayer                (* get_layer)           (AtkObject                 *accessible);
-  gint                    (* get_mdi_zorder)      (AtkObject                 *accessible);
+  int                    (* get_mdi_zorder)      (AtkObject                 *accessible);
   /*
    * Gets the state set of the object
    */
@@ -597,12 +597,12 @@ struct _AtkObjectClass
    * Sets the accessible name of the object
    */
   void                    (* set_name)            (AtkObject                 *accessible,
-                                                   const gchar               *name);
+                                                   const char               *name);
   /*
    * Sets the accessible description of the object
    */
   void                    (* set_description)     (AtkObject                 *accessible,
-                                                   const gchar               *description);
+                                                   const char               *description);
   /*
    * Sets the accessible parent of the object
    */
@@ -628,14 +628,14 @@ void                      (* remove_property_change_handler)     (AtkObject
                                                                   guint
                 handler_id);
 void                      (* initialize)                         (AtkObject                     *accessible,
-                                                                  gpointer                      data);
+                                                                  void*                      data);
   /*
    * The signal handler which is executed when there is a change in the
    * children of the object
    */
   void                    (* children_changed)    (AtkObject                  *accessible,
                                                    guint                      change_index,
-                                                   gpointer                   changed_child);
+                                                   void*                   changed_child);
   /*
    * The signal handler which is executed  when there is a focus event
    * for an object.
@@ -653,7 +653,7 @@ void                      (* initialize)                         (AtkObject     
    * signal for an object.
    */
   void                    (* state_change)        (AtkObject                  *accessible,
-                                                   const gchar                *name,
+                                                   const char                *name,
                                                    gboolean                   state_set);
   /*
    * The signal handler which is executed when there is a change in the
@@ -668,7 +668,7 @@ void                      (* initialize)                         (AtkObject     
    * by objects whose state includes ATK_STATE_MANAGES_DESCENDANTS.
    */
   void                    (*active_descendant_changed) (AtkObject                  *accessible,
-                                                        gpointer                   *child);
+                                                        void*                   *child);
 
   /*    	
    * Gets a list of properties applied to this object as a whole, as an #AtkAttributeSet consisting of name-value pairs. 
@@ -676,7 +676,7 @@ void                      (* initialize)                         (AtkObject     
    */
   AtkAttributeSet* 	  (*get_attributes)            (AtkObject                  *accessible);
 
-  const gchar*            (*get_object_locale)         (AtkObject                  *accessible);
+  const char*            (*get_object_locale)         (AtkObject                  *accessible);
 
   AtkFunction             pad1;
 };
@@ -708,18 +708,18 @@ AtkObject*              atk_implementor_ref_accessible            (AtkImplemento
  */
 
 ATK_AVAILABLE_IN_ALL
-const gchar*            atk_object_get_name                       (AtkObject *accessible);
+const char*            atk_object_get_name                       (AtkObject *accessible);
 ATK_AVAILABLE_IN_ALL
-const gchar*            atk_object_get_description                (AtkObject *accessible);
+const char*            atk_object_get_description                (AtkObject *accessible);
 ATK_AVAILABLE_IN_ALL
 AtkObject*              atk_object_get_parent                     (AtkObject *accessible);
 ATK_AVAILABLE_IN_ALL
 AtkObject*              atk_object_peek_parent                    (AtkObject *accessible);
 ATK_AVAILABLE_IN_ALL
-gint                    atk_object_get_n_accessible_children      (AtkObject *accessible);
+int                    atk_object_get_n_accessible_children      (AtkObject *accessible);
 ATK_AVAILABLE_IN_ALL
 AtkObject*              atk_object_ref_accessible_child           (AtkObject *accessible,
-                                                                   gint        i);
+                                                                   int        i);
 ATK_AVAILABLE_IN_ALL
 AtkRelationSet*         atk_object_ref_relation_set               (AtkObject *accessible);
 ATK_AVAILABLE_IN_ALL
@@ -728,20 +728,20 @@ AtkRole                 atk_object_get_role                       (AtkObject *ac
 ATK_DEPRECATED_FOR(atk_component_get_layer)
 AtkLayer                atk_object_get_layer                      (AtkObject *accessible);
 ATK_DEPRECATED_FOR(atk_component_get_mdi_zorder)
-gint                    atk_object_get_mdi_zorder                 (AtkObject *accessible);
+int                    atk_object_get_mdi_zorder                 (AtkObject *accessible);
 
 ATK_AVAILABLE_IN_ALL
 AtkAttributeSet*        atk_object_get_attributes                 (AtkObject *accessible);
 ATK_AVAILABLE_IN_ALL
 AtkStateSet*            atk_object_ref_state_set                  (AtkObject *accessible);
 ATK_AVAILABLE_IN_ALL
-gint                    atk_object_get_index_in_parent            (AtkObject *accessible);
+int                    atk_object_get_index_in_parent            (AtkObject *accessible);
 ATK_AVAILABLE_IN_ALL
 void                    atk_object_set_name                       (AtkObject *accessible,
-                                                                   const gchar *name);
+                                                                   const char *name);
 ATK_AVAILABLE_IN_ALL
 void                    atk_object_set_description                (AtkObject *accessible,
-                                                                   const gchar *description);
+                                                                   const char *description);
 ATK_AVAILABLE_IN_ALL
 void                    atk_object_set_parent                     (AtkObject *accessible,
                                                                    AtkObject *parent);
@@ -763,12 +763,12 @@ void                 atk_object_notify_state_change              (AtkObject     
                                                                   gboolean                       value);
 ATK_AVAILABLE_IN_ALL
 void                 atk_object_initialize                       (AtkObject                     *accessible,
-                                                                  gpointer                      data);
+                                                                  void*                      data);
 
 ATK_AVAILABLE_IN_ALL
-const gchar*          atk_role_get_name      (AtkRole         role);
+const char*          atk_role_get_name      (AtkRole         role);
 ATK_AVAILABLE_IN_ALL
-AtkRole               atk_role_for_name      (const gchar     *name);
+AtkRole               atk_role_for_name      (const char     *name);
 
 
 /* NEW in 1.1: convenience API */
@@ -781,18 +781,18 @@ gboolean              atk_object_remove_relationship           (AtkObject      *
 								AtkRelationType relationship,
 								AtkObject      *target);
 ATK_AVAILABLE_IN_ALL
-const gchar*          atk_role_get_localized_name              (AtkRole     role);
+const char*          atk_role_get_localized_name              (AtkRole     role);
 ATK_DEPRECATED_IN_2_12
-AtkRole               atk_role_register                        (const gchar *name);
+AtkRole               atk_role_register                        (const char *name);
 ATK_AVAILABLE_IN_2_8
-const gchar*          atk_object_get_object_locale             (AtkObject   *accessible);
+const char*          atk_object_get_object_locale             (AtkObject   *accessible);
 
 ATK_AVAILABLE_IN_ALL
-const gchar*          atk_object_get_accessible_id             (AtkObject   *accessible);
+const char*          atk_object_get_accessible_id             (AtkObject   *accessible);
 
 ATK_AVAILABLE_IN_ALL
 void                  atk_object_set_accessible_id             (AtkObject   *accessible,
-                                                                const gchar *name);
+                                                                const char *name);
 
 G_END_DECLS
 

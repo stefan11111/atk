@@ -15,7 +15,7 @@ atk_selection_get_type (void)
 
 gboolean
 atk_selection_add_selection (AtkSelection *obj,
-                             gint         i)
+                             int         i)
 {
     return 0;
 }
@@ -28,12 +28,12 @@ atk_selection_clear_selection (AtkSelection *obj)
 
 AtkObject*
 atk_selection_ref_selection (AtkSelection *obj,
-                             gint         i)
+                             int         i)
 {
     return 0;
 }
 
-gint
+int
 atk_selection_get_selection_count (AtkSelection *obj)
 {
     return 0;
@@ -41,14 +41,14 @@ atk_selection_get_selection_count (AtkSelection *obj)
 
 gboolean
 atk_selection_is_child_selected (AtkSelection *obj,
-                                 gint         i)
+                                 int         i)
 {
     return 0;
 }
 
 gboolean
 atk_selection_remove_selection (AtkSelection *obj,
-                                gint         i)
+                                int         i)
 {
     return 0;
 }

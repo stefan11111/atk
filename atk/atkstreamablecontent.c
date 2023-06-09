@@ -8,29 +8,29 @@ atk_streamable_content_get_type (void)
     return 0;
 }
 
-gint
+int
 atk_streamable_content_get_n_mime_types (AtkStreamableContent *streamable)
 {
     return 0;
 }
 
-const gchar*
+const char*
 atk_streamable_content_get_mime_type (AtkStreamableContent *streamable,
-                                      gint                 i)
+                                      int                 i)
 {
     return 0;
 }
 
 GIOChannel*
 atk_streamable_content_get_stream (AtkStreamableContent *streamable,
-                                   const gchar          *mime_type)
+                                   const char          *mime_type)
 {
     return 0;
 }
 
-const gchar*
+const char*
 atk_streamable_content_get_uri (AtkStreamableContent *streamable,
-				const gchar          *mime_type)
+				const char          *mime_type)
 {
     return 0;
 }

@@ -45,14 +45,14 @@ struct _AtkHyperlinkClass
 {
   GObjectClass parent;
 
-  gchar*           (* get_uri)             (AtkHyperlink     *link_,
-                                            gint             i);
+  char*           (* get_uri)             (AtkHyperlink     *link_,
+                                            int             i);
   AtkObject*       (* get_object)          (AtkHyperlink     *link_,
-                                            gint             i);
-  gint             (* get_end_index)       (AtkHyperlink     *link_);
-  gint             (* get_start_index)     (AtkHyperlink     *link_);
+                                            int             i);
+  int             (* get_end_index)       (AtkHyperlink     *link_);
+  int             (* get_start_index)     (AtkHyperlink     *link_);
   gboolean         (* is_valid)            (AtkHyperlink     *link_);
-  gint	           (* get_n_anchors)	   (AtkHyperlink     *link_);
+  int	           (* get_n_anchors)	   (AtkHyperlink     *link_);
   guint	           (* link_state)	   (AtkHyperlink     *link_);
   gboolean         (* is_selected_link)    (AtkHyperlink     *link_);
 
@@ -65,18 +65,18 @@ ATK_AVAILABLE_IN_ALL
 long unsigned int            atk_hyperlink_get_type             (void);
 
 ATK_AVAILABLE_IN_ALL
-gchar*           atk_hyperlink_get_uri              (AtkHyperlink     *link_,
-                                                     gint             i);
+char*           atk_hyperlink_get_uri              (AtkHyperlink     *link_,
+                                                     int             i);
 
 ATK_AVAILABLE_IN_ALL
 AtkObject*       atk_hyperlink_get_object           (AtkHyperlink     *link_,
-                                                     gint             i);
+                                                     int             i);
 
 ATK_AVAILABLE_IN_ALL
-gint             atk_hyperlink_get_end_index        (AtkHyperlink     *link_);
+int             atk_hyperlink_get_end_index        (AtkHyperlink     *link_);
 
 ATK_AVAILABLE_IN_ALL
-gint             atk_hyperlink_get_start_index      (AtkHyperlink     *link_);
+int             atk_hyperlink_get_start_index      (AtkHyperlink     *link_);
 
 ATK_AVAILABLE_IN_ALL
 gboolean         atk_hyperlink_is_valid             (AtkHyperlink     *link_);
@@ -85,7 +85,7 @@ ATK_AVAILABLE_IN_ALL
 gboolean         atk_hyperlink_is_inline             (AtkHyperlink     *link_);
 
 ATK_AVAILABLE_IN_ALL
-gint		 atk_hyperlink_get_n_anchors        (AtkHyperlink     *link_);
+int		 atk_hyperlink_get_n_anchors        (AtkHyperlink     *link_);
 
 ATK_DEPRECATED
 gboolean         atk_hyperlink_is_selected_link     (AtkHyperlink     *link_);

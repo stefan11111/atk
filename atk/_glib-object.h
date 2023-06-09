@@ -7,7 +7,7 @@
 #endif
 
 #ifndef _
-# define  _(String) ((char *) g_dgettext (GETTEXT_PACKAGE, String))
+# define  _(String) ((char *)(String))
 #endif
 /*
 #ifndef G_ENCODE_VERSION
@@ -27,10 +27,7 @@
 # define G_GNUC_UNUSED
 #endif
 
-typedef char gchar;
-
 typedef unsigned int guint;
-typedef void* gpointer;
 
 typedef struct _GValue                  GValue;
 typedef struct _GClosure                 GClosure;

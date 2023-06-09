@@ -82,7 +82,7 @@ atk_value_set_current_value (AtkValue       *obj,
 void
 atk_value_get_value_and_text (AtkValue *obj,
                               gdouble *value,
-                              gchar  **text)
+                              char  **text)
 {
 }
 
@@ -110,13 +110,13 @@ atk_value_set_value (AtkValue     *obj,
 {
 }
 
-const gchar*
+const char*
 atk_value_type_get_name (AtkValueType value_type)
 {
     return 0;
 }
 
-const gchar*
+const char*
 atk_value_type_get_localized_name (AtkValueType value_type)
 {
     return 0;

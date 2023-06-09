@@ -37,10 +37,10 @@ typedef struct _AtkRectangle       AtkRectangle;
 
 struct _AtkRectangle
 {
-  gint x;
-  gint y;
-  gint width;
-  gint height;
+  int x;
+  int y;
+  int width;
+  int height;
 };
 
 ATK_AVAILABLE_IN_ALL
@@ -58,46 +58,46 @@ struct _AtkComponentIface
                                          AtkFocusHandler        handler);
 
   gboolean       (* contains)           (AtkComponent          *component,
-                                         gint                   x,
-                                         gint                   y,
+                                         int                   x,
+                                         int                   y,
                                          AtkCoordType           coord_type);
 
   AtkObject*    (* ref_accessible_at_point)  (AtkComponent     *component,
-                                         gint                   x,
-                                         gint                   y,
+                                         int                   x,
+                                         int                   y,
                                          AtkCoordType           coord_type);
   void          (* get_extents)         (AtkComponent          *component,
-                                         gint                  *x,
-                                         gint                  *y,
-                                         gint                  *width,
-                                         gint                  *height,
+                                         int                  *x,
+                                         int                  *y,
+                                         int                  *width,
+                                         int                  *height,
                                          AtkCoordType          coord_type);
   void                     (* get_position)     (AtkComponent   *component,
-                                                 gint           *x,
-                                                 gint           *y,
+                                                 int           *x,
+                                                 int           *y,
                                                  AtkCoordType   coord_type);
   void                     (* get_size)                 (AtkComponent   *component,
-                                                         gint           *width,
-                                                         gint           *height);
+                                                         int           *width,
+                                                         int           *height);
   gboolean                 (* grab_focus)               (AtkComponent   *component);
   void                     (* remove_focus_handler)      (AtkComponent  *component,
                                                           guint         handler_id);
   gboolean                 (* set_extents)      (AtkComponent   *component,
-                                                 gint           x,
-                                                 gint           y,
-                                                 gint           width,
-                                                 gint           height,
+                                                 int           x,
+                                                 int           y,
+                                                 int           width,
+                                                 int           height,
                                                  AtkCoordType   coord_type);
   gboolean                 (* set_position)     (AtkComponent   *component,
-                                                 gint           x,
-                                                 gint           y,
+                                                 int           x,
+                                                 int           y,
                                                  AtkCoordType   coord_type);
   gboolean                 (* set_size)         (AtkComponent   *component,
-                                                 gint           width,
-                                                 gint           height);
+                                                 int           width,
+                                                 int           height);
   	
   AtkLayer                 (* get_layer)        (AtkComponent   *component);
-  gint                     (* get_mdi_zorder)   (AtkComponent   *component);
+  int                     (* get_mdi_zorder)   (AtkComponent   *component);
 
 
   void                     (* bounds_changed)   (AtkComponent   *component,
@@ -110,8 +110,8 @@ struct _AtkComponentIface
 
   gboolean                (*scroll_to_point)    (AtkComponent   *component,
                                                  AtkCoordType    coords,
-                                                 gint            x,
-                                                 gint            y);
+                                                 int            x,
+                                                 int            y);
 };
 
 ATK_AVAILABLE_IN_ALL
@@ -123,34 +123,34 @@ guint                atk_component_add_focus_handler      (AtkComponent    *comp
                                                            AtkFocusHandler handler);
 ATK_AVAILABLE_IN_ALL
 gboolean              atk_component_contains               (AtkComponent    *component,
-                                                            gint            x,
-                                                            gint            y,
+                                                            int            x,
+                                                            int            y,
                                                             AtkCoordType    coord_type);
 ATK_AVAILABLE_IN_ALL
 AtkObject*            atk_component_ref_accessible_at_point(AtkComponent    *component,
-                                                            gint            x,
-                                                            gint            y,
+                                                            int            x,
+                                                            int            y,
                                                             AtkCoordType    coord_type);
 ATK_AVAILABLE_IN_ALL
 void                  atk_component_get_extents            (AtkComponent    *component,
-                                                            gint            *x,
-                                                            gint            *y,
-                                                            gint            *width,
-                                                            gint            *height,
+                                                            int            *x,
+                                                            int            *y,
+                                                            int            *width,
+                                                            int            *height,
                                                             AtkCoordType    coord_type);
 ATK_DEPRECATED_IN_2_12_FOR(atk_component_get_extents)
 void                  atk_component_get_position           (AtkComponent    *component,
-                                                            gint            *x,
-                                                            gint            *y,
+                                                            int            *x,
+                                                            int            *y,
                                                             AtkCoordType    coord_type);
 ATK_DEPRECATED_IN_2_12_FOR(atk_component_get_extents)
 void                  atk_component_get_size               (AtkComponent    *component,
-                                                            gint            *width,
-                                                            gint            *height);
+                                                            int            *width,
+                                                            int            *height);
 ATK_AVAILABLE_IN_ALL
 AtkLayer              atk_component_get_layer              (AtkComponent    *component);
 ATK_AVAILABLE_IN_ALL
-gint                  atk_component_get_mdi_zorder         (AtkComponent    *component);
+int                  atk_component_get_mdi_zorder         (AtkComponent    *component);
 ATK_AVAILABLE_IN_ALL
 gboolean              atk_component_grab_focus             (AtkComponent    *component);
 ATK_DEPRECATED_IN_2_10
@@ -158,20 +158,20 @@ void                  atk_component_remove_focus_handler   (AtkComponent    *com
                                                             guint           handler_id);
 ATK_AVAILABLE_IN_ALL
 gboolean              atk_component_set_extents            (AtkComponent    *component,
-                                                            gint            x,
-                                                            gint            y,
-                                                            gint            width,
-                                                            gint            height,
+                                                            int            x,
+                                                            int            y,
+                                                            int            width,
+                                                            int            height,
                                                             AtkCoordType    coord_type);
 ATK_AVAILABLE_IN_ALL
 gboolean              atk_component_set_position           (AtkComponent    *component,
-                                                            gint            x,
-                                                            gint            y,
+                                                            int            x,
+                                                            int            y,
                                                             AtkCoordType    coord_type);
 ATK_AVAILABLE_IN_ALL
 gboolean              atk_component_set_size               (AtkComponent    *component,
-                                                            gint            width,
-                                                            gint            height);
+                                                            int            width,
+                                                            int            height);
 ATK_AVAILABLE_IN_ALL
 gdouble               atk_component_get_alpha              (AtkComponent    *component);
 
@@ -182,8 +182,8 @@ gboolean              atk_component_scroll_to              (AtkComponent    *com
 ATK_AVAILABLE_IN_2_30
 gboolean              atk_component_scroll_to_point        (AtkComponent    *component,
                                                             AtkCoordType    coords,
-                                                            gint            x,
-                                                            gint            y);
+                                                            int            x,
+                                                            int            y);
 
 G_END_DECLS
 

@@ -38,11 +38,11 @@ ATK_AVAILABLE_IN_ALL
 long unsigned int atk_relation_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
-AtkRelationType       atk_relation_type_register      (const gchar     *name);
+AtkRelationType       atk_relation_type_register      (const char     *name);
 ATK_AVAILABLE_IN_ALL
-const gchar*          atk_relation_type_get_name      (AtkRelationType type);
+const char*          atk_relation_type_get_name      (AtkRelationType type);
 ATK_AVAILABLE_IN_ALL
-AtkRelationType       atk_relation_type_for_name      (const gchar     *name);
+AtkRelationType       atk_relation_type_for_name      (const char     *name);
 
 /*
  * Create a new relation for the specified key and the specified list
@@ -50,7 +50,7 @@ AtkRelationType       atk_relation_type_for_name      (const gchar     *name);
  */
 ATK_AVAILABLE_IN_ALL
 AtkRelation*          atk_relation_new                (AtkObject       **targets,
-                                                       gint            n_targets,
+                                                       int            n_targets,
                                                        AtkRelationType relationship);
 /*
  * Returns the type of a relation.

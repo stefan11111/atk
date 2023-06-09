@@ -15,20 +15,20 @@ atk_hypertext_get_type (void)
 
 AtkHyperlink* 
 atk_hypertext_get_link (AtkHypertext  *hypertext,
-                        gint          link_index)
+                        int          link_index)
 {
     return 0;
 }
 
-gint 
+int 
 atk_hypertext_get_n_links (AtkHypertext  *hypertext)
 {
     return 0;
 }
 
-gint 
+int 
 atk_hypertext_get_link_index (AtkHypertext  *hypertext,
-                              gint          char_index)
+                              int          char_index)
 {
     return -1;
 }
