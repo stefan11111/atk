@@ -8,7 +8,7 @@ struct _AtkUtilListenerInfo
 {
   int key;
   unsigned int signal_id;
-  gulong hook_id;
+  unsigned long hook_id;
 };
 
 long unsigned int

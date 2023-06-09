@@ -475,8 +475,8 @@ typedef struct _AtkStateSet               AtkStateSet;
 struct _AtkPropertyValues
 {
   const char  *property_name;
-  GValue old_value;
-  GValue new_value;
+  void* old_value;
+  void* new_value;
 };
 
 typedef struct _AtkPropertyValues        AtkPropertyValues;

@@ -50,31 +50,31 @@ atk_value_get_type (void)
 
 void
 atk_value_get_current_value (AtkValue *obj,
-                             GValue   *value)
+                             void*   *value)
 {
 }
 
 void
 atk_value_get_maximum_value  (AtkValue *obj,
-                              GValue   *value)
+                              void*   *value)
 {
 }
 
 void
 atk_value_get_minimum_value (AtkValue *obj,
-                             GValue   *value)
+                             void*   *value)
 {
 }
 
 void
 atk_value_get_minimum_increment (AtkValue *obj,
-                             GValue   *value)
+                             void*   *value)
 {
 }
 
 gboolean
 atk_value_set_current_value (AtkValue       *obj, 
-                             const GValue   *value)
+                             const void*   *value)
 {
     return 0;
 }

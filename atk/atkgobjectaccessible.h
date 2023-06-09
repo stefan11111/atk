@@ -10,11 +10,11 @@
 G_BEGIN_DECLS
 
 #define ATK_TYPE_GOBJECT_ACCESSIBLE            (atk_gobject_accessible_get_type ())
-#define ATK_GOBJECT_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_GOBJECT_ACCESSIBLE, AtkGObjectAccessible))
-#define ATK_GOBJECT_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), ATK_TYPE_GOBJECT_ACCESSIBLE, AtkGObjectAccessibleClass))
-#define ATK_IS_GOBJECT_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_GOBJECT_ACCESSIBLE))
-#define ATK_IS_GOBJECT_ACCESSIBLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), ATK_TYPE_GOBJECT_ACCESSIBLE))
-#define ATK_GOBJECT_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), ATK_TYPE_GOBJECT_ACCESSIBLE, AtkGObjectAccessibleClass))
+#define ATK_GOBJECT_ACCESSIBLE(obj)            (((obj), ATK_TYPE_GOBJECT_ACCESSIBLE, AtkGObjectAccessible))
+#define ATK_GOBJECT_ACCESSIBLE_CLASS(klass)    (((klass), ATK_TYPE_GOBJECT_ACCESSIBLE, AtkGObjectAccessibleClass))
+#define ATK_IS_GOBJECT_ACCESSIBLE(obj)         (((obj), ATK_TYPE_GOBJECT_ACCESSIBLE))
+#define ATK_IS_GOBJECT_ACCESSIBLE_CLASS(klass) (((klass), ATK_TYPE_GOBJECT_ACCESSIBLE))
+#define ATK_GOBJECT_ACCESSIBLE_GET_CLASS(obj)  (((obj), ATK_TYPE_GOBJECT_ACCESSIBLE, AtkGObjectAccessibleClass))
 
 typedef struct _AtkGObjectAccessible                AtkGObjectAccessible;
 typedef struct _AtkGObjectAccessibleClass           AtkGObjectAccessibleClass;

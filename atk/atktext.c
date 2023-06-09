@@ -27,7 +27,7 @@ atk_text_get_text (AtkText      *text,
     return 0;
 }
 
-gunichar
+unsigned short
 atk_text_get_character_at_offset (AtkText      *text,
                                   int         offset)
 {

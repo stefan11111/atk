@@ -124,7 +124,7 @@ struct _AtkTextIface
                                                    AtkTextBoundary  boundary_type,
 						   int             *start_offset,
 						   int             *end_offset);
-  gunichar       (* get_character_at_offset)      (AtkText          *text,
+  unsigned short       (* get_character_at_offset)      (AtkText          *text,
                                                    int             offset);
   char*         (* get_text_before_offset)       (AtkText          *text,
                                                    int             offset,
@@ -218,7 +218,7 @@ char*        atk_text_get_text                           (AtkText          *text
                                                            int             start_offset,
                                                            int             end_offset);
 ATK_AVAILABLE_IN_ALL
-gunichar      atk_text_get_character_at_offset            (AtkText          *text,
+unsigned short      atk_text_get_character_at_offset            (AtkText          *text,
                                                            int             offset);
 ATK_DEPRECATED_IN_2_10_FOR(atk_text_get_string_at_offset)
 char*        atk_text_get_text_after_offset              (AtkText          *text,
