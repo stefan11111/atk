@@ -5,13 +5,13 @@
 #include "atkobject.h"
 #include "atkstateset.h"
 
-#define ATK_STATE(state_enum)             ((AtkState)((guint64)1 << ((state_enum)%64)))
+#define ATK_STATE(state_enum)             ((unsigned long long)((unsigned long long)1 << ((state_enum)%64)))
 
 struct _AtkRealStateSet
 {
   GObject parent;
 
-  AtkState state;
+  unsigned long long state;
 };
 
 typedef struct _AtkRealStateSet      AtkRealStateSet;
@@ -36,14 +36,14 @@ atk_state_set_is_empty (AtkStateSet   *set)
 
 gboolean
 atk_state_set_add_state (AtkStateSet   *set,
-                         AtkStateType  type)
+                         unsigned long long  type)
 {
     return 0;
 }
 
 void
 atk_state_set_add_states (AtkStateSet   *set,
-                          AtkStateType  *types,
+                          unsigned long long  *types,
                           int          n_types)
 {
 }
@@ -55,14 +55,14 @@ atk_state_set_clear_states (AtkStateSet   *set)
 
 gboolean
 atk_state_set_contains_state (AtkStateSet   *set,
-                              AtkStateType  type)
+                              unsigned long long  type)
 {
     return 0;
 }
 
 gboolean
 atk_state_set_contains_states (AtkStateSet   *set,
-                               AtkStateType  *types,
+                               unsigned long long  *types,
                                int          n_types)
 {
     return 0;
@@ -70,7 +70,7 @@ atk_state_set_contains_states (AtkStateSet   *set,
 
 gboolean
 atk_state_set_remove_state (AtkStateSet  *set,
-                            AtkStateType type)
+                            unsigned long long type)
 {
     return 0;
 }

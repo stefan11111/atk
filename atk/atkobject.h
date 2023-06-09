@@ -499,9 +499,9 @@ typedef gboolean (*AtkFunction)          (void* user_data);
  * Currently, the only property for which old_value is used is
  * accessible-state; for instance if there is a focus state the
  * property change handler will be called for the object which lost the focus
- * with the old_value containing an AtkState value corresponding to focused
+ * with the old_value containing an unsigned long long value corresponding to focused
  * and the property change handler will be called for the object which
- * received the focus with the new_value containing an AtkState value
+ * received the focus with the new_value containing an unsigned long long value
  * corresponding to focused.
  */
 
@@ -616,7 +616,7 @@ struct _AtkObjectClass
   /*
    * Specifies a function to be called when a property changes value
    */
-guint                     (* connect_property_change_handler)    (AtkObject
+unsigned int                     (* connect_property_change_handler)    (AtkObject
                  *accessible,
                                                                   AtkPropertyChangeHandler       *handler);
   /*
@@ -625,7 +625,7 @@ guint                     (* connect_property_change_handler)    (AtkObject
    */
 void                      (* remove_property_change_handler)     (AtkObject
                 *accessible,
-                                                                  guint
+                                                                  unsigned int
                 handler_id);
 void                      (* initialize)                         (AtkObject                     *accessible,
                                                                   void*                      data);
@@ -634,7 +634,7 @@ void                      (* initialize)                         (AtkObject     
    * children of the object
    */
   void                    (* children_changed)    (AtkObject                  *accessible,
-                                                   guint                      change_index,
+                                                   unsigned int                      change_index,
                                                    void*                   changed_child);
   /*
    * The signal handler which is executed  when there is a focus event
@@ -751,15 +751,15 @@ void                    atk_object_set_role                       (AtkObject *ac
 
 
 ATK_DEPRECATED_IN_2_12
-guint                atk_object_connect_property_change_handler  (AtkObject                      *accessible,
+unsigned int                atk_object_connect_property_change_handler  (AtkObject                      *accessible,
                                                                   AtkPropertyChangeHandler       *handler);
 ATK_DEPRECATED_IN_2_12
 void                 atk_object_remove_property_change_handler   (AtkObject                      *accessible,
-                                                                  guint                          handler_id);
+                                                                  unsigned int                          handler_id);
 
 ATK_AVAILABLE_IN_ALL
 void                 atk_object_notify_state_change              (AtkObject                      *accessible,
-                                                                  AtkState                       state,
+                                                                  unsigned long long                       state,
                                                                   gboolean                       value);
 ATK_AVAILABLE_IN_ALL
 void                 atk_object_initialize                       (AtkObject                     *accessible,

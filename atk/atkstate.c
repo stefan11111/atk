@@ -2,21 +2,21 @@
 
 #include "atk.h"
 
-#define NUM_POSSIBLE_STATES               (sizeof(AtkState)*8)
+#define NUM_POSSIBLE_STATES               (sizeof(unsigned long long)*8)
 
-AtkStateType
+unsigned long long
 atk_state_type_register (const char *name)
 {
     return 0;
 }
 
 const char*
-atk_state_type_get_name (AtkStateType type)
+atk_state_type_get_name (unsigned long long type)
 {
     return 0;
 }
 
-AtkStateType
+unsigned long long
 atk_state_type_for_name (const char *name)
 {
 

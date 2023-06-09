@@ -54,11 +54,11 @@ static AtkRelationSet* atk_object_real_ref_relation_set
 static void            atk_object_real_initialize   (AtkObject       *accessible,
                                                      void*        data);
 static void            atk_object_real_set_property (GObject         *object,
-                                                     guint            prop_id,
+                                                     unsigned int            prop_id,
                                                      const GValue    *value,
                                                      GParamSpec      *pspec);
 static void            atk_object_real_get_property (GObject         *object,
-                                                     guint            prop_id,
+                                                     unsigned int            prop_id,
                                                      GValue          *value,
                                                      GParamSpec      *pspec);
 static void            atk_object_finalize          (GObject         *object);
@@ -84,7 +84,7 @@ static void            atk_object_notify           (GObject         *obj,
 static const char*    atk_object_real_get_object_locale
                                                    (AtkObject       *object);
 
-static guint atk_object_signals[LAST_SIGNAL] = { 0, };
+static unsigned int atk_object_signals[LAST_SIGNAL] = { 0, };
 
 static void* parent_class = NULL;
 
@@ -483,7 +483,7 @@ atk_object_set_role (AtkObject *accessible,
 {
 }
 
-guint
+unsigned int
 atk_object_connect_property_change_handler (AtkObject *accessible,
                                             AtkPropertyChangeHandler *handler)
 {
@@ -492,13 +492,13 @@ atk_object_connect_property_change_handler (AtkObject *accessible,
 
 void
 atk_object_remove_property_change_handler  (AtkObject *accessible,
-                                            guint      handler_id)
+                                            unsigned int      handler_id)
 {
 }
 
 void
 atk_object_notify_state_change (AtkObject *accessible,
-                                AtkState  state,
+                                unsigned long long  state,
                                 gboolean  value)
 {
 }
@@ -524,7 +524,7 @@ atk_object_real_ref_relation_set (AtkObject *accessible)
 
 static void
 atk_object_real_set_property (GObject      *object,
-                              guint         prop_id,
+                              unsigned int         prop_id,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
@@ -532,7 +532,7 @@ atk_object_real_set_property (GObject      *object,
 
 static void
 atk_object_real_get_property (GObject      *object,
-                              guint         prop_id,
+                              unsigned int         prop_id,
                               GValue       *value,
                               GParamSpec   *pspec)
 {

@@ -59,15 +59,15 @@ typedef enum
   ATK_STATE_LAST_DEFINED
 } AtkStateType;
 
-typedef guint64      AtkState;
+typedef unsigned long long      AtkState;
 
 ATK_AVAILABLE_IN_ALL
-AtkStateType atk_state_type_register            (const char *name);
+unsigned long long atk_state_type_register            (const char *name);
 
 ATK_AVAILABLE_IN_ALL
-const char*          atk_state_type_get_name   (AtkStateType type);
+const char*          atk_state_type_get_name   (unsigned long long type);
 ATK_AVAILABLE_IN_ALL
-AtkStateType          atk_state_type_for_name   (const char  *name);
+unsigned long long          atk_state_type_for_name   (const char  *name);
 
 G_END_DECLS
 

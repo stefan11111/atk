@@ -27,8 +27,6 @@
 # define G_GNUC_UNUSED
 #endif
 
-typedef unsigned int guint;
-
 typedef struct _GValue                  GValue;
 typedef struct _GClosure                 GClosure;
 

@@ -7,7 +7,7 @@ typedef struct _AtkUtilListenerInfo AtkUtilListenerInfo;
 struct _AtkUtilListenerInfo
 {
   int key;
-  guint signal_id;
+  unsigned int signal_id;
   gulong hook_id;
 };
 
@@ -20,7 +20,7 @@ atk_util_get_type (void)
 typedef struct _FocusTracker FocusTracker;
 
 struct _FocusTracker {
-  guint index;
+  unsigned int index;
 };
 
 void
@@ -28,14 +28,14 @@ atk_focus_tracker_init (AtkEventListenerInit    init)
 {
 }
 
-guint
+unsigned int
 atk_add_focus_tracker (AtkEventListener   focus_tracker)
 {
     return 0;
 }
 
 void
-atk_remove_focus_tracker (guint            tracker_id)
+atk_remove_focus_tracker (unsigned int            tracker_id)
 {
 }
 
@@ -44,7 +44,7 @@ atk_focus_tracker_notify (AtkObject       *object)
 {
 }
 
-guint
+unsigned int
 atk_add_global_event_listener (GSignalEmissionHook listener,
 			       const char        *event_type)
 {
@@ -52,18 +52,18 @@ atk_add_global_event_listener (GSignalEmissionHook listener,
 }
 
 void
-atk_remove_global_event_listener (guint listener_id)
+atk_remove_global_event_listener (unsigned int listener_id)
 {
 }
 
-guint
+unsigned int
 atk_add_key_event_listener (AtkKeySnoopFunc listener, void* data)
 {
     return 0;
 }
 
 void
-atk_remove_key_event_listener (guint listener_id)
+atk_remove_key_event_listener (unsigned int listener_id)
 {
 }
 AtkObject*

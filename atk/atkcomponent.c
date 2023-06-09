@@ -13,7 +13,7 @@ atk_component_get_type (void)
     return 0;
 }
 
-guint
+unsigned int
 atk_component_add_focus_handler (AtkComponent    *component,
                                  AtkFocusHandler handler)
 {
@@ -22,7 +22,7 @@ atk_component_add_focus_handler (AtkComponent    *component,
 
 void
 atk_component_remove_focus_handler (AtkComponent    *component,
-                                    guint           handler_id)
+                                    unsigned int           handler_id)
 {
 }
 

@@ -93,7 +93,7 @@ typedef int  (*AtkKeySnoopFunc)  (AtkKeyEventStruct *event,
  * The meaning of the bits is currently defined to match the bitmask used by GDK in
  * GdkEventType.state, see 
  * http://developer.gnome.org/doc/API/2.0/gdk/gdk-Event-Structures.html#GdkEventKey
- * @keyval: A guint representing a keysym value corresponding to those used by GDK and X11: see
+ * @keyval: A unsigned int representing a keysym value corresponding to those used by GDK and X11: see
  * /usr/X11/include/keysymdef.h.
  * @length: The length of member #string.
  * @string: A string containing one of the following: either a string approximating the text that would 
@@ -109,12 +109,12 @@ typedef int  (*AtkKeySnoopFunc)  (AtkKeyEventStruct *event,
  **/
 struct _AtkKeyEventStruct {
   int type;
-  guint state;
-  guint keyval;
+  unsigned int state;
+  unsigned int keyval;
   int length;
   char *string;
-  guint16 keycode;
-  guint32 timestamp;	
+  unsigned short keycode;
+  unsigned int timestamp;	
 };
 
 /**
@@ -160,12 +160,12 @@ struct _AtkUtil
 struct _AtkUtilClass
 {
    GObjectClass parent;
-   guint        (* add_global_event_listener)    (GSignalEmissionHook listener,
+   unsigned int        (* add_global_event_listener)    (GSignalEmissionHook listener,
 						  const char        *event_type);
-   void         (* remove_global_event_listener) (guint               listener_id);
-   guint	(* add_key_event_listener) 	 (AtkKeySnoopFunc     listener,
+   void         (* remove_global_event_listener) (unsigned int               listener_id);
+   unsigned int	(* add_key_event_listener) 	 (AtkKeySnoopFunc     listener,
 						  void* data);
-   void         (* remove_key_event_listener)    (guint               listener_id);
+   void         (* remove_key_event_listener)    (unsigned int               listener_id);
    AtkObject*   (* get_root)                     (void);
    const char* (* get_toolkit_name)             (void);
    const char* (* get_toolkit_version)          (void);
@@ -191,22 +191,22 @@ typedef enum {
 }AtkCoordType;
 
 ATK_DEPRECATED_IN_2_10
-guint    atk_add_focus_tracker     (AtkEventListener      focus_tracker);
+unsigned int    atk_add_focus_tracker     (AtkEventListener      focus_tracker);
 ATK_DEPRECATED_IN_2_10
-void     atk_remove_focus_tracker  (guint                tracker_id);
+void     atk_remove_focus_tracker  (unsigned int                tracker_id);
 ATK_DEPRECATED_IN_2_10
 void     atk_focus_tracker_init    (AtkEventListenerInit  init);
 ATK_DEPRECATED_IN_2_10
 void     atk_focus_tracker_notify  (AtkObject            *object);
 ATK_AVAILABLE_IN_ALL
-guint	atk_add_global_event_listener (GSignalEmissionHook listener,
+unsigned int	atk_add_global_event_listener (GSignalEmissionHook listener,
 				       const char        *event_type);
 ATK_AVAILABLE_IN_ALL
-void	atk_remove_global_event_listener (guint listener_id);
+void	atk_remove_global_event_listener (unsigned int listener_id);
 ATK_AVAILABLE_IN_ALL
-guint	atk_add_key_event_listener (AtkKeySnoopFunc listener, void* data);
+unsigned int	atk_add_key_event_listener (AtkKeySnoopFunc listener, void* data);
 ATK_AVAILABLE_IN_ALL
-void	atk_remove_key_event_listener (guint listener_id);
+void	atk_remove_key_event_listener (unsigned int listener_id);
 
 ATK_AVAILABLE_IN_ALL
 AtkObject* atk_get_root(void);

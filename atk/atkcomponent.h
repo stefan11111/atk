@@ -54,7 +54,7 @@ struct _AtkComponentIface
   long unsigned int* parent;
 
   /*< public >*/
-  guint          (* add_focus_handler)  (AtkComponent          *component,
+  unsigned int          (* add_focus_handler)  (AtkComponent          *component,
                                          AtkFocusHandler        handler);
 
   gboolean       (* contains)           (AtkComponent          *component,
@@ -81,7 +81,7 @@ struct _AtkComponentIface
                                                          int           *height);
   gboolean                 (* grab_focus)               (AtkComponent   *component);
   void                     (* remove_focus_handler)      (AtkComponent  *component,
-                                                          guint         handler_id);
+                                                          unsigned int         handler_id);
   gboolean                 (* set_extents)      (AtkComponent   *component,
                                                  int           x,
                                                  int           y,
@@ -119,7 +119,7 @@ long unsigned int atk_component_get_type (void);
 
 /* convenience functions */
 ATK_DEPRECATED_IN_2_10
-guint                atk_component_add_focus_handler      (AtkComponent    *component,
+unsigned int                atk_component_add_focus_handler      (AtkComponent    *component,
                                                            AtkFocusHandler handler);
 ATK_AVAILABLE_IN_ALL
 gboolean              atk_component_contains               (AtkComponent    *component,
@@ -155,7 +155,7 @@ ATK_AVAILABLE_IN_ALL
 gboolean              atk_component_grab_focus             (AtkComponent    *component);
 ATK_DEPRECATED_IN_2_10
 void                  atk_component_remove_focus_handler   (AtkComponent    *component,
-                                                            guint           handler_id);
+                                                            unsigned int           handler_id);
 ATK_AVAILABLE_IN_ALL
 gboolean              atk_component_set_extents            (AtkComponent    *component,
                                                             int            x,

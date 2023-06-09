@@ -53,7 +53,7 @@ struct _AtkHyperlinkClass
   int             (* get_start_index)     (AtkHyperlink     *link_);
   gboolean         (* is_valid)            (AtkHyperlink     *link_);
   int	           (* get_n_anchors)	   (AtkHyperlink     *link_);
-  guint	           (* link_state)	   (AtkHyperlink     *link_);
+  unsigned int	           (* link_state)	   (AtkHyperlink     *link_);
   gboolean         (* is_selected_link)    (AtkHyperlink     *link_);
 
   /* Signals */
