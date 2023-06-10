@@ -24,17 +24,17 @@ struct _AtkSelectionIface
 {
   long unsigned int* parent;
 
-  gboolean     (* add_selection)        (AtkSelection   *selection,
+  unsigned char     (* add_selection)        (AtkSelection   *selection,
                                          int           i);
-  gboolean     (* clear_selection)      (AtkSelection   *selection);
+  unsigned char     (* clear_selection)      (AtkSelection   *selection);
   AtkObject*   (* ref_selection)        (AtkSelection   *selection,
                                          int           i);
   int         (* get_selection_count)  (AtkSelection   *selection);
-  gboolean     (* is_child_selected)    (AtkSelection   *selection,
+  unsigned char     (* is_child_selected)    (AtkSelection   *selection,
                                          int           i);
-  gboolean     (* remove_selection)     (AtkSelection   *selection,
+  unsigned char     (* remove_selection)     (AtkSelection   *selection,
                                          int           i);
-  gboolean     (* select_all_selection) (AtkSelection   *selection);
+  unsigned char     (* select_all_selection) (AtkSelection   *selection);
 
   /* signal handlers */
   
@@ -45,11 +45,11 @@ ATK_AVAILABLE_IN_ALL
 long unsigned int atk_selection_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
-gboolean     atk_selection_add_selection        (AtkSelection   *selection,
+unsigned char     atk_selection_add_selection        (AtkSelection   *selection,
                                                  int           i);
 
 ATK_AVAILABLE_IN_ALL
-gboolean     atk_selection_clear_selection      (AtkSelection   *selection);
+unsigned char     atk_selection_clear_selection      (AtkSelection   *selection);
 
 ATK_AVAILABLE_IN_ALL
 AtkObject*   atk_selection_ref_selection        (AtkSelection   *selection,
@@ -59,15 +59,15 @@ ATK_AVAILABLE_IN_ALL
 int         atk_selection_get_selection_count  (AtkSelection   *selection);
 
 ATK_AVAILABLE_IN_ALL
-gboolean     atk_selection_is_child_selected    (AtkSelection   *selection,
+unsigned char     atk_selection_is_child_selected    (AtkSelection   *selection,
                                                  int           i);
 
 ATK_AVAILABLE_IN_ALL
-gboolean     atk_selection_remove_selection     (AtkSelection   *selection,
+unsigned char     atk_selection_remove_selection     (AtkSelection   *selection,
                                                  int           i);
 
 ATK_AVAILABLE_IN_ALL
-gboolean     atk_selection_select_all_selection (AtkSelection   *selection);
+unsigned char     atk_selection_select_all_selection (AtkSelection   *selection);
 
 G_END_DECLS
 

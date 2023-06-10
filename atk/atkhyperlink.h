@@ -51,10 +51,10 @@ struct _AtkHyperlinkClass
                                             int             i);
   int             (* get_end_index)       (AtkHyperlink     *link_);
   int             (* get_start_index)     (AtkHyperlink     *link_);
-  gboolean         (* is_valid)            (AtkHyperlink     *link_);
+  unsigned char         (* is_valid)            (AtkHyperlink     *link_);
   int	           (* get_n_anchors)	   (AtkHyperlink     *link_);
   unsigned int	           (* link_state)	   (AtkHyperlink     *link_);
-  gboolean         (* is_selected_link)    (AtkHyperlink     *link_);
+  unsigned char         (* is_selected_link)    (AtkHyperlink     *link_);
 
   /* Signals */
   void             ( *link_activated)      (AtkHyperlink     *link_);
@@ -79,16 +79,16 @@ ATK_AVAILABLE_IN_ALL
 int             atk_hyperlink_get_start_index      (AtkHyperlink     *link_);
 
 ATK_AVAILABLE_IN_ALL
-gboolean         atk_hyperlink_is_valid             (AtkHyperlink     *link_);
+unsigned char         atk_hyperlink_is_valid             (AtkHyperlink     *link_);
 
 ATK_AVAILABLE_IN_ALL
-gboolean         atk_hyperlink_is_inline             (AtkHyperlink     *link_);
+unsigned char         atk_hyperlink_is_inline             (AtkHyperlink     *link_);
 
 ATK_AVAILABLE_IN_ALL
 int		 atk_hyperlink_get_n_anchors        (AtkHyperlink     *link_);
 
 ATK_DEPRECATED
-gboolean         atk_hyperlink_is_selected_link     (AtkHyperlink     *link_);
+unsigned char         atk_hyperlink_is_selected_link     (AtkHyperlink     *link_);
 
 G_END_DECLS
 

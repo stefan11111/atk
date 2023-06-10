@@ -46,7 +46,7 @@ atk_document_get_attribute_value (AtkDocument *document,
     return 0;
 }
 
-gboolean
+unsigned char
 atk_document_set_attribute_value (AtkDocument *document, 
 				  const char *attribute_name,
 				  const char *attribute_value)

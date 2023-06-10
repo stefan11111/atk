@@ -14,7 +14,7 @@ atk_socket_embed (AtkSocket* obj, const char* plug_id)
 {
 }
 
-gboolean
+unsigned char
 atk_socket_is_occupied (AtkSocket* obj)
 {
     return 0;

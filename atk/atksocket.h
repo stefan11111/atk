@@ -45,7 +45,7 @@ AtkObject*    atk_socket_new           (void);
 ATK_AVAILABLE_IN_ALL
 void          atk_socket_embed         (AtkSocket* obj, const char* plug_id);
 ATK_AVAILABLE_IN_ALL
-gboolean      atk_socket_is_occupied   (AtkSocket* obj);
+unsigned char      atk_socket_is_occupied   (AtkSocket* obj);
 
 G_END_DECLS
 

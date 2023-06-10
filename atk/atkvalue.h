@@ -52,7 +52,7 @@ struct _AtkValueIface
                                   GValue       *value);
   void     (* get_minimum_value) (AtkValue     *obj,
                                   GValue       *value);
-  gboolean (* set_current_value) (AtkValue     *obj,
+  unsigned char (* set_current_value) (AtkValue     *obj,
                                   const GValue *value);
   void     (* get_minimum_increment) (AtkValue   *obj,
 				      GValue     *value);
@@ -82,7 +82,7 @@ ATK_DEPRECATED_IN_2_12_FOR(atk_value_get_range)
 void     atk_value_get_minimum_value  (AtkValue     *obj,
                                        GValue       *value);
 ATK_DEPRECATED_IN_2_12_FOR(atk_value_set_value)
-gboolean atk_value_set_current_value  (AtkValue     *obj,
+unsigned char atk_value_set_current_value  (AtkValue     *obj,
                                        const GValue *value);
 ATK_DEPRECATED_IN_2_12_FOR(atk_value_get_increment)
 void     atk_value_get_minimum_increment  (AtkValue     *obj,

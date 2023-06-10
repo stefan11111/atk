@@ -73,20 +73,20 @@ struct _AtkTableIface
                                                   int          **selected);
   int              (* get_selected_rows)        (AtkTable      *table,
                                                   int          **selected);
-  gboolean          (* is_column_selected)       (AtkTable      *table,
+  unsigned char          (* is_column_selected)       (AtkTable      *table,
                                                   int          column);
-  gboolean          (* is_row_selected)          (AtkTable      *table,
+  unsigned char          (* is_row_selected)          (AtkTable      *table,
                                                   int          row);
-  gboolean          (* is_selected)              (AtkTable      *table,
+  unsigned char          (* is_selected)              (AtkTable      *table,
                                                   int          row,
                                                   int          column);
-  gboolean          (* add_row_selection)        (AtkTable      *table,
+  unsigned char          (* add_row_selection)        (AtkTable      *table,
                                                   int          row);
-  gboolean          (* remove_row_selection)     (AtkTable      *table,
+  unsigned char          (* remove_row_selection)     (AtkTable      *table,
                                                   int          row);
-  gboolean          (* add_column_selection)     (AtkTable      *table,
+  unsigned char          (* add_column_selection)     (AtkTable      *table,
                                                   int          column);
-  gboolean          (* remove_column_selection)  (AtkTable      *table,
+  unsigned char          (* remove_column_selection)  (AtkTable      *table,
                                                   int          column);
 
   /*
@@ -186,26 +186,26 @@ ATK_AVAILABLE_IN_ALL
 int              atk_table_get_selected_rows    (AtkTable         *table,
                                                   int             **selected);
 ATK_AVAILABLE_IN_ALL
-gboolean          atk_table_is_column_selected   (AtkTable         *table,
+unsigned char          atk_table_is_column_selected   (AtkTable         *table,
                                                   int             column);
 ATK_AVAILABLE_IN_ALL
-gboolean          atk_table_is_row_selected      (AtkTable         *table,
+unsigned char          atk_table_is_row_selected      (AtkTable         *table,
                                                   int             row);
 ATK_AVAILABLE_IN_ALL
-gboolean          atk_table_is_selected          (AtkTable         *table,
+unsigned char          atk_table_is_selected          (AtkTable         *table,
                                                   int             row,
                                                   int             column);
 ATK_AVAILABLE_IN_ALL
-gboolean          atk_table_add_row_selection    (AtkTable         *table,
+unsigned char          atk_table_add_row_selection    (AtkTable         *table,
                                                   int             row);
 ATK_AVAILABLE_IN_ALL
-gboolean          atk_table_remove_row_selection (AtkTable         *table,
+unsigned char          atk_table_remove_row_selection (AtkTable         *table,
                                                   int             row);
 ATK_AVAILABLE_IN_ALL
-gboolean          atk_table_add_column_selection (AtkTable         *table,
+unsigned char          atk_table_add_column_selection (AtkTable         *table,
                                                   int             column);
 ATK_AVAILABLE_IN_ALL
-gboolean          atk_table_remove_column_selection  
+unsigned char          atk_table_remove_column_selection  
                                                  (AtkTable         *table,
                                                   int             column);
 

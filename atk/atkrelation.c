@@ -61,7 +61,7 @@ atk_relation_add_target (AtkRelation *relation,
 {
 }
 
-gboolean
+unsigned char
 atk_relation_remove_target (AtkRelation *relation,
                             AtkObject *target)
 {

@@ -31,7 +31,7 @@ struct _AtkDocumentIface
   AtkAttributeSet *     ( *get_document_attributes) (AtkDocument        *document);
   const char*          ( *get_document_attribute_value) (AtkDocument   *document,
                                                           const char   *attribute_name);
-  gboolean              ( *set_document_attribute) (AtkDocument         *document,
+  unsigned char              ( *set_document_attribute) (AtkDocument         *document,
                                                     const char         *attribute_name,
                                                     const char         *attribute_value);
   int                  ( *get_current_page_number) (AtkDocument *document);
@@ -56,7 +56,7 @@ ATK_AVAILABLE_IN_ALL
 const char*          atk_document_get_attribute_value (AtkDocument *document,
                                                         const char *attribute_name);
 ATK_AVAILABLE_IN_ALL
-gboolean              atk_document_set_attribute_value (AtkDocument *document,
+unsigned char              atk_document_set_attribute_value (AtkDocument *document,
                                                         const char *attribute_name,
                                                         const char *attribute_value);
 ATK_AVAILABLE_IN_2_12

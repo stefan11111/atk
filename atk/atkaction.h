@@ -26,7 +26,7 @@ struct _AtkActionIface
   long unsigned int* parent;
 
   /*< public >*/
-  gboolean                (*do_action)         (AtkAction         *action,
+  unsigned char                (*do_action)         (AtkAction         *action,
                                                 int              i);
   int                    (*get_n_actions)     (AtkAction         *action);
   const char*            (*get_description)   (AtkAction         *action,
@@ -35,7 +35,7 @@ struct _AtkActionIface
                                                 int              i);
   const char*            (*get_keybinding)    (AtkAction         *action,
                                                 int              i);
-  gboolean                (*set_description)   (AtkAction         *action,
+  unsigned char                (*set_description)   (AtkAction         *action,
                                                 int              i,
                                                 const char       *desc);
   const char*            (*get_localized_name)(AtkAction         *action,
@@ -46,7 +46,7 @@ ATK_AVAILABLE_IN_ALL
 long unsigned int atk_action_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
-gboolean   atk_action_do_action                (AtkAction         *action,
+unsigned char   atk_action_do_action                (AtkAction         *action,
                                             int              i);
 ATK_AVAILABLE_IN_ALL
 int   atk_action_get_n_actions            (AtkAction *action);
@@ -60,7 +60,7 @@ ATK_AVAILABLE_IN_ALL
 const char*          atk_action_get_keybinding   (AtkAction         *action,
                                                    int              i);
 ATK_AVAILABLE_IN_ALL
-gboolean              atk_action_set_description  (AtkAction         *action,
+unsigned char              atk_action_set_description  (AtkAction         *action,
                                                    int              i,
                                                    const char       *desc);
 

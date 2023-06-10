@@ -491,7 +491,7 @@ typedef struct _AtkPropertyValues        AtkPropertyValues;
  *
  * Returns: not used
  */
-typedef gboolean (*AtkFunction)          (void* user_data);
+typedef unsigned char (*AtkFunction)          (void* user_data);
 /*
  * For most properties the old_value field of AtkPropertyValues will
  * not contain a valid value.
@@ -641,7 +641,7 @@ void                      (* initialize)                         (AtkObject     
    * for an object.
    */
   void                    (* focus_event)         (AtkObject                  *accessible,
-                                                   gboolean                   focus_in);
+                                                   unsigned char                   focus_in);
   /*
    * The signal handler which is executed  when there is a property_change 
    * signal for an object.
@@ -654,7 +654,7 @@ void                      (* initialize)                         (AtkObject     
    */
   void                    (* state_change)        (AtkObject                  *accessible,
                                                    const char                *name,
-                                                   gboolean                   state_set);
+                                                   unsigned char                   state_set);
   /*
    * The signal handler which is executed when there is a change in the
    * visible data for an object
@@ -760,7 +760,7 @@ void                 atk_object_remove_property_change_handler   (AtkObject     
 ATK_AVAILABLE_IN_ALL
 void                 atk_object_notify_state_change              (AtkObject                      *accessible,
                                                                   unsigned long long                       state,
-                                                                  gboolean                       value);
+                                                                  unsigned char                       value);
 ATK_AVAILABLE_IN_ALL
 void                 atk_object_initialize                       (AtkObject                     *accessible,
                                                                   void*                      data);
@@ -773,11 +773,11 @@ AtkRole               atk_role_for_name      (const char     *name);
 
 /* NEW in 1.1: convenience API */
 ATK_AVAILABLE_IN_ALL
-gboolean              atk_object_add_relationship              (AtkObject      *object,
+unsigned char              atk_object_add_relationship              (AtkObject      *object,
 								AtkRelationType relationship,
 								AtkObject      *target);
 ATK_AVAILABLE_IN_ALL
-gboolean              atk_object_remove_relationship           (AtkObject      *object,
+unsigned char              atk_object_remove_relationship           (AtkObject      *object,
 								AtkRelationType relationship,
 								AtkObject      *target);
 ATK_AVAILABLE_IN_ALL
