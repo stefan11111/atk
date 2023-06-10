@@ -276,7 +276,7 @@ const char *atk_get_version (void);
  *
  * Since: 1.22
  */
-#define ATK_DEFINE_ABSTRACT_TYPE(TN, t_n, T_P)		       ATK_DEFINE_TYPE_EXTENDED (TN, t_n, T_P, G_TYPE_FLAG_ABSTRACT, {})
+#define ATK_DEFINE_ABSTRACT_TYPE(TN, t_n, T_P)		       ATK_DEFINE_TYPE_EXTENDED (TN, t_n, T_P, 16, {})
 
 /**
  * ATK_DEFINE_ABSTRACT_TYPE_WITH_CODE:
@@ -290,7 +290,7 @@ const char *atk_get_version (void);
  *
  * Since: 1.22
  */
-#define ATK_DEFINE_ABSTRACT_TYPE_WITH_CODE(TN, t_n, T_P, _C_) _ATK_DEFINE_TYPE_EXTENDED_BEGIN (TN, t_n, T_P, G_TYPE_FLAG_ABSTRACT) {_C_;} _ATK_DEFINE_TYPE_EXTENDED_END()
+#define ATK_DEFINE_ABSTRACT_TYPE_WITH_CODE(TN, t_n, T_P, _C_) _ATK_DEFINE_TYPE_EXTENDED_BEGIN (TN, t_n, T_P, 16) {_C_;} _ATK_DEFINE_TYPE_EXTENDED_END()
 
 /**
  * ATK_DEFINE_TYPE_EXTENDED:
