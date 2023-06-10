@@ -11,9 +11,9 @@
 
 
 #define ATK_TYPE_DOCUMENT                   (atk_document_get_type ())
-#define ATK_IS_DOCUMENT(obj)                G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_DOCUMENT)
-#define ATK_DOCUMENT(obj)                   G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_DOCUMENT, AtkDocument)
-#define ATK_DOCUMENT_GET_IFACE(obj)         (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_DOCUMENT, AtkDocumentIface))
+#define ATK_IS_DOCUMENT(obj)                 ((obj), ATK_TYPE_DOCUMENT)
+#define ATK_DOCUMENT(obj)                    ((obj), ATK_TYPE_DOCUMENT, AtkDocument)
+#define ATK_DOCUMENT_GET_IFACE(obj)         ( ((obj), ATK_TYPE_DOCUMENT, AtkDocumentIface))
 
 #ifndef _TYPEDEF_ATK_DOCUMENT_
 #define _TYPEDEF_ATK_DOCUMENT_

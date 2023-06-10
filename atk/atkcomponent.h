@@ -21,9 +21,9 @@ typedef enum {
 } AtkScrollType;
 
 #define ATK_TYPE_COMPONENT                    (atk_component_get_type ())
-#define ATK_IS_COMPONENT(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_COMPONENT)
-#define ATK_COMPONENT(obj)                    G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_COMPONENT, AtkComponent)
-#define ATK_COMPONENT_GET_IFACE(obj)          (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_COMPONENT, AtkComponentIface))
+#define ATK_IS_COMPONENT(obj)                  ((obj), ATK_TYPE_COMPONENT)
+#define ATK_COMPONENT(obj)                     ((obj), ATK_TYPE_COMPONENT, AtkComponent)
+#define ATK_COMPONENT_GET_IFACE(obj)          ( ((obj), ATK_TYPE_COMPONENT, AtkComponentIface))
 
 #ifndef _TYPEDEF_ATK_COMPONENT_
 #define _TYPEDEF_ATK_COMPONENT_
