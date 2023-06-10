@@ -9,44 +9,51 @@ atk_action_get_type (void)
 }
 
 unsigned char
-atk_action_do_action ()
+atk_action_do_action (AtkAction *obj,
+                      int      i)
 {
     return 0;
 }
 
 int
-atk_action_get_n_actions  ()
+atk_action_get_n_actions  (AtkAction *obj)
 {
 
     return 0;
 }
 
 const char*
-atk_action_get_description ()
+atk_action_get_description (AtkAction *obj,
+                            int      i)
 {
     return 0;
 }
 
 const char*
-atk_action_get_name ()
+atk_action_get_name (AtkAction *obj,
+                     int      i)
 {
     return 0;
 }
 
 const char*
-atk_action_get_localized_name ()
+atk_action_get_localized_name (AtkAction *obj,
+                               int      i)
 {
     return 0;
 }
 
 const char*
-atk_action_get_keybinding ()
+atk_action_get_keybinding (AtkAction *obj,
+                           int      i)
 {
     return 0;
 }
 
 unsigned char
-atk_action_set_description ()
+atk_action_set_description (AtkAction   *obj,
+                            int        i,
+                            const char *desc)
 {
     return 0;
 }
