@@ -10,9 +10,9 @@
 
 
 #define ATK_TYPE_WINDOW                    (atk_window_get_type ())
-#define ATK_IS_WINDOW(obj)                  ((obj), ATK_TYPE_WINDOW)
-#define ATK_WINDOW(obj)                     ((obj), ATK_TYPE_WINDOW, AtkWindow)
-#define ATK_WINDOW_GET_IFACE(obj)          ( ((obj), ATK_TYPE_WINDOW, AtkWindowIface))
+#define ATK_IS_WINDOW(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_WINDOW)
+#define ATK_WINDOW(obj)                    G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_WINDOW, AtkWindow)
+#define ATK_WINDOW_GET_IFACE(obj)          (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_WINDOW, AtkWindowIface))
 
 typedef struct _AtkWindow AtkWindow; /* Dummy typedef */
 typedef struct _AtkWindowIface AtkWindowIface;
