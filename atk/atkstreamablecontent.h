@@ -7,7 +7,7 @@
 
 #include <atk/atkobject.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_STREAMABLE_CONTENT           (atk_streamable_content_get_type ())
 #define ATK_IS_STREAMABLE_CONTENT(obj)        G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_STREAMABLE_CONTENT)
@@ -54,11 +54,11 @@ struct _AtkStreamableContentIface
  * Returns a string representing a URI in IETF standard format
  * (see http://www.ietf.org/rfc/rfc2396.txt) from which the object's content
  * may be streamed in the specified mime-type.
- * If mime_type is NULL, the URI for the default (and possibly only) mime-type is
+ * If mime_type is 0, the URI for the default (and possibly only) mime-type is
  * returned.
  *
- * returns NULL if the mime-type is not supported, or if no URI can be 
- * constructed.  Note that it is possible for get_uri to return NULL but for
+ * returns 0 if the mime-type is not supported, or if no URI can be 
+ * constructed.  Note that it is possible for get_uri to return 0 but for
  * get_stream to work nonetheless, since not all GIOChannels connect to URIs.
  */
     const  char*           (* get_uri)           (AtkStreamableContent     *streamable,
@@ -86,6 +86,6 @@ ATK_AVAILABLE_IN_ALL
 const char*           atk_streamable_content_get_uri          (AtkStreamableContent     *streamable,
                                                                 const char              *mime_type);
 
-G_END_DECLS
+
 
 #endif /* __ATK_STREAMABLE_CONTENT_H__ */

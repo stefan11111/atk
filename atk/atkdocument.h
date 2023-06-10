@@ -8,7 +8,7 @@
 #include <atk/atkobject.h>
 #include <atk/atkutil.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_DOCUMENT                   (atk_document_get_type ())
 #define ATK_IS_DOCUMENT(obj)                G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_DOCUMENT)
@@ -64,6 +64,6 @@ int                  atk_document_get_current_page_number (AtkDocument *document
 ATK_AVAILABLE_IN_2_12
 int                  atk_document_get_page_count      (AtkDocument *document);
 
-G_END_DECLS
+
 
 #endif /* __ATK_DOCUMENT_H__ */

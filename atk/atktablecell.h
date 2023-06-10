@@ -7,7 +7,7 @@
 
 #include <atk/atkobject.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_TABLE_CELL                    (atk_table_cell_get_type ())
 #define ATK_IS_TABLE_CELL(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_TABLE_CELL)
@@ -65,6 +65,6 @@ unsigned char    atk_table_cell_get_row_column_span     (AtkTableCell *cell,
 ATK_AVAILABLE_IN_2_12
 AtkObject * atk_table_cell_get_table               (AtkTableCell *cell);
 
-G_END_DECLS
+
 
 #endif /* __ATK_TABLE_CELL_H__ */

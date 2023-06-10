@@ -30,7 +30,7 @@
 #include <atk/atkstate.h>
 #include <atk/atkrelationtype.h>
 
-G_BEGIN_DECLS
+
 
 /**
  *AtkRole:
@@ -464,7 +464,7 @@ typedef struct _AtkStateSet               AtkStateSet;
 /**
  * AtkPropertyValues:
  * @property_name: The name of the ATK property which has changed.
- * @old_value: NULL. This field is not used anymore.
+ * @old_value: 0. This field is not used anymore.
  * @new_value: The new value of the named property.
  *
  * Note: @old_value field of #AtkPropertyValues will not contain a
@@ -794,6 +794,6 @@ ATK_AVAILABLE_IN_ALL
 void                  atk_object_set_accessible_id             (AtkObject   *accessible,
                                                                 const char *name);
 
-G_END_DECLS
+
 
 #endif /* __ATK_OBJECT_H__ */

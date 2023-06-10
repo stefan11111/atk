@@ -7,7 +7,7 @@
 
 #include <atk/atkobject.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_ACTION                    (atk_action_get_type ())
 #define ATK_IS_ACTION(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_ACTION)
@@ -68,6 +68,6 @@ ATK_AVAILABLE_IN_ALL
 const char* atk_action_get_localized_name (AtkAction       *action,
 						     int            i);
 
-G_END_DECLS
+
 
 #endif /* __ATK_ACTION_H__ */

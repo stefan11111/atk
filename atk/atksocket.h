@@ -7,7 +7,7 @@
 
 #include <atk/atkversion.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_SOCKET               (atk_socket_get_type ())
 #define ATK_SOCKET(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_SOCKET, AtkSocket))
@@ -47,6 +47,6 @@ void          atk_socket_embed         (AtkSocket* obj, const char* plug_id);
 ATK_AVAILABLE_IN_ALL
 unsigned char      atk_socket_is_occupied   (AtkSocket* obj);
 
-G_END_DECLS
+
 
 #endif /* __ATK_SOCKET_H__ */

@@ -8,7 +8,7 @@
 #include <atk/_glib-object.h>
 #include "atkobjectfactory.h"
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_REGISTRY                (atk_registry_get_type ())
 #define ATK_REGISTRY(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_REGISTRY, AtkRegistry))
@@ -49,7 +49,7 @@ AtkObjectFactory* atk_registry_get_factory      (AtkRegistry *registry,
 ATK_AVAILABLE_IN_ALL
 AtkRegistry*      atk_get_default_registry      (void);
 
-G_END_DECLS
+
 
 #endif /* __ATK_REGISTRY_H__ */
 

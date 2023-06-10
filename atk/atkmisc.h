@@ -31,7 +31,7 @@
 #  endif /* !G_PLATFORM_WIN32 */
 #endif /* ATK_VAR */
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_MISC                   (atk_misc_get_type ())
 #define ATK_IS_MISC(obj)                G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_MISC)
@@ -72,6 +72,6 @@ void     atk_misc_threads_leave  (AtkMisc *misc);
 ATK_DEPRECATED_IN_2_12
 const AtkMisc *atk_misc_get_instance (void);
 
-G_END_DECLS
+
 
 #endif /* __ATK_MISC_H__ */

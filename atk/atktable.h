@@ -7,7 +7,7 @@
 
 #include <atk/atkobject.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_TABLE                    (atk_table_get_type ())
 #define ATK_IS_TABLE(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_TABLE)
@@ -209,6 +209,6 @@ unsigned char          atk_table_remove_column_selection
                                                  (AtkTable         *table,
                                                   int             column);
 
-G_END_DECLS
+
 
 #endif /* __ATK_TABLE_H__ */

@@ -10,7 +10,7 @@
 #include <atk/atkutil.h>
 #include <atk/atkcomponent.h>
 
-G_BEGIN_DECLS
+
 
 typedef enum
 {
@@ -329,6 +329,6 @@ unsigned char      atk_text_scroll_substring_to_point          (AtkText         
                                                            int             x,
                                                            int             y);
 
-G_END_DECLS
+
 
 #endif /* __ATK_TEXT_H__ */

@@ -5,11 +5,11 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
-G_BEGIN_DECLS
+
 
 void      _gettext_initialization (void);
 void      _compact_name (char *name);
 
-G_END_DECLS
+
 
 #endif /* __ATK_PRIVATE_H__ */

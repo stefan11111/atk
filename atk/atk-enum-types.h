@@ -11,7 +11,7 @@
 #include <atk/atkversion.h>
 #include <atk/_glib-object.h>
 
-G_BEGIN_DECLS
+
 
 /* enumerations from "atkcomponent.h" */
 ATK_AVAILABLE_IN_ALL
@@ -67,7 +67,7 @@ long unsigned int atk_coord_type_get_type (void);
 ATK_AVAILABLE_IN_ALL
 long unsigned int atk_value_type_get_type (void);
 #define ATK_TYPE_VALUE_TYPE (atk_value_type_get_type())
-G_END_DECLS
+
 
 #endif /* __ATK_ENUM_TYPES_H__ */
 

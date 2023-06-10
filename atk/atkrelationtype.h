@@ -5,7 +5,7 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
-G_BEGIN_DECLS
+
 
 typedef enum
 {
@@ -33,6 +33,6 @@ typedef enum
   ATK_RELATION_LAST_DEFINED
 } AtkRelationType;
 
-G_END_DECLS
+
 
 #endif /* __ATK_RELATION_TYPE_H__ */

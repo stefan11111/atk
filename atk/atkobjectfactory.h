@@ -8,7 +8,7 @@
 #include <atk/_glib-object.h>
 #include <atk/atkobject.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_OBJECT_FACTORY                     (atk_object_factory_get_type ())
 #define ATK_OBJECT_FACTORY(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_OBJECT_FACTORY, AtkObjectFactory))
@@ -48,6 +48,6 @@ void       atk_object_factory_invalidate (AtkObjectFactory *factory);
 ATK_AVAILABLE_IN_ALL
 long unsigned int      atk_object_factory_get_accessible_type (AtkObjectFactory *factory);
 
-G_END_DECLS
+
 
 #endif /* __GTK_OBJECT_FACTORY_H__ */

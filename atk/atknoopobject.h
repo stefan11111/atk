@@ -7,7 +7,7 @@
 #ifndef __ATK_NO_OP_OBJECT_H__
 #define __ATK_NO_OP_OBJECT_H__
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_NO_OP_OBJECT                (atk_no_op_object_get_type ())
 #define ATK_NO_OP_OBJECT(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_NO_OP_OBJECT, AtkNoOpObject))
@@ -35,6 +35,6 @@ struct _AtkNoOpObjectClass
 ATK_AVAILABLE_IN_ALL
 AtkObject *atk_no_op_object_new (GObject  *obj);
 
-G_END_DECLS
+
 
 #endif /* __ATK_NO_OP_OBJECT_H__ */

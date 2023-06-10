@@ -8,7 +8,7 @@
 #include <atk/atkobject.h>
 #include <atk/atkhyperlink.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_HYPERTEXT                    (atk_hypertext_get_type ())
 #define ATK_IS_HYPERTEXT(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_HYPERTEXT)
@@ -49,6 +49,6 @@ ATK_AVAILABLE_IN_ALL
 int          atk_hypertext_get_link_index (AtkHypertext *hypertext,
                                             int          char_index);
 
-G_END_DECLS
+
 
 #endif /* __ATK_HYPERTEXT_H__ */

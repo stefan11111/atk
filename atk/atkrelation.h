@@ -5,7 +5,7 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
-G_BEGIN_DECLS
+
 
 #include <atk/_glib-object.h>
 #include <atk/atkrelationtype.h>
@@ -69,6 +69,6 @@ ATK_AVAILABLE_IN_ALL
 unsigned char              atk_relation_remove_target      (AtkRelation     *relation,
                                                        AtkObject       *target);
 
-G_END_DECLS
+
 
 #endif /* __ATK_RELATION_H__ */

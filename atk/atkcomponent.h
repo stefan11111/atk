@@ -8,7 +8,7 @@
 #include "atk/atkobject.h"
 #include <atk/atkutil.h>
 
-G_BEGIN_DECLS
+
 
 typedef enum {
   ATK_SCROLL_TOP_LEFT,
@@ -185,6 +185,6 @@ unsigned char              atk_component_scroll_to_point        (AtkComponent   
                                                             int            x,
                                                             int            y);
 
-G_END_DECLS
+
 
 #endif /* __ATK_COMPONENT_H__ */
