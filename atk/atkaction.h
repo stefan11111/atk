@@ -26,47 +26,33 @@ struct _AtkActionIface
   long unsigned int* parent;
 
   /*< public >*/
-  unsigned char                (*do_action)         (AtkAction         *action,
-                                                int              i);
-  int                    (*get_n_actions)     (AtkAction         *action);
-  const char*            (*get_description)   (AtkAction         *action,
-                                                int              i);
-  const char*            (*get_name)          (AtkAction         *action,
-                                                int              i);
-  const char*            (*get_keybinding)    (AtkAction         *action,
-                                                int              i);
-  unsigned char                (*set_description)   (AtkAction         *action,
-                                                int              i,
-                                                const char       *desc);
-  const char*            (*get_localized_name)(AtkAction         *action,
-						int              i);
+  unsigned char                (*do_action)         ();
+  int                    (*get_n_actions)     ();
+  const char*            (*get_description)   ();
+  const char*            (*get_name)          ();
+  const char*            (*get_keybinding)    ();
+  unsigned char                (*set_description)   ();
+  const char*            (*get_localized_name)();
 };
 
 ATK_AVAILABLE_IN_ALL
 long unsigned int atk_action_get_type (void);
 
 ATK_AVAILABLE_IN_ALL
-unsigned char   atk_action_do_action                (AtkAction         *action,
-                                            int              i);
+unsigned char   atk_action_do_action                ();
 ATK_AVAILABLE_IN_ALL
-int   atk_action_get_n_actions            (AtkAction *action);
+int   atk_action_get_n_actions            ();
 ATK_AVAILABLE_IN_ALL
-const char*          atk_action_get_description  (AtkAction         *action,
-                                                   int              i);
+const char*          atk_action_get_description  ();
 ATK_AVAILABLE_IN_ALL
-const char*          atk_action_get_name         (AtkAction         *action,
-                                                   int              i);
+const char*          atk_action_get_name         ();
 ATK_AVAILABLE_IN_ALL
-const char*          atk_action_get_keybinding   (AtkAction         *action,
-                                                   int              i);
+const char*          atk_action_get_keybinding   ();
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_action_set_description  (AtkAction         *action,
-                                                   int              i,
-                                                   const char       *desc);
+unsigned char              atk_action_set_description  ();
 
 ATK_AVAILABLE_IN_ALL
-const char* atk_action_get_localized_name (AtkAction       *action,
-						     int            i);
+const char* atk_action_get_localized_name ();
 
 
 
