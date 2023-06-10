@@ -31,7 +31,7 @@ typedef struct _AtkComponent AtkComponent;
 #endif
 typedef struct _AtkComponentIface  AtkComponentIface;
 
-typedef void (*AtkFocusHandler) (AtkObject* object, unsigned char focus_in);
+typedef void (*AtkFocusHandler) ();
 
 typedef struct _AtkRectangle       AtkRectangle;
 
@@ -54,64 +54,30 @@ struct _AtkComponentIface
   long unsigned int* parent;
 
   /*< public >*/
-  unsigned int          (* add_focus_handler)  (AtkComponent          *component,
-                                         AtkFocusHandler        handler);
+  unsigned int          (* add_focus_handler)  ();
 
-  unsigned char       (* contains)           (AtkComponent          *component,
-                                         int                   x,
-                                         int                   y,
-                                         AtkCoordType           coord_type);
+  unsigned char       (* contains)           ();
 
-  AtkObject*    (* ref_accessible_at_point)  (AtkComponent     *component,
-                                         int                   x,
-                                         int                   y,
-                                         AtkCoordType           coord_type);
-  void          (* get_extents)         (AtkComponent          *component,
-                                         int                  *x,
-                                         int                  *y,
-                                         int                  *width,
-                                         int                  *height,
-                                         AtkCoordType          coord_type);
-  void                     (* get_position)     (AtkComponent   *component,
-                                                 int           *x,
-                                                 int           *y,
-                                                 AtkCoordType   coord_type);
-  void                     (* get_size)                 (AtkComponent   *component,
-                                                         int           *width,
-                                                         int           *height);
-  unsigned char                 (* grab_focus)               (AtkComponent   *component);
-  void                     (* remove_focus_handler)      (AtkComponent  *component,
-                                                          unsigned int         handler_id);
-  unsigned char                 (* set_extents)      (AtkComponent   *component,
-                                                 int           x,
-                                                 int           y,
-                                                 int           width,
-                                                 int           height,
-                                                 AtkCoordType   coord_type);
-  unsigned char                 (* set_position)     (AtkComponent   *component,
-                                                 int           x,
-                                                 int           y,
-                                                 AtkCoordType   coord_type);
-  unsigned char                 (* set_size)         (AtkComponent   *component,
-                                                 int           width,
-                                                 int           height);
+  AtkObject*    (* ref_accessible_at_point)  ();
+  void          (* get_extents)         ();
+  void                     (* get_position)     ();
+  void                     (* get_size)                 ();
+  unsigned char                 (* grab_focus)               ();
+  unsigned char                 (* set_extents)      ();
+  unsigned char                 (* set_position)     ();
+  unsigned char                 (* set_size)         ();
   	
-  AtkLayer                 (* get_layer)        (AtkComponent   *component);
-  int                     (* get_mdi_zorder)   (AtkComponent   *component);
+  AtkLayer                 (* get_layer)        ();
+  int                     (* get_mdi_zorder)   ();
 
 
-  void                     (* bounds_changed)   (AtkComponent   *component,
-                                                 AtkRectangle   *bounds);
-  gdouble                  (* get_alpha)        (AtkComponent   *component);
+  void                     (* bounds_changed)   ();
+  gdouble                  (* get_alpha)        ();
 
 
-  unsigned char                (*scroll_to)          (AtkComponent   *component,
-                                                 AtkScrollType   type);
+  unsigned char                (*scroll_to)          ();
 
-  unsigned char                (*scroll_to_point)    (AtkComponent   *component,
-                                                 AtkCoordType    coords,
-                                                 int            x,
-                                                 int            y);
+  unsigned char                (*scroll_to_point)    ();
 };
 
 ATK_AVAILABLE_IN_ALL
@@ -119,71 +85,39 @@ long unsigned int atk_component_get_type (void);
 
 /* convenience functions */
 ATK_DEPRECATED_IN_2_10
-unsigned int                atk_component_add_focus_handler      (AtkComponent    *component,
-                                                           AtkFocusHandler handler);
+unsigned int                atk_component_add_focus_handler      ();
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_contains               (AtkComponent    *component,
-                                                            int            x,
-                                                            int            y,
-                                                            AtkCoordType    coord_type);
+unsigned char              atk_component_contains               ();
 ATK_AVAILABLE_IN_ALL
-AtkObject*            atk_component_ref_accessible_at_point(AtkComponent    *component,
-                                                            int            x,
-                                                            int            y,
-                                                            AtkCoordType    coord_type);
+AtkObject*            atk_component_ref_accessible_at_point();
 ATK_AVAILABLE_IN_ALL
-void                  atk_component_get_extents            (AtkComponent    *component,
-                                                            int            *x,
-                                                            int            *y,
-                                                            int            *width,
-                                                            int            *height,
-                                                            AtkCoordType    coord_type);
+void                  atk_component_get_extents            ();
 ATK_DEPRECATED_IN_2_12_FOR(atk_component_get_extents)
-void                  atk_component_get_position           (AtkComponent    *component,
-                                                            int            *x,
-                                                            int            *y,
-                                                            AtkCoordType    coord_type);
+void                  atk_component_get_position           ();
 ATK_DEPRECATED_IN_2_12_FOR(atk_component_get_extents)
-void                  atk_component_get_size               (AtkComponent    *component,
-                                                            int            *width,
-                                                            int            *height);
+void                  atk_component_get_size               ();
 ATK_AVAILABLE_IN_ALL
-AtkLayer              atk_component_get_layer              (AtkComponent    *component);
+AtkLayer              atk_component_get_layer              ();
 ATK_AVAILABLE_IN_ALL
-int                  atk_component_get_mdi_zorder         (AtkComponent    *component);
+int                  atk_component_get_mdi_zorder         ();
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_grab_focus             (AtkComponent    *component);
+unsigned char              atk_component_grab_focus             ();
 ATK_DEPRECATED_IN_2_10
-void                  atk_component_remove_focus_handler   (AtkComponent    *component,
-                                                            unsigned int           handler_id);
+void                  atk_component_remove_focus_handler   ();
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_set_extents            (AtkComponent    *component,
-                                                            int            x,
-                                                            int            y,
-                                                            int            width,
-                                                            int            height,
-                                                            AtkCoordType    coord_type);
+unsigned char              atk_component_set_extents            ();
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_set_position           (AtkComponent    *component,
-                                                            int            x,
-                                                            int            y,
-                                                            AtkCoordType    coord_type);
+unsigned char              atk_component_set_position           ();
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_set_size               (AtkComponent    *component,
-                                                            int            width,
-                                                            int            height);
+unsigned char              atk_component_set_size               ();
 ATK_AVAILABLE_IN_ALL
-gdouble               atk_component_get_alpha              (AtkComponent    *component);
+gdouble               atk_component_get_alpha              ();
 
 ATK_AVAILABLE_IN_2_30
-unsigned char              atk_component_scroll_to              (AtkComponent    *component,
-                                                            AtkScrollType   type);
+unsigned char              atk_component_scroll_to              ();
 
 ATK_AVAILABLE_IN_2_30
-unsigned char              atk_component_scroll_to_point        (AtkComponent    *component,
-                                                            AtkCoordType    coords,
-                                                            int            x,
-                                                            int            y);
+unsigned char              atk_component_scroll_to_point        ();
 
 
 
