@@ -10,9 +10,9 @@
 
 
 #define ATK_TYPE_SELECTION                        (atk_selection_get_type ())
-#define ATK_IS_SELECTION(obj)                     G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_SELECTION)
-#define ATK_SELECTION(obj)                        G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_SELECTION, AtkSelection)
-#define ATK_SELECTION_GET_IFACE(obj)              (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_SELECTION, AtkSelectionIface))
+#define ATK_IS_SELECTION(obj)                      ((obj), ATK_TYPE_SELECTION)
+#define ATK_SELECTION(obj)                         ((obj), ATK_TYPE_SELECTION, AtkSelection)
+#define ATK_SELECTION_GET_IFACE(obj)              ( ((obj), ATK_TYPE_SELECTION, AtkSelectionIface))
 
 #ifndef _TYPEDEF_ATK_SELECTION_
 #define _TYPEDEF_ATK_SELECTION_

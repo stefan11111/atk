@@ -27,11 +27,11 @@ typedef enum
 } AtkHyperlinkStateFlags;
 
 #define ATK_TYPE_HYPERLINK                        (atk_hyperlink_get_type ())
-#define ATK_HYPERLINK(obj)                        (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_HYPERLINK, AtkHyperlink))
-#define ATK_HYPERLINK_CLASS(klass)                (G_TYPE_CHECK_CLASS_CAST ((klass), ATK_TYPE_HYPERLINK, AtkHyperlinkClass))
-#define ATK_IS_HYPERLINK(obj)                     (G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_HYPERLINK))
-#define ATK_IS_HYPERLINK_CLASS(klass)             (G_TYPE_CHECK_CLASS_TYPE ((klass), ATK_TYPE_HYPERLINK))
-#define ATK_HYPERLINK_GET_CLASS(obj)              (G_TYPE_INSTANCE_GET_CLASS ((obj), ATK_TYPE_HYPERLINK, AtkHyperlinkClass))
+#define ATK_HYPERLINK(obj)                        ( ((obj), ATK_TYPE_HYPERLINK, AtkHyperlink))
+#define ATK_HYPERLINK_CLASS(klass)                ( ((klass), ATK_TYPE_HYPERLINK, AtkHyperlinkClass))
+#define ATK_IS_HYPERLINK(obj)                     ( ((obj), ATK_TYPE_HYPERLINK))
+#define ATK_IS_HYPERLINK_CLASS(klass)             ( ((klass), ATK_TYPE_HYPERLINK))
+#define ATK_HYPERLINK_GET_CLASS(obj)              ( ((obj), ATK_TYPE_HYPERLINK, AtkHyperlinkClass))
 
 typedef struct _AtkHyperlink                      AtkHyperlink;
 typedef struct _AtkHyperlinkClass                 AtkHyperlinkClass;

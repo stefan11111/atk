@@ -10,11 +10,11 @@
 
 
 #define ATK_TYPE_PLUG               (atk_plug_get_type ())
-#define ATK_PLUG(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_PLUG, AtkPlug))
-#define ATK_IS_PLUG(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_PLUG))
-#define ATK_PLUG_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), ATK_TYPE_PLUG, AtkPlugClass))
-#define ATK_IS_PLUG_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), ATK_TYPE_PLUG))
-#define ATK_PLUG_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), ATK_TYPE_PLUG, AtkPlugClass))
+#define ATK_PLUG(obj)               ( ((obj), ATK_TYPE_PLUG, AtkPlug))
+#define ATK_IS_PLUG(obj)            ( ((obj), ATK_TYPE_PLUG))
+#define ATK_PLUG_CLASS(klass)       ( ((klass), ATK_TYPE_PLUG, AtkPlugClass))
+#define ATK_IS_PLUG_CLASS(klass)    ( ((klass), ATK_TYPE_PLUG))
+#define ATK_PLUG_GET_CLASS(obj)     ( ((obj), ATK_TYPE_PLUG, AtkPlugClass))
 
 typedef struct _AtkPlug         AtkPlug;
 typedef struct _AtkPlugClass    AtkPlugClass;

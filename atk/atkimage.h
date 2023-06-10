@@ -11,9 +11,9 @@
 
 
 #define ATK_TYPE_IMAGE                   (atk_image_get_type ())
-#define ATK_IS_IMAGE(obj)                G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_IMAGE)
-#define ATK_IMAGE(obj)                   G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_IMAGE, AtkImage)
-#define ATK_IMAGE_GET_IFACE(obj)         (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_IMAGE, AtkImageIface))
+#define ATK_IS_IMAGE(obj)                 ((obj), ATK_TYPE_IMAGE)
+#define ATK_IMAGE(obj)                    ((obj), ATK_TYPE_IMAGE, AtkImage)
+#define ATK_IMAGE_GET_IFACE(obj)         ( ((obj), ATK_TYPE_IMAGE, AtkImageIface))
 
 #ifndef _TYPEDEF_ATK_IMAGE_
 #define _TYPEDEF_ATK_IMAGE_

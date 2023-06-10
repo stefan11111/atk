@@ -10,9 +10,9 @@
 
 
 #define ATK_TYPE_TABLE                    (atk_table_get_type ())
-#define ATK_IS_TABLE(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_TABLE)
-#define ATK_TABLE(obj)                    G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_TABLE, AtkTable)
-#define ATK_TABLE_GET_IFACE(obj)          (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_TABLE, AtkTableIface))
+#define ATK_IS_TABLE(obj)                  ((obj), ATK_TYPE_TABLE)
+#define ATK_TABLE(obj)                     ((obj), ATK_TYPE_TABLE, AtkTable)
+#define ATK_TABLE_GET_IFACE(obj)          ( ((obj), ATK_TYPE_TABLE, AtkTableIface))
 
 #ifndef _TYPEDEF_ATK_TABLE_
 #define _TYPEDEF_ATK_TABLE_
