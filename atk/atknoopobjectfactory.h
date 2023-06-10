@@ -7,7 +7,7 @@
 
 #include <atk/atkobjectfactory.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_NO_OP_OBJECT_FACTORY                (atk_no_op_object_factory_get_type ())
 #define ATK_NO_OP_OBJECT_FACTORY(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_NO_OP_OBJECT_FACTORY, AtkNoOpObjectFactory))
@@ -35,6 +35,6 @@ long unsigned int atk_no_op_object_factory_get_type(void);
 ATK_AVAILABLE_IN_ALL
 AtkObjectFactory *atk_no_op_object_factory_new(void);
 
-G_END_DECLS
+
 
 #endif /* __ATK_NO_OP_OBJECT_FACTORY_H__ */

@@ -9,7 +9,7 @@
 #include <atk/atkobject.h>
 #include <atk/atkstate.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_STATE_SET                        (atk_state_set_get_type ())
 #define ATK_STATE_SET(obj)                        (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_STATE_SET, AtkStateSet))
@@ -68,6 +68,6 @@ ATK_AVAILABLE_IN_ALL
 AtkStateSet*    atk_state_set_xor_sets          (AtkStateSet  *set,
                                                  AtkStateSet  *compare_set);
 
-G_END_DECLS
+
 
 #endif /* __ATK_STATE_SET_H__ */

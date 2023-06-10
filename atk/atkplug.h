@@ -7,7 +7,7 @@
 
 #include <atk/atkversion.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_PLUG               (atk_plug_get_type ())
 #define ATK_PLUG(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_PLUG, AtkPlug))
@@ -44,6 +44,6 @@ void          atk_plug_set_child (AtkPlug *plug, AtkObject *child);
 ATK_AVAILABLE_IN_ALL
 char*        atk_plug_get_id    (AtkPlug* plug);
 
-G_END_DECLS
+
 
 #endif /* __ATK_PLUG_H__ */

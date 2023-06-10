@@ -7,7 +7,7 @@
 
 #include <atk/atkobject.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_SELECTION                        (atk_selection_get_type ())
 #define ATK_IS_SELECTION(obj)                     G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_SELECTION)
@@ -69,6 +69,6 @@ unsigned char     atk_selection_remove_selection     (AtkSelection   *selection,
 ATK_AVAILABLE_IN_ALL
 unsigned char     atk_selection_select_all_selection (AtkSelection   *selection);
 
-G_END_DECLS
+
 
 #endif /* __ATK_SELECTION_H__ */

@@ -30,7 +30,7 @@
 #include <atk/atkstate.h>
 #include <atk/atkrelationtype.h>
 
-G_BEGIN_DECLS
+
 
 /**
  *AtkRole:
@@ -794,6 +794,6 @@ ATK_AVAILABLE_IN_ALL
 void                  atk_object_set_accessible_id             (AtkObject   *accessible,
                                                                 const char *name);
 
-G_END_DECLS
+
 
 #endif /* __ATK_OBJECT_H__ */

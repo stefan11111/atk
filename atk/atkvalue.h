@@ -8,7 +8,7 @@
 #include <atk/atkobject.h>
 #include <atk/atkrange.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_VALUE                    (atk_value_get_type ())
 #define ATK_IS_VALUE(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_VALUE)
@@ -107,6 +107,6 @@ const char* atk_value_type_get_name           (AtkValueType value_type);
 ATK_AVAILABLE_IN_ALL
 const char* atk_value_type_get_localized_name (AtkValueType value_type);
 
-G_END_DECLS
+
 
 #endif /* __ATK_VALUE_H__ */

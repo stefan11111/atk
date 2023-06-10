@@ -86,7 +86,7 @@ static const char*    atk_object_real_get_object_locale
 
 static unsigned int atk_object_signals[LAST_SIGNAL] = { 0, };
 
-static void* parent_class = NULL;
+static void* parent_class = 0;
 
 static const char* const atk_object_name_property_name = "accessible-name";
 static const char* const atk_object_name_property_description = "accessible-description";
@@ -126,11 +126,11 @@ atk_object_get_type (void)
       static const GTypeInfo typeInfo =
       {
         sizeof (AtkObjectClass),
-        NULL,
-        NULL,
+        0,
+        0,
         atk_object_class_init,
-        NULL,
-        NULL,
+        0,
+        0,
         sizeof (AtkObject),
         0,
         atk_object_init,
@@ -167,13 +167,13 @@ atk_object_class_init (AtkObjectClass *klass)
   klass->get_name = atk_object_real_get_name;
   klass->get_description = atk_object_real_get_description;
   klass->get_parent = atk_object_real_get_parent;
-  klass->get_n_children = NULL;
-  klass->ref_child = NULL;
-  klass->get_index_in_parent = NULL;
+  klass->get_n_children = 0;
+  klass->ref_child = 0;
+  klass->get_index_in_parent = 0;
   klass->ref_relation_set = atk_object_real_ref_relation_set;
   klass->get_role = atk_object_real_get_role;
   klass->get_layer = atk_object_real_get_layer;
-  klass->get_mdi_zorder = NULL;
+  klass->get_mdi_zorder = 0;
   klass->initialize = atk_object_real_initialize;
   klass->ref_state_set = atk_object_real_ref_state_set;
   klass->set_name = atk_object_real_set_name;
@@ -185,11 +185,11 @@ atk_object_class_init (AtkObjectClass *klass)
   /*
    * We do not define default signal handlers here
    */
-  klass->children_changed = NULL;
-  klass->focus_event = NULL;
-  klass->property_change = NULL;
-  klass->visible_data_changed = NULL;
-  klass->active_descendant_changed = NULL;
+  klass->children_changed = 0;
+  klass->focus_event = 0;
+  klass->property_change = 0;
+  klass->visible_data_changed = 0;
+  klass->active_descendant_changed = 0;
 
   _gettext_initialization ();
 
@@ -198,14 +198,14 @@ atk_object_class_init (AtkObjectClass *klass)
                                    g_param_spec_string (atk_object_name_property_name,
                                                         _("Accessible Name"),
                                                         _("Object instance’s name formatted for assistive technology access"),
-                                                        NULL,
+                                                        0,
                                                         G_PARAM_READWRITE));
   g_object_class_install_property (gobject_class,
                                    PROP_DESCRIPTION,
                                    g_param_spec_string (atk_object_name_property_description,
                                                         _("Accessible Description"),
                                                         _("Description of an object, formatted for assistive technology access"),
-                                                        NULL,
+                                                        0,
                                                         G_PARAM_READWRITE));
   g_object_class_install_property (gobject_class,
                                    PROP_PARENT,
@@ -272,7 +272,7 @@ atk_object_class_init (AtkObjectClass *klass)
                                    g_param_spec_string (atk_object_name_property_table_caption,
                                                         _("Accessible Table Caption"),
                                                         _("Is used to notify that the table caption has changed; this property should not be used. accessible-table-caption-object should be used instead"),
-                                                        NULL,
+                                                        0,
                                                         G_PARAM_READWRITE));
   /**
    * AtkObject:accessible-table-column-header:
@@ -303,7 +303,7 @@ atk_object_class_init (AtkObjectClass *klass)
                                    g_param_spec_string (atk_object_name_property_table_column_description,
                                                         _("Accessible Table Column Description"),
                                                         _("Is used to notify that the table column description has changed"),
-                                                        NULL,
+                                                        0,
                                                         G_PARAM_READWRITE));
 
   /**
@@ -334,7 +334,7 @@ atk_object_class_init (AtkObjectClass *klass)
                                    g_param_spec_string (atk_object_name_property_table_row_description,
                                                         _("Accessible Table Row Description"),
                                                         _("Is used to notify that the table row description has changed"),
-                                                        NULL,
+                                                        0,
                                                         G_PARAM_READWRITE));
   g_object_class_install_property (gobject_class,
                                    PROP_TABLE_SUMMARY,
@@ -391,13 +391,13 @@ atk_object_get_parent (AtkObject *accessible)
 {
   AtkObjectClass *klass;
 
-  g_return_val_if_fail (ATK_IS_OBJECT (accessible), NULL);
+  g_return_val_if_fail (ATK_IS_OBJECT (accessible), 0);
 
   klass = ATK_OBJECT_GET_CLASS (accessible);
   if (klass->get_parent)
     return (klass->get_parent) (accessible);
   else
-    return NULL;
+    return 0;
 }
 
 AtkObject*

@@ -5,7 +5,7 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
-G_BEGIN_DECLS
+
 
 #include <atk/_glib-object.h>
 #include <atk/atkobject.h>
@@ -67,6 +67,6 @@ void            atk_relation_set_add_relation_by_type (AtkRelationSet  *set,
                                                        AtkRelationType relationship,
                                                        AtkObject       *target);
 
-G_END_DECLS
+
 
 #endif /* __ATK_RELATION_SET_H__ */

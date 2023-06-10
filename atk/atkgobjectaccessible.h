@@ -7,7 +7,7 @@
 
 #include <atk/atkobject.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_GOBJECT_ACCESSIBLE            (atk_gobject_accessible_get_type ())
 #define ATK_GOBJECT_ACCESSIBLE(obj)            (((obj), ATK_TYPE_GOBJECT_ACCESSIBLE, AtkGObjectAccessible))
@@ -40,6 +40,6 @@ AtkObject *atk_gobject_accessible_for_object      (GObject           *obj);
 ATK_AVAILABLE_IN_ALL
 GObject   *atk_gobject_accessible_get_object      (AtkGObjectAccessible *obj);
 
-G_END_DECLS
+
 
 #endif /* __ATK_GOBJECT_ACCESSIBLE_H__ */

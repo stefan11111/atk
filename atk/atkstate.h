@@ -8,7 +8,7 @@
 #include <atk/_glib-object.h>
 #include <atk/atkversion.h>
 
-G_BEGIN_DECLS
+
 
 typedef enum
 {
@@ -69,6 +69,6 @@ const char*          atk_state_type_get_name   (unsigned long long type);
 ATK_AVAILABLE_IN_ALL
 unsigned long long          atk_state_type_for_name   (const char  *name);
 
-G_END_DECLS
+
 
 #endif /* __ATK_STATE_H__ */

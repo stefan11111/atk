@@ -8,7 +8,7 @@
 #include <atk/atkobject.h>
 #include <atk/atkutil.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_IMAGE                   (atk_image_get_type ())
 #define ATK_IS_IMAGE(obj)                G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_IMAGE)
@@ -60,6 +60,6 @@ void     atk_image_get_image_position    (AtkImage	     *image,
 ATK_AVAILABLE_IN_ALL
 const char* atk_image_get_image_locale (AtkImage   *image);
 
-G_END_DECLS
+
 
 #endif /* __ATK_IMAGE_H__ */

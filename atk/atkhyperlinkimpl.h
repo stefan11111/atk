@@ -8,7 +8,7 @@
 #include <atk/atkobject.h>
 #include <atk/atkhyperlink.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_HYPERLINK_IMPL          (atk_hyperlink_impl_get_type ())
 #define ATK_IS_HYPERLINK_IMPL(obj)       G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_HYPERLINK_IMPL)
@@ -35,6 +35,6 @@ long unsigned int            atk_hyperlink_impl_get_type (void);
 ATK_AVAILABLE_IN_ALL
 AtkHyperlink    *atk_hyperlink_impl_get_hyperlink (AtkHyperlinkImpl *impl);
 
-G_END_DECLS
+
 
 #endif /* __ATK_HYPERLINK_IMPL_H__ */

@@ -7,7 +7,7 @@
 
 #include <atk/atkobject.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_WINDOW                    (atk_window_get_type ())
 #define ATK_IS_WINDOW(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_WINDOW)
@@ -24,6 +24,6 @@ struct _AtkWindowIface
 
 ATK_AVAILABLE_IN_2_2
 long unsigned int atk_window_get_type (void);
-G_END_DECLS
+
 
 #endif /* __ATK_WINDOW_H__ */

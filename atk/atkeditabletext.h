@@ -8,7 +8,7 @@
 #include <atk/atkobject.h>
 #include <atk/atktext.h>
 
-G_BEGIN_DECLS
+
 
 #define ATK_TYPE_EDITABLE_TEXT                    (atk_editable_text_get_type ())
 #define ATK_IS_EDITABLE_TEXT(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_EDITABLE_TEXT)
@@ -80,6 +80,6 @@ ATK_AVAILABLE_IN_ALL
 void atk_editable_text_paste_text           (AtkEditableText  *text,
                                              int             position);
 
-G_END_DECLS
+
 
 #endif /* __ATK_EDITABLE_TEXT_H__ */

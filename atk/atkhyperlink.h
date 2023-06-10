@@ -7,7 +7,7 @@
 
 #include <atk/atkaction.h>
 
-G_BEGIN_DECLS
+
 
 /*
  * AtkHyperlink encapsulates a link or set of links in a hypertext document.
@@ -90,6 +90,6 @@ int		 atk_hyperlink_get_n_anchors        (AtkHyperlink     *link_);
 ATK_DEPRECATED
 unsigned char         atk_hyperlink_is_selected_link     (AtkHyperlink     *link_);
 
-G_END_DECLS
+
 
 #endif /* __ATK_HYPERLINK_H__ */
