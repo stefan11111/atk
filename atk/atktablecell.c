@@ -21,7 +21,7 @@ atk_table_cell_get_column_header_cells (AtkTableCell *cell)
     return 0;
 }
 
-unsigned char
+gboolean
 atk_table_cell_get_position (AtkTableCell *cell,
                              int         *row,
                              int         *column)
@@ -41,7 +41,7 @@ atk_table_cell_get_row_header_cells (AtkTableCell *cell)
     return 0;
 }
 
-unsigned char
+gboolean
 atk_table_cell_get_row_column_span (AtkTableCell *cell,
                                     int         *row,
                                     int         *column,

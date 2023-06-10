@@ -3,7 +3,7 @@
 
 #include <atk/_glib-object.h>
 
-
+G_BEGIN_DECLS
 
 /* VOID:INT,INT (../atk/atkmarshal.list:25) */
 extern
@@ -25,4 +25,4 @@ void atk_marshal_VOID__STRING_BOOLEAN ();
 extern
 void atk_marshal_VOID__DOUBLE_STRING ();
 
-
+G_END_DECLS

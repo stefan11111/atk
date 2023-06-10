@@ -218,15 +218,15 @@
 #endif
 
 ATK_AVAILABLE_IN_2_8
-unsigned int atk_get_major_version (void);
+unsigned int atk_get_major_version (void) G_GNUC_CONST;
 ATK_AVAILABLE_IN_2_8
-unsigned int atk_get_minor_version (void);
+unsigned int atk_get_minor_version (void) G_GNUC_CONST;
 ATK_AVAILABLE_IN_2_8
-unsigned int atk_get_micro_version (void);
+unsigned int atk_get_micro_version (void) G_GNUC_CONST;
 ATK_AVAILABLE_IN_2_8
-unsigned int atk_get_binary_age    (void);
+unsigned int atk_get_binary_age    (void) G_GNUC_CONST;
 ATK_AVAILABLE_IN_2_8
-unsigned int atk_get_interface_age (void);
+unsigned int atk_get_interface_age (void) G_GNUC_CONST;
 
 #define atk_major_version atk_get_major_version ()
 #define atk_minor_version atk_get_minor_version ()

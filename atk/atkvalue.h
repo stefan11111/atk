@@ -8,12 +8,12 @@
 #include <atk/atkobject.h>
 #include <atk/atkrange.h>
 
-
+G_BEGIN_DECLS
 
 #define ATK_TYPE_VALUE                    (atk_value_get_type ())
-#define ATK_IS_VALUE(obj)                  ((obj), ATK_TYPE_VALUE)
-#define ATK_VALUE(obj)                     ((obj), ATK_TYPE_VALUE, AtkValue)
-#define ATK_VALUE_GET_IFACE(obj)          ( ((obj), ATK_TYPE_VALUE, AtkValueIface))
+#define ATK_IS_VALUE(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_VALUE)
+#define ATK_VALUE(obj)                    G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_VALUE, AtkValue)
+#define ATK_VALUE_GET_IFACE(obj)          (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_VALUE, AtkValueIface))
 
 #ifndef _TYPEDEF_ATK_VALUE_
 #define _TYPEDEF_ATK_VALUE__
@@ -47,15 +47,15 @@ struct _AtkValueIface
 
   /*<deprecated>*/
   void     (* get_current_value) (AtkValue     *obj,
-                                  void*       *value);
+                                  GValue       *value);
   void     (* get_maximum_value) (AtkValue     *obj,
-                                  void*       *value);
+                                  GValue       *value);
   void     (* get_minimum_value) (AtkValue     *obj,
-                                  void*       *value);
-  unsigned char (* set_current_value) (AtkValue     *obj,
-                                  const void* *value);
+                                  GValue       *value);
+  gboolean (* set_current_value) (AtkValue     *obj,
+                                  const GValue *value);
   void     (* get_minimum_increment) (AtkValue   *obj,
-				      void*     *value);
+				      GValue     *value);
   /*</deprecated>*/
   void     (* get_value_and_text) (AtkValue *obj,
                                    gdouble *value,
@@ -73,20 +73,20 @@ long unsigned int            atk_value_get_type (void);
 
 ATK_DEPRECATED_IN_2_12_FOR(atk_value_get_value_and_text)
 void      atk_value_get_current_value (AtkValue     *obj,
-                                       void*       *value);
+                                       GValue       *value);
 
 ATK_DEPRECATED_IN_2_12_FOR(atk_value_get_range)
 void     atk_value_get_maximum_value  (AtkValue     *obj,
-                                       void*       *value);
+                                       GValue       *value);
 ATK_DEPRECATED_IN_2_12_FOR(atk_value_get_range)
 void     atk_value_get_minimum_value  (AtkValue     *obj,
-                                       void*       *value);
+                                       GValue       *value);
 ATK_DEPRECATED_IN_2_12_FOR(atk_value_set_value)
-unsigned char atk_value_set_current_value  (AtkValue     *obj,
-                                       const void* *value);
+gboolean atk_value_set_current_value  (AtkValue     *obj,
+                                       const GValue *value);
 ATK_DEPRECATED_IN_2_12_FOR(atk_value_get_increment)
 void     atk_value_get_minimum_increment  (AtkValue     *obj,
-					   void*       *value);
+					   GValue       *value);
 
 ATK_AVAILABLE_IN_2_12
 void      atk_value_get_value_and_text (AtkValue *obj,
@@ -107,6 +107,6 @@ const char* atk_value_type_get_name           (AtkValueType value_type);
 ATK_AVAILABLE_IN_ALL
 const char* atk_value_type_get_localized_name (AtkValueType value_type);
 
-
+G_END_DECLS
 
 #endif /* __ATK_VALUE_H__ */

@@ -8,12 +8,12 @@
 #include <atk/atkobject.h>
 #include <atk/atkutil.h>
 
-
+G_BEGIN_DECLS
 
 #define ATK_TYPE_DOCUMENT                   (atk_document_get_type ())
-#define ATK_IS_DOCUMENT(obj)                 ((obj), ATK_TYPE_DOCUMENT)
-#define ATK_DOCUMENT(obj)                    ((obj), ATK_TYPE_DOCUMENT, AtkDocument)
-#define ATK_DOCUMENT_GET_IFACE(obj)         ( ((obj), ATK_TYPE_DOCUMENT, AtkDocumentIface))
+#define ATK_IS_DOCUMENT(obj)                G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_DOCUMENT)
+#define ATK_DOCUMENT(obj)                   G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_DOCUMENT, AtkDocument)
+#define ATK_DOCUMENT_GET_IFACE(obj)         (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_DOCUMENT, AtkDocumentIface))
 
 #ifndef _TYPEDEF_ATK_DOCUMENT_
 #define _TYPEDEF_ATK_DOCUMENT_
@@ -31,7 +31,7 @@ struct _AtkDocumentIface
   AtkAttributeSet *     ( *get_document_attributes) (AtkDocument        *document);
   const char*          ( *get_document_attribute_value) (AtkDocument   *document,
                                                           const char   *attribute_name);
-  unsigned char              ( *set_document_attribute) (AtkDocument         *document,
+  gboolean              ( *set_document_attribute) (AtkDocument         *document,
                                                     const char         *attribute_name,
                                                     const char         *attribute_value);
   int                  ( *get_current_page_number) (AtkDocument *document);
@@ -56,7 +56,7 @@ ATK_AVAILABLE_IN_ALL
 const char*          atk_document_get_attribute_value (AtkDocument *document,
                                                         const char *attribute_name);
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_document_set_attribute_value (AtkDocument *document,
+gboolean              atk_document_set_attribute_value (AtkDocument *document,
                                                         const char *attribute_name,
                                                         const char *attribute_value);
 ATK_AVAILABLE_IN_2_12
@@ -64,6 +64,6 @@ int                  atk_document_get_current_page_number (AtkDocument *document
 ATK_AVAILABLE_IN_2_12
 int                  atk_document_get_page_count      (AtkDocument *document);
 
-
+G_END_DECLS
 
 #endif /* __ATK_DOCUMENT_H__ */

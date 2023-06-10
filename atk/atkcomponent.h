@@ -8,7 +8,7 @@
 #include "atk/atkobject.h"
 #include <atk/atkutil.h>
 
-
+G_BEGIN_DECLS
 
 typedef enum {
   ATK_SCROLL_TOP_LEFT,
@@ -21,9 +21,9 @@ typedef enum {
 } AtkScrollType;
 
 #define ATK_TYPE_COMPONENT                    (atk_component_get_type ())
-#define ATK_IS_COMPONENT(obj)                  ((obj), ATK_TYPE_COMPONENT)
-#define ATK_COMPONENT(obj)                     ((obj), ATK_TYPE_COMPONENT, AtkComponent)
-#define ATK_COMPONENT_GET_IFACE(obj)          ( ((obj), ATK_TYPE_COMPONENT, AtkComponentIface))
+#define ATK_IS_COMPONENT(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_COMPONENT)
+#define ATK_COMPONENT(obj)                    G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_COMPONENT, AtkComponent)
+#define ATK_COMPONENT_GET_IFACE(obj)          (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_COMPONENT, AtkComponentIface))
 
 #ifndef _TYPEDEF_ATK_COMPONENT_
 #define _TYPEDEF_ATK_COMPONENT_
@@ -31,7 +31,7 @@ typedef struct _AtkComponent AtkComponent;
 #endif
 typedef struct _AtkComponentIface  AtkComponentIface;
 
-typedef void (*AtkFocusHandler) (AtkObject* object, unsigned char focus_in);
+typedef void (*AtkFocusHandler) (AtkObject* object, gboolean focus_in);
 
 typedef struct _AtkRectangle       AtkRectangle;
 
@@ -57,7 +57,7 @@ struct _AtkComponentIface
   unsigned int          (* add_focus_handler)  (AtkComponent          *component,
                                          AtkFocusHandler        handler);
 
-  unsigned char       (* contains)           (AtkComponent          *component,
+  gboolean       (* contains)           (AtkComponent          *component,
                                          int                   x,
                                          int                   y,
                                          AtkCoordType           coord_type);
@@ -79,20 +79,20 @@ struct _AtkComponentIface
   void                     (* get_size)                 (AtkComponent   *component,
                                                          int           *width,
                                                          int           *height);
-  unsigned char                 (* grab_focus)               (AtkComponent   *component);
+  gboolean                 (* grab_focus)               (AtkComponent   *component);
   void                     (* remove_focus_handler)      (AtkComponent  *component,
                                                           unsigned int         handler_id);
-  unsigned char                 (* set_extents)      (AtkComponent   *component,
+  gboolean                 (* set_extents)      (AtkComponent   *component,
                                                  int           x,
                                                  int           y,
                                                  int           width,
                                                  int           height,
                                                  AtkCoordType   coord_type);
-  unsigned char                 (* set_position)     (AtkComponent   *component,
+  gboolean                 (* set_position)     (AtkComponent   *component,
                                                  int           x,
                                                  int           y,
                                                  AtkCoordType   coord_type);
-  unsigned char                 (* set_size)         (AtkComponent   *component,
+  gboolean                 (* set_size)         (AtkComponent   *component,
                                                  int           width,
                                                  int           height);
   	
@@ -105,10 +105,10 @@ struct _AtkComponentIface
   gdouble                  (* get_alpha)        (AtkComponent   *component);
 
 
-  unsigned char                (*scroll_to)          (AtkComponent   *component,
+  gboolean                (*scroll_to)          (AtkComponent   *component,
                                                  AtkScrollType   type);
 
-  unsigned char                (*scroll_to_point)    (AtkComponent   *component,
+  gboolean                (*scroll_to_point)    (AtkComponent   *component,
                                                  AtkCoordType    coords,
                                                  int            x,
                                                  int            y);
@@ -122,7 +122,7 @@ ATK_DEPRECATED_IN_2_10
 unsigned int                atk_component_add_focus_handler      (AtkComponent    *component,
                                                            AtkFocusHandler handler);
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_contains               (AtkComponent    *component,
+gboolean              atk_component_contains               (AtkComponent    *component,
                                                             int            x,
                                                             int            y,
                                                             AtkCoordType    coord_type);
@@ -152,39 +152,39 @@ AtkLayer              atk_component_get_layer              (AtkComponent    *com
 ATK_AVAILABLE_IN_ALL
 int                  atk_component_get_mdi_zorder         (AtkComponent    *component);
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_grab_focus             (AtkComponent    *component);
+gboolean              atk_component_grab_focus             (AtkComponent    *component);
 ATK_DEPRECATED_IN_2_10
 void                  atk_component_remove_focus_handler   (AtkComponent    *component,
                                                             unsigned int           handler_id);
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_set_extents            (AtkComponent    *component,
+gboolean              atk_component_set_extents            (AtkComponent    *component,
                                                             int            x,
                                                             int            y,
                                                             int            width,
                                                             int            height,
                                                             AtkCoordType    coord_type);
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_set_position           (AtkComponent    *component,
+gboolean              atk_component_set_position           (AtkComponent    *component,
                                                             int            x,
                                                             int            y,
                                                             AtkCoordType    coord_type);
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_set_size               (AtkComponent    *component,
+gboolean              atk_component_set_size               (AtkComponent    *component,
                                                             int            width,
                                                             int            height);
 ATK_AVAILABLE_IN_ALL
 gdouble               atk_component_get_alpha              (AtkComponent    *component);
 
 ATK_AVAILABLE_IN_2_30
-unsigned char              atk_component_scroll_to              (AtkComponent    *component,
+gboolean              atk_component_scroll_to              (AtkComponent    *component,
                                                             AtkScrollType   type);
 
 ATK_AVAILABLE_IN_2_30
-unsigned char              atk_component_scroll_to_point        (AtkComponent    *component,
+gboolean              atk_component_scroll_to_point        (AtkComponent    *component,
                                                             AtkCoordType    coords,
                                                             int            x,
                                                             int            y);
 
-
+G_END_DECLS
 
 #endif /* __ATK_COMPONENT_H__ */

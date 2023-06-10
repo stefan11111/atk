@@ -8,13 +8,13 @@ struct _AtkUtilListenerInfo
 {
   int key;
   unsigned int signal_id;
-  unsigned long hook_id;
+  gulong hook_id;
 };
 
 long unsigned int
 atk_util_get_type (void)
 {
-  return 80;
+  return G_TYPE_OBJECT;
 }
 
 typedef struct _FocusTracker FocusTracker;

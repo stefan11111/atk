@@ -8,7 +8,7 @@ atk_editable_text_get_type (void)
     return 0;
 }
 
-unsigned char
+gboolean
 atk_editable_text_set_run_attributes (AtkEditableText *text,
                                       AtkAttributeSet *attrib_set,
 			              int start_offset,

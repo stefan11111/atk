@@ -30,7 +30,7 @@
 #include <atk/atkstate.h>
 #include <atk/atkrelationtype.h>
 
-
+G_BEGIN_DECLS
 
 /**
  *AtkRole:
@@ -440,16 +440,16 @@ struct _AtkAttribute {
 };
 
 #define ATK_TYPE_OBJECT                           (atk_object_get_type ())
-#define ATK_OBJECT(obj)                           ( ((obj), ATK_TYPE_OBJECT, AtkObject))
-#define ATK_OBJECT_CLASS(klass)                   ( ((klass), ATK_TYPE_OBJECT, AtkObjectClass))
-#define ATK_IS_OBJECT(obj)                        ( ((obj), ATK_TYPE_OBJECT))
-#define ATK_IS_OBJECT_CLASS(klass)                ( ((klass), ATK_TYPE_OBJECT))
+#define ATK_OBJECT(obj)                           (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_OBJECT, AtkObject))
+#define ATK_OBJECT_CLASS(klass)                   (G_TYPE_CHECK_CLASS_CAST ((klass), ATK_TYPE_OBJECT, AtkObjectClass))
+#define ATK_IS_OBJECT(obj)                        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_OBJECT))
+#define ATK_IS_OBJECT_CLASS(klass)                (G_TYPE_CHECK_CLASS_TYPE ((klass), ATK_TYPE_OBJECT))
 #define ATK_OBJECT_GET_CLASS(obj)                 (G_TYPE_INSTANCE_GET_CLASS ((obj), ATK_TYPE_OBJECT, AtkObjectClass))
 
 #define ATK_TYPE_IMPLEMENTOR                      (atk_implementor_get_type ())
-#define ATK_IS_IMPLEMENTOR(obj)                    ((obj), ATK_TYPE_IMPLEMENTOR)
-#define ATK_IMPLEMENTOR(obj)                       ((obj), ATK_TYPE_IMPLEMENTOR, AtkImplementor)
-#define ATK_IMPLEMENTOR_GET_IFACE(obj)            ( ((obj), ATK_TYPE_IMPLEMENTOR, AtkImplementorIface))
+#define ATK_IS_IMPLEMENTOR(obj)                   G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_IMPLEMENTOR)
+#define ATK_IMPLEMENTOR(obj)                      G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_IMPLEMENTOR, AtkImplementor)
+#define ATK_IMPLEMENTOR_GET_IFACE(obj)            (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_IMPLEMENTOR, AtkImplementorIface))
 
 
 typedef struct _AtkImplementor            AtkImplementor; /* dummy typedef */
@@ -475,8 +475,8 @@ typedef struct _AtkStateSet               AtkStateSet;
 struct _AtkPropertyValues
 {
   const char  *property_name;
-  void* old_value;
-  void* new_value;
+  GValue old_value;
+  GValue new_value;
 };
 
 typedef struct _AtkPropertyValues        AtkPropertyValues;
@@ -491,7 +491,7 @@ typedef struct _AtkPropertyValues        AtkPropertyValues;
  *
  * Returns: not used
  */
-typedef unsigned char (*AtkFunction)          (void* user_data);
+typedef gboolean (*AtkFunction)          (void* user_data);
 /*
  * For most properties the old_value field of AtkPropertyValues will
  * not contain a valid value.
@@ -641,7 +641,7 @@ void                      (* initialize)                         (AtkObject     
    * for an object.
    */
   void                    (* focus_event)         (AtkObject                  *accessible,
-                                                   unsigned char                   focus_in);
+                                                   gboolean                   focus_in);
   /*
    * The signal handler which is executed  when there is a property_change 
    * signal for an object.
@@ -654,7 +654,7 @@ void                      (* initialize)                         (AtkObject     
    */
   void                    (* state_change)        (AtkObject                  *accessible,
                                                    const char                *name,
-                                                   unsigned char                   state_set);
+                                                   gboolean                   state_set);
   /*
    * The signal handler which is executed when there is a change in the
    * visible data for an object
@@ -760,7 +760,7 @@ void                 atk_object_remove_property_change_handler   (AtkObject     
 ATK_AVAILABLE_IN_ALL
 void                 atk_object_notify_state_change              (AtkObject                      *accessible,
                                                                   unsigned long long                       state,
-                                                                  unsigned char                       value);
+                                                                  gboolean                       value);
 ATK_AVAILABLE_IN_ALL
 void                 atk_object_initialize                       (AtkObject                     *accessible,
                                                                   void*                      data);
@@ -773,11 +773,11 @@ AtkRole               atk_role_for_name      (const char     *name);
 
 /* NEW in 1.1: convenience API */
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_object_add_relationship              (AtkObject      *object,
+gboolean              atk_object_add_relationship              (AtkObject      *object,
 								AtkRelationType relationship,
 								AtkObject      *target);
 ATK_AVAILABLE_IN_ALL
-unsigned char              atk_object_remove_relationship           (AtkObject      *object,
+gboolean              atk_object_remove_relationship           (AtkObject      *object,
 								AtkRelationType relationship,
 								AtkObject      *target);
 ATK_AVAILABLE_IN_ALL
@@ -794,6 +794,6 @@ ATK_AVAILABLE_IN_ALL
 void                  atk_object_set_accessible_id             (AtkObject   *accessible,
                                                                 const char *name);
 
-
+G_END_DECLS
 
 #endif /* __ATK_OBJECT_H__ */

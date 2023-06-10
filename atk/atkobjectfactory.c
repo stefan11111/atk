@@ -18,11 +18,11 @@ atk_object_factory_invalidate (AtkObjectFactory *factory)
 long unsigned int
 atk_object_factory_get_accessible_type (AtkObjectFactory *factory)
 {
-    return 0;
+    return G_TYPE_INVALID;
 }
 
 long unsigned int
 atk_object_factory_get_type(void)
 {
-    return 0;
+    return G_TYPE_INVALID;
 }

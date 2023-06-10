@@ -7,13 +7,13 @@
 
 #include <atk/atkversion.h>
 
-
+G_BEGIN_DECLS
 
 #define ATK_TYPE_SOCKET               (atk_socket_get_type ())
-#define ATK_SOCKET(obj)               ( ((obj), ATK_TYPE_SOCKET, AtkSocket))
-#define ATK_IS_SOCKET(obj)            ( ((obj), ATK_TYPE_SOCKET))
-#define ATK_SOCKET_CLASS(klass)       ( ((klass), ATK_TYPE_SOCKET, AtkSocketClass))
-#define ATK_IS_SOCKET_CLASS(klass)    ( ((klass), ATK_TYPE_SOCKET))
+#define ATK_SOCKET(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_SOCKET, AtkSocket))
+#define ATK_IS_SOCKET(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_SOCKET))
+#define ATK_SOCKET_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), ATK_TYPE_SOCKET, AtkSocketClass))
+#define ATK_IS_SOCKET_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), ATK_TYPE_SOCKET))
 #define ATK_SOCKET_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), ATK_TYPE_SOCKET, AtkSocketClass))
 
 typedef struct _AtkSocket         AtkSocket;
@@ -45,8 +45,8 @@ AtkObject*    atk_socket_new           (void);
 ATK_AVAILABLE_IN_ALL
 void          atk_socket_embed         (AtkSocket* obj, const char* plug_id);
 ATK_AVAILABLE_IN_ALL
-unsigned char      atk_socket_is_occupied   (AtkSocket* obj);
+gboolean      atk_socket_is_occupied   (AtkSocket* obj);
 
-
+G_END_DECLS
 
 #endif /* __ATK_SOCKET_H__ */

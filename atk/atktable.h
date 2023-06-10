@@ -7,12 +7,12 @@
 
 #include <atk/atkobject.h>
 
-
+G_BEGIN_DECLS
 
 #define ATK_TYPE_TABLE                    (atk_table_get_type ())
-#define ATK_IS_TABLE(obj)                  ((obj), ATK_TYPE_TABLE)
-#define ATK_TABLE(obj)                     ((obj), ATK_TYPE_TABLE, AtkTable)
-#define ATK_TABLE_GET_IFACE(obj)          ( ((obj), ATK_TYPE_TABLE, AtkTableIface))
+#define ATK_IS_TABLE(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_TABLE)
+#define ATK_TABLE(obj)                    G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_TABLE, AtkTable)
+#define ATK_TABLE_GET_IFACE(obj)          (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_TABLE, AtkTableIface))
 
 #ifndef _TYPEDEF_ATK_TABLE_
 #define _TYPEDEF_ATK_TABLE_
@@ -73,20 +73,20 @@ struct _AtkTableIface
                                                   int          **selected);
   int              (* get_selected_rows)        (AtkTable      *table,
                                                   int          **selected);
-  unsigned char          (* is_column_selected)       (AtkTable      *table,
+  gboolean          (* is_column_selected)       (AtkTable      *table,
                                                   int          column);
-  unsigned char          (* is_row_selected)          (AtkTable      *table,
+  gboolean          (* is_row_selected)          (AtkTable      *table,
                                                   int          row);
-  unsigned char          (* is_selected)              (AtkTable      *table,
+  gboolean          (* is_selected)              (AtkTable      *table,
                                                   int          row,
                                                   int          column);
-  unsigned char          (* add_row_selection)        (AtkTable      *table,
+  gboolean          (* add_row_selection)        (AtkTable      *table,
                                                   int          row);
-  unsigned char          (* remove_row_selection)     (AtkTable      *table,
+  gboolean          (* remove_row_selection)     (AtkTable      *table,
                                                   int          row);
-  unsigned char          (* add_column_selection)     (AtkTable      *table,
+  gboolean          (* add_column_selection)     (AtkTable      *table,
                                                   int          column);
-  unsigned char          (* remove_column_selection)  (AtkTable      *table,
+  gboolean          (* remove_column_selection)  (AtkTable      *table,
                                                   int          column);
 
   /*
@@ -186,29 +186,29 @@ ATK_AVAILABLE_IN_ALL
 int              atk_table_get_selected_rows    (AtkTable         *table,
                                                   int             **selected);
 ATK_AVAILABLE_IN_ALL
-unsigned char          atk_table_is_column_selected   (AtkTable         *table,
+gboolean          atk_table_is_column_selected   (AtkTable         *table,
                                                   int             column);
 ATK_AVAILABLE_IN_ALL
-unsigned char          atk_table_is_row_selected      (AtkTable         *table,
+gboolean          atk_table_is_row_selected      (AtkTable         *table,
                                                   int             row);
 ATK_AVAILABLE_IN_ALL
-unsigned char          atk_table_is_selected          (AtkTable         *table,
+gboolean          atk_table_is_selected          (AtkTable         *table,
                                                   int             row,
                                                   int             column);
 ATK_AVAILABLE_IN_ALL
-unsigned char          atk_table_add_row_selection    (AtkTable         *table,
+gboolean          atk_table_add_row_selection    (AtkTable         *table,
                                                   int             row);
 ATK_AVAILABLE_IN_ALL
-unsigned char          atk_table_remove_row_selection (AtkTable         *table,
+gboolean          atk_table_remove_row_selection (AtkTable         *table,
                                                   int             row);
 ATK_AVAILABLE_IN_ALL
-unsigned char          atk_table_add_column_selection (AtkTable         *table,
+gboolean          atk_table_add_column_selection (AtkTable         *table,
                                                   int             column);
 ATK_AVAILABLE_IN_ALL
-unsigned char          atk_table_remove_column_selection  
+gboolean          atk_table_remove_column_selection  
                                                  (AtkTable         *table,
                                                   int             column);
 
-
+G_END_DECLS
 
 #endif /* __ATK_TABLE_H__ */

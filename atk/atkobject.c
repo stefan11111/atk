@@ -55,11 +55,11 @@ static void            atk_object_real_initialize   (AtkObject       *accessible
                                                      void*        data);
 static void            atk_object_real_set_property (GObject         *object,
                                                      unsigned int            prop_id,
-                                                     const void*    *value,
+                                                     const GValue    *value,
                                                      GParamSpec      *pspec);
 static void            atk_object_real_get_property (GObject         *object,
                                                      unsigned int            prop_id,
-                                                     void*          *value,
+                                                     GValue          *value,
                                                      GParamSpec      *pspec);
 static void            atk_object_finalize          (GObject         *object);
 static const char*    atk_object_real_get_name     (AtkObject       *object);
@@ -86,7 +86,7 @@ static const char*    atk_object_real_get_object_locale
 
 static unsigned int atk_object_signals[LAST_SIGNAL] = { 0, };
 
-static void* parent_class = 0;
+static void* parent_class = NULL;
 
 static const char* const atk_object_name_property_name = "accessible-name";
 static const char* const atk_object_name_property_description = "accessible-description";
@@ -126,16 +126,16 @@ atk_object_get_type (void)
       static const GTypeInfo typeInfo =
       {
         sizeof (AtkObjectClass),
-        0,
-        0,
+        NULL,
+        NULL,
         atk_object_class_init,
-        0,
-        0,
+        NULL,
+        NULL,
         sizeof (AtkObject),
         0,
         atk_object_init,
       } ;
-      type = g_type_register_static (80, "AtkObject", &typeInfo, 0) ;
+      type = g_type_register_static (G_TYPE_OBJECT, "AtkObject", &typeInfo, 0) ;
 
       AtkObject_private_offset =
         g_type_add_instance_private (type, sizeof (AtkObjectPrivate));
@@ -167,13 +167,13 @@ atk_object_class_init (AtkObjectClass *klass)
   klass->get_name = atk_object_real_get_name;
   klass->get_description = atk_object_real_get_description;
   klass->get_parent = atk_object_real_get_parent;
-  klass->get_n_children = 0;
-  klass->ref_child = 0;
-  klass->get_index_in_parent = 0;
+  klass->get_n_children = NULL;
+  klass->ref_child = NULL;
+  klass->get_index_in_parent = NULL;
   klass->ref_relation_set = atk_object_real_ref_relation_set;
   klass->get_role = atk_object_real_get_role;
   klass->get_layer = atk_object_real_get_layer;
-  klass->get_mdi_zorder = 0;
+  klass->get_mdi_zorder = NULL;
   klass->initialize = atk_object_real_initialize;
   klass->ref_state_set = atk_object_real_ref_state_set;
   klass->set_name = atk_object_real_set_name;
@@ -185,33 +185,33 @@ atk_object_class_init (AtkObjectClass *klass)
   /*
    * We do not define default signal handlers here
    */
-  klass->children_changed = 0;
-  klass->focus_event = 0;
-  klass->property_change = 0;
-  klass->visible_data_changed = 0;
-  klass->active_descendant_changed = 0;
+  klass->children_changed = NULL;
+  klass->focus_event = NULL;
+  klass->property_change = NULL;
+  klass->visible_data_changed = NULL;
+  klass->active_descendant_changed = NULL;
 
   _gettext_initialization ();
 
   g_object_class_install_property (gobject_class,
                                    PROP_NAME,
                                    g_param_spec_string (atk_object_name_property_name,
-                                                        0,
-                                                        0,
-                                                        0,
+                                                        _("Accessible Name"),
+                                                        _("Object instance’s name formatted for assistive technology access"),
+                                                        NULL,
                                                         G_PARAM_READWRITE));
   g_object_class_install_property (gobject_class,
                                    PROP_DESCRIPTION,
                                    g_param_spec_string (atk_object_name_property_description,
-                                                        0,
-                                                        0,
-                                                        0,
+                                                        _("Accessible Description"),
+                                                        _("Description of an object, formatted for assistive technology access"),
+                                                        NULL,
                                                         G_PARAM_READWRITE));
   g_object_class_install_property (gobject_class,
                                    PROP_PARENT,
                                    g_param_spec_object (atk_object_name_property_parent,
-                                                        0,
-                                                        0,
+                                                        _("Accessible Parent"),
+                                                        _("Parent of the current accessible as returned by atk_object_get_parent()"),
                                                         ATK_TYPE_OBJECT,
                                                         G_PARAM_READWRITE));
 
@@ -227,8 +227,8 @@ atk_object_class_init (AtkObjectClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_VALUE,
                                    g_param_spec_double (atk_object_name_property_value,
-                                                        0,
-                                                        0,
+                                                        _("Accessible Value"),
+                                                        _("Is used to notify that the value has changed"),
                                                         0.0,
                                                         G_MAXDOUBLE,
                                                         0.0,
@@ -236,16 +236,16 @@ atk_object_class_init (AtkObjectClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_ROLE,
                                    g_param_spec_enum   (atk_object_name_property_role,
-                                                        0,
-                                                        0,
+                                                        _("Accessible Role"),
+                                                        _("The accessible role of this object"),
                                                         ATK_TYPE_ROLE,
                                                         ATK_ROLE_UNKNOWN,
                                                         G_PARAM_READWRITE));
   g_object_class_install_property (gobject_class,
                                    PROP_LAYER,
                                    g_param_spec_int    (atk_object_name_property_component_layer,
-                                                        0,
-                                                        0,
+                                                        _("Accessible Layer"),
+                                                        _("The accessible layer of this object"),
                                                         0,
                                                         G_MAXINT,
                                                         0,
@@ -253,8 +253,8 @@ atk_object_class_init (AtkObjectClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_MDI_ZORDER,
                                    g_param_spec_int    (atk_object_name_property_component_mdi_zorder,
-                                                        0,
-                                                        0,
+                                                        _("Accessible MDI Value"),
+                                                        _("The accessible MDI value of this object"),
                                                         G_MININT,
                                                         G_MAXINT,
                                                         G_MININT,
@@ -270,9 +270,9 @@ atk_object_class_init (AtkObjectClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_TABLE_CAPTION,
                                    g_param_spec_string (atk_object_name_property_table_caption,
-                                                        0,
-                                                        0,
-                                                        0,
+                                                        _("Accessible Table Caption"),
+                                                        _("Is used to notify that the table caption has changed; this property should not be used. accessible-table-caption-object should be used instead"),
+                                                        NULL,
                                                         G_PARAM_READWRITE));
   /**
    * AtkObject:accessible-table-column-header:
@@ -285,8 +285,8 @@ atk_object_class_init (AtkObjectClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_TABLE_COLUMN_HEADER,
                                    g_param_spec_object (atk_object_name_property_table_column_header,
-                                                        0,
-                                                        0,
+                                                        _("Accessible Table Column Header"),
+                                                        _("Is used to notify that the table column header has changed"),
                                                         ATK_TYPE_OBJECT,
                                                         G_PARAM_READWRITE));
 
@@ -301,9 +301,9 @@ atk_object_class_init (AtkObjectClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_TABLE_COLUMN_DESCRIPTION,
                                    g_param_spec_string (atk_object_name_property_table_column_description,
-                                                        0,
-                                                        0,
-                                                        0,
+                                                        _("Accessible Table Column Description"),
+                                                        _("Is used to notify that the table column description has changed"),
+                                                        NULL,
                                                         G_PARAM_READWRITE));
 
   /**
@@ -317,8 +317,8 @@ atk_object_class_init (AtkObjectClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_TABLE_ROW_HEADER,
                                    g_param_spec_object (atk_object_name_property_table_row_header,
-                                                        0,
-                                                        0,
+                                                        _("Accessible Table Row Header"),
+                                                        _("Is used to notify that the table row header has changed"),
                                                         ATK_TYPE_OBJECT,
                                                         G_PARAM_READWRITE));
   /**
@@ -332,29 +332,29 @@ atk_object_class_init (AtkObjectClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_TABLE_ROW_DESCRIPTION,
                                    g_param_spec_string (atk_object_name_property_table_row_description,
-                                                        0,
-                                                        0,
-                                                        0,
+                                                        _("Accessible Table Row Description"),
+                                                        _("Is used to notify that the table row description has changed"),
+                                                        NULL,
                                                         G_PARAM_READWRITE));
   g_object_class_install_property (gobject_class,
                                    PROP_TABLE_SUMMARY,
                                    g_param_spec_object (atk_object_name_property_table_summary,
-                                                        0,
-                                                        0,
+                                                        _("Accessible Table Summary"),
+                                                        _("Is used to notify that the table summary has changed"),
                                                         ATK_TYPE_OBJECT,
                                                         G_PARAM_READWRITE));
   g_object_class_install_property (gobject_class,
                                    PROP_TABLE_CAPTION_OBJECT,
                                    g_param_spec_object (atk_object_name_property_table_caption_object,
-                                                        0,
-                                                        0,
+                                                        _("Accessible Table Caption Object"),
+                                                        _("Is used to notify that the table caption has changed"),
                                                         ATK_TYPE_OBJECT,
                                                         G_PARAM_READWRITE));
   g_object_class_install_property (gobject_class,
                                    PROP_HYPERTEXT_NUM_LINKS,
                                    g_param_spec_int    (atk_object_name_property_hypertext_num_links,
-                                                        0,
-                                                        0,
+                                                        _("Number of Accessible Hypertext Links"),
+                                                        _("The number of links which the current AtkHypertext has"),
                                                         0,
                                                         G_MAXINT,
                                                         0,
@@ -391,13 +391,13 @@ atk_object_get_parent (AtkObject *accessible)
 {
   AtkObjectClass *klass;
 
-  g_return_val_if_fail (ATK_IS_OBJECT (accessible), 0);
+  g_return_val_if_fail (ATK_IS_OBJECT (accessible), NULL);
 
   klass = ATK_OBJECT_GET_CLASS (accessible);
   if (klass->get_parent)
     return (klass->get_parent) (accessible);
   else
-    return 0;
+    return NULL;
 }
 
 AtkObject*
@@ -499,7 +499,7 @@ atk_object_remove_property_change_handler  (AtkObject *accessible,
 void
 atk_object_notify_state_change (AtkObject *accessible,
                                 unsigned long long  state,
-                                unsigned char  value)
+                                gboolean  value)
 {
 }
 
@@ -525,7 +525,7 @@ atk_object_real_ref_relation_set (AtkObject *accessible)
 static void
 atk_object_real_set_property (GObject      *object,
                               unsigned int         prop_id,
-                              const void* *value,
+                              const GValue *value,
                               GParamSpec   *pspec)
 {
 }
@@ -533,7 +533,7 @@ atk_object_real_set_property (GObject      *object,
 static void
 atk_object_real_get_property (GObject      *object,
                               unsigned int         prop_id,
-                              void*       *value,
+                              GValue       *value,
                               GParamSpec   *pspec)
 {
 }
@@ -652,7 +652,7 @@ atk_role_for_name (const char *name)
     return 0;
 }
 
-unsigned char
+gboolean
 atk_object_add_relationship (AtkObject       *object,
                              AtkRelationType relationship,
                              AtkObject       *target)
@@ -660,7 +660,7 @@ atk_object_add_relationship (AtkObject       *object,
     return 0;
 }
 
-unsigned char
+gboolean
 atk_object_remove_relationship (AtkObject       *object,
                                 AtkRelationType relationship,
                                 AtkObject       *target)

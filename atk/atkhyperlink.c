@@ -50,13 +50,13 @@ atk_hyperlink_get_start_index (AtkHyperlink *link)
     return 0;
 }
 
-unsigned char
+gboolean
 atk_hyperlink_is_valid (AtkHyperlink *link)
 {
     return 0;
 }
 
-unsigned char
+gboolean
 atk_hyperlink_is_inline (AtkHyperlink *link)
 {
     return 0;
@@ -68,7 +68,7 @@ atk_hyperlink_get_n_anchors (AtkHyperlink *link)
     return 0;
 }
 
-unsigned char
+gboolean
 atk_hyperlink_is_selected_link (AtkHyperlink *link)
 {
     return 0;

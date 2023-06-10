@@ -26,13 +26,13 @@
 
 #include <atk/atkobject.h>
 
-
+G_BEGIN_DECLS
 
 #define ATK_TYPE_UTIL                   (atk_util_get_type ())
-#define ATK_IS_UTIL(obj)                 ((obj), ATK_TYPE_UTIL)
-#define ATK_UTIL(obj)                    ((obj), ATK_TYPE_UTIL, AtkUtil)
-#define ATK_UTIL_CLASS(klass)                   ( ((klass), ATK_TYPE_UTIL, AtkUtilClass))
-#define ATK_IS_UTIL_CLASS(klass)                ( ((klass), ATK_TYPE_UTIL))
+#define ATK_IS_UTIL(obj)                G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_UTIL)
+#define ATK_UTIL(obj)                   G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_UTIL, AtkUtil)
+#define ATK_UTIL_CLASS(klass)                   (G_TYPE_CHECK_CLASS_CAST ((klass), ATK_TYPE_UTIL, AtkUtilClass))
+#define ATK_IS_UTIL_CLASS(klass)                (G_TYPE_CHECK_CLASS_TYPE ((klass), ATK_TYPE_UTIL))
 #define ATK_UTIL_GET_CLASS(obj)                 (G_TYPE_INSTANCE_GET_CLASS ((obj), ATK_TYPE_UTIL, AtkUtilClass))
 
 
@@ -224,7 +224,7 @@ const char *atk_get_version (void);
 /* convenience macros for atk type implementations, which for a type GtkGadgetAccessible will:
  * - prototype: static void     gtk_gadget_accessible_class_init (GtkGadgetClass *klass);
  * - prototype: static void     gtk_gadget_accessible_init       (GtkGadget      *self);
- * - define:    static void* gtk_gadget_accessible_parent_class = 0;
+ * - define:    static void* gtk_gadget_accessible_parent_class = NULL;
  *   gtk_gadget_accessible_parent_class is initialized prior to calling gtk_gadget_class_init()
  * - implement: long unsigned int           gtk_gadget_accessible_get_type (void) { ... }
  * - support custom code in gtk_gadget_accessible_get_type() after the type is registered.
@@ -276,7 +276,7 @@ const char *atk_get_version (void);
  *
  * Since: 1.22
  */
-#define ATK_DEFINE_ABSTRACT_TYPE(TN, t_n, T_P)		       ATK_DEFINE_TYPE_EXTENDED (TN, t_n, T_P, 16, {})
+#define ATK_DEFINE_ABSTRACT_TYPE(TN, t_n, T_P)		       ATK_DEFINE_TYPE_EXTENDED (TN, t_n, T_P, G_TYPE_FLAG_ABSTRACT, {})
 
 /**
  * ATK_DEFINE_ABSTRACT_TYPE_WITH_CODE:
@@ -290,7 +290,7 @@ const char *atk_get_version (void);
  *
  * Since: 1.22
  */
-#define ATK_DEFINE_ABSTRACT_TYPE_WITH_CODE(TN, t_n, T_P, _C_) _ATK_DEFINE_TYPE_EXTENDED_BEGIN (TN, t_n, T_P, 16) {_C_;} _ATK_DEFINE_TYPE_EXTENDED_END()
+#define ATK_DEFINE_ABSTRACT_TYPE_WITH_CODE(TN, t_n, T_P, _C_) _ATK_DEFINE_TYPE_EXTENDED_BEGIN (TN, t_n, T_P, G_TYPE_FLAG_ABSTRACT) {_C_;} _ATK_DEFINE_TYPE_EXTENDED_END()
 
 /**
  * ATK_DEFINE_TYPE_EXTENDED:
@@ -311,7 +311,7 @@ const char *atk_get_version (void);
 \
 static void     type_name##_init              (TypeName        *self); \
 static void     type_name##_class_init        (TypeName##Class *klass); \
-static void* type_name##_parent_class = 0; \
+static void* type_name##_parent_class = NULL; \
 static void     type_name##_class_intern_init (void* klass) \
 { \
   type_name##_parent_class = g_type_class_peek_parent (klass); \
@@ -355,6 +355,6 @@ type_name##_get_type (void) \
   return g_define_type_id__volatile;	\
 } /* closes type_name##_get_type() */
 
-
+G_END_DECLS
 
 #endif /* __ATK_UTIL_H__ */

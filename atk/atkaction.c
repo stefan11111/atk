@@ -8,7 +8,7 @@ atk_action_get_type (void)
     return 0;
 }
 
-unsigned char
+gboolean
 atk_action_do_action (AtkAction *obj,
                       int      i)
 {
@@ -50,7 +50,7 @@ atk_action_get_keybinding (AtkAction *obj,
     return 0;
 }
 
-unsigned char
+gboolean
 atk_action_set_description (AtkAction   *obj,
                             int        i,
                             const char *desc)

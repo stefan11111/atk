@@ -8,7 +8,7 @@
 #include <atk/_glib-object.h>
 #include <atk/atkversion.h>
 
-
+G_BEGIN_DECLS
 
 #define ATK_TYPE_RANGE         (atk_range_get_type ())
 
@@ -34,6 +34,6 @@ AtkRange*    atk_range_new              (gdouble      lower_limit,
                                          gdouble      upper_limit,
                                          const char *description);
 
-
+G_END_DECLS
 
 #endif /* __ATK_RANGE_H__ */

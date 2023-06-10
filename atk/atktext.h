@@ -10,7 +10,7 @@
 #include <atk/atkutil.h>
 #include <atk/atkcomponent.h>
 
-
+G_BEGIN_DECLS
 
 typedef enum
 {
@@ -51,9 +51,9 @@ AtkTextAttribute         atk_text_attribute_register   (const char *name);
 
 
 #define ATK_TYPE_TEXT                    (atk_text_get_type ())
-#define ATK_IS_TEXT(obj)                  ((obj), ATK_TYPE_TEXT)
-#define ATK_TEXT(obj)                     ((obj), ATK_TYPE_TEXT, AtkText)
-#define ATK_TEXT_GET_IFACE(obj)          ( ((obj), ATK_TYPE_TEXT, AtkTextIface))
+#define ATK_IS_TEXT(obj)                 G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_TEXT)
+#define ATK_TEXT(obj)                    G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_TEXT, AtkText)
+#define ATK_TEXT_GET_IFACE(obj)          (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_TEXT, AtkTextIface))
 
 #ifndef _TYPEDEF_ATK_TEXT_
 #define _TYPEDEF_ATK_TEXT_
@@ -124,7 +124,7 @@ struct _AtkTextIface
                                                    AtkTextBoundary  boundary_type,
 						   int             *start_offset,
 						   int             *end_offset);
-  unsigned short       (* get_character_at_offset)      (AtkText          *text,
+  gunichar       (* get_character_at_offset)      (AtkText          *text,
                                                    int             offset);
   char*         (* get_text_before_offset)       (AtkText          *text,
                                                    int             offset,
@@ -154,16 +154,16 @@ struct _AtkTextIface
 						   int		    selection_num,
 						   int		    *start_offset,
 						   int		    *end_offset);
-  unsigned char       (* add_selection)		  (AtkText          *text,
+  gboolean       (* add_selection)		  (AtkText          *text,
 						   int		    start_offset,
 						   int		    end_offset);
-  unsigned char       (* remove_selection)		  (AtkText          *text,
+  gboolean       (* remove_selection)		  (AtkText          *text,
 						   int             selection_num);
-  unsigned char       (* set_selection)		  (AtkText          *text,
+  gboolean       (* set_selection)		  (AtkText          *text,
 						   int		    selection_num,
 						   int		    start_offset,
 						   int		    end_offset);
-  unsigned char       (* set_caret_offset)             (AtkText          *text,
+  gboolean       (* set_caret_offset)             (AtkText          *text,
                                                    int             offset);
 
   /*
@@ -197,11 +197,11 @@ struct _AtkTextIface
                                                    int               *start_offset,
                                                    int               *end_offset);
 
-  unsigned char       (* scroll_substring_to)          (AtkText          *text,
+  gboolean       (* scroll_substring_to)          (AtkText          *text,
                                                    int             start_offset,
                                                    int             end_offset,
                                                    AtkScrollType    type);
-  unsigned char       (* scroll_substring_to_point)    (AtkText          *text,
+  gboolean       (* scroll_substring_to_point)    (AtkText          *text,
                                                    int             start_offset,
                                                    int             end_offset,
                                                    AtkCoordType     coords,
@@ -218,7 +218,7 @@ char*        atk_text_get_text                           (AtkText          *text
                                                            int             start_offset,
                                                            int             end_offset);
 ATK_AVAILABLE_IN_ALL
-unsigned short      atk_text_get_character_at_offset            (AtkText          *text,
+gunichar      atk_text_get_character_at_offset            (AtkText          *text,
                                                            int             offset);
 ATK_DEPRECATED_IN_2_10_FOR(atk_text_get_string_at_offset)
 char*        atk_text_get_text_after_offset              (AtkText          *text,
@@ -276,19 +276,19 @@ char*        atk_text_get_selection			  (AtkText          *text,
 							   int             *start_offset,
 							   int             *end_offset);
 ATK_AVAILABLE_IN_ALL
-unsigned char      atk_text_add_selection                      (AtkText          *text,
+gboolean      atk_text_add_selection                      (AtkText          *text,
 							   int             start_offset,
 							   int             end_offset);
 ATK_AVAILABLE_IN_ALL
-unsigned char      atk_text_remove_selection                   (AtkText          *text,
+gboolean      atk_text_remove_selection                   (AtkText          *text,
 							   int		    selection_num);
 ATK_AVAILABLE_IN_ALL
-unsigned char      atk_text_set_selection                      (AtkText          *text,
+gboolean      atk_text_set_selection                      (AtkText          *text,
 							   int		    selection_num,
 							   int             start_offset,
 							   int             end_offset);
 ATK_AVAILABLE_IN_ALL
-unsigned char      atk_text_set_caret_offset                   (AtkText          *text,
+gboolean      atk_text_set_caret_offset                   (AtkText          *text,
                                                            int             offset);
 ATK_AVAILABLE_IN_ALL
 void          atk_text_get_range_extents                  (AtkText          *text,
@@ -316,19 +316,19 @@ const char*  atk_text_attribute_get_value                (AtkTextAttribute attr,
                                                            int             index_);
 
 ATK_AVAILABLE_IN_ALL
-unsigned char      atk_text_scroll_substring_to                (AtkText          *text,
+gboolean      atk_text_scroll_substring_to                (AtkText          *text,
                                                            int             start_offset,
                                                            int             end_offset,
                                                            AtkScrollType    type);
 
 ATK_AVAILABLE_IN_ALL
-unsigned char      atk_text_scroll_substring_to_point          (AtkText          *text,
+gboolean      atk_text_scroll_substring_to_point          (AtkText          *text,
                                                            int             start_offset,
                                                            int             end_offset,
                                                            AtkCoordType     coords,
                                                            int             x,
                                                            int             y);
 
-
+G_END_DECLS
 
 #endif /* __ATK_TEXT_H__ */

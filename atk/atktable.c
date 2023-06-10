@@ -128,21 +128,21 @@ atk_table_get_selected_columns (AtkTable *table, int **selected)
     return 0;
 }
 
-unsigned char
+gboolean
 atk_table_is_column_selected (AtkTable *table,
                               int     column)
 {
     return 0;
 }
 
-unsigned char
+gboolean
 atk_table_is_row_selected (AtkTable *table,
                            int     row)
 {
     return 0;
 }
 
-unsigned char
+gboolean
 atk_table_is_selected (AtkTable *table,
                        int     row,
                        int     column)
@@ -150,27 +150,27 @@ atk_table_is_selected (AtkTable *table,
     return 0;
 }
 
-unsigned char
+gboolean
 atk_table_add_row_selection (AtkTable *table,
                        		 int     row)
 {
     return 0;
 }
 
-unsigned char
+gboolean
 atk_table_remove_row_selection (AtkTable *table,
                        		    int     row)
 {
     return 0;
 }
 
-unsigned char
+gboolean
 atk_table_add_column_selection (AtkTable *table,
                        		    int     column)
 {
     return 0;
 }
-unsigned char
+gboolean
 atk_table_remove_column_selection (AtkTable *table,
                        			   int     column)
 {

@@ -18,7 +18,7 @@ atk_misc_threads_leave (AtkMisc *misc)
 {
 }
 
-AtkMisc *atk_misc_instance = 0;
+AtkMisc *atk_misc_instance = NULL;
 
 const AtkMisc *
 atk_misc_get_instance (void)

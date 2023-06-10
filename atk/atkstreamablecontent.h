@@ -7,12 +7,12 @@
 
 #include <atk/atkobject.h>
 
-
+G_BEGIN_DECLS
 
 #define ATK_TYPE_STREAMABLE_CONTENT           (atk_streamable_content_get_type ())
-#define ATK_IS_STREAMABLE_CONTENT(obj)         ((obj), ATK_TYPE_STREAMABLE_CONTENT)
-#define ATK_STREAMABLE_CONTENT(obj)            ((obj), ATK_TYPE_STREAMABLE_CONTENT, AtkStreamableContent)
-#define ATK_STREAMABLE_CONTENT_GET_IFACE(obj) ( ((obj), ATK_TYPE_STREAMABLE_CONTENT, AtkStreamableContentIface))
+#define ATK_IS_STREAMABLE_CONTENT(obj)        G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_STREAMABLE_CONTENT)
+#define ATK_STREAMABLE_CONTENT(obj)           G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_STREAMABLE_CONTENT, AtkStreamableContent)
+#define ATK_STREAMABLE_CONTENT_GET_IFACE(obj) (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_STREAMABLE_CONTENT, AtkStreamableContentIface))
 
 #ifndef _TYPEDEF_ATK_STREAMABLE_CONTENT
 #define _TYPEDEF_ATK_STREAMABLE_CONTENT
@@ -86,6 +86,6 @@ ATK_AVAILABLE_IN_ALL
 const char*           atk_streamable_content_get_uri          (AtkStreamableContent     *streamable,
                                                                 const char              *mime_type);
 
-
+G_END_DECLS
 
 #endif /* __ATK_STREAMABLE_CONTENT_H__ */

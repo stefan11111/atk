@@ -28,13 +28,13 @@ atk_state_set_new (void)
   return 0;
 }
 
-unsigned char
+gboolean
 atk_state_set_is_empty (AtkStateSet   *set)
 {
     return 1;
 }
 
-unsigned char
+gboolean
 atk_state_set_add_state (AtkStateSet   *set,
                          unsigned long long  type)
 {
@@ -53,14 +53,14 @@ atk_state_set_clear_states (AtkStateSet   *set)
 {
 }
 
-unsigned char
+gboolean
 atk_state_set_contains_state (AtkStateSet   *set,
                               unsigned long long  type)
 {
     return 0;
 }
 
-unsigned char
+gboolean
 atk_state_set_contains_states (AtkStateSet   *set,
                                unsigned long long  *types,
                                int          n_types)
@@ -68,7 +68,7 @@ atk_state_set_contains_states (AtkStateSet   *set,
     return 0;
 }
 
-unsigned char
+gboolean
 atk_state_set_remove_state (AtkStateSet  *set,
                             unsigned long long type)
 {
