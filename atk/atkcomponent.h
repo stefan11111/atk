@@ -83,42 +83,4 @@ struct _AtkComponentIface
 ATK_AVAILABLE_IN_ALL
 long unsigned int atk_component_get_type (void);
 
-/* convenience functions */
-ATK_DEPRECATED_IN_2_10
-unsigned int                atk_component_add_focus_handler      ();
-ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_contains               ();
-ATK_AVAILABLE_IN_ALL
-AtkObject*            atk_component_ref_accessible_at_point();
-ATK_AVAILABLE_IN_ALL
-void                  atk_component_get_extents            ();
-ATK_DEPRECATED_IN_2_12_FOR(atk_component_get_extents)
-void                  atk_component_get_position           ();
-ATK_DEPRECATED_IN_2_12_FOR(atk_component_get_extents)
-void                  atk_component_get_size               ();
-ATK_AVAILABLE_IN_ALL
-AtkLayer              atk_component_get_layer              ();
-ATK_AVAILABLE_IN_ALL
-int                  atk_component_get_mdi_zorder         ();
-ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_grab_focus             ();
-ATK_DEPRECATED_IN_2_10
-void                  atk_component_remove_focus_handler   ();
-ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_set_extents            ();
-ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_set_position           ();
-ATK_AVAILABLE_IN_ALL
-unsigned char              atk_component_set_size               ();
-ATK_AVAILABLE_IN_ALL
-gdouble               atk_component_get_alpha              ();
-
-ATK_AVAILABLE_IN_2_30
-unsigned char              atk_component_scroll_to              ();
-
-ATK_AVAILABLE_IN_2_30
-unsigned char              atk_component_scroll_to_point        ();
-
-
-
 #endif /* __ATK_COMPONENT_H__ */
