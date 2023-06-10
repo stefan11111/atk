@@ -3,9 +3,6 @@
 # define G_ENCODE_VERSION(major, minor) ((major) << 16 | (minor) << 8)
 #endif
 
-typedef struct _GValue                  GValue;
-typedef struct _GClosure                 GClosure;
-
 typedef GObject;
 typedef GObjectClass;
 

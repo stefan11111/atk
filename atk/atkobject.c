@@ -55,11 +55,11 @@ static void            atk_object_real_initialize   (AtkObject       *accessible
                                                      void*        data);
 static void            atk_object_real_set_property (GObject         *object,
                                                      unsigned int            prop_id,
-                                                     const GValue    *value,
+                                                     const void*    *value,
                                                      GParamSpec      *pspec);
 static void            atk_object_real_get_property (GObject         *object,
                                                      unsigned int            prop_id,
-                                                     GValue          *value,
+                                                     void*          *value,
                                                      GParamSpec      *pspec);
 static void            atk_object_finalize          (GObject         *object);
 static const char*    atk_object_real_get_name     (AtkObject       *object);
@@ -525,7 +525,7 @@ atk_object_real_ref_relation_set (AtkObject *accessible)
 static void
 atk_object_real_set_property (GObject      *object,
                               unsigned int         prop_id,
-                              const GValue *value,
+                              const void* *value,
                               GParamSpec   *pspec)
 {
 }
@@ -533,7 +533,7 @@ atk_object_real_set_property (GObject      *object,
 static void
 atk_object_real_get_property (GObject      *object,
                               unsigned int         prop_id,
-                              GValue       *value,
+                              void*       *value,
                               GParamSpec   *pspec)
 {
 }
