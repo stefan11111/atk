@@ -19,9 +19,6 @@ atk_range_free (AtkRange *range)
 {
 }
 
-G_DEFINE_BOXED_TYPE (AtkRange, atk_range, atk_range_copy,
-                     atk_range_free)
-
 AtkRange*
 atk_range_new  (gdouble   lower_limit,
                 gdouble   upper_limit,

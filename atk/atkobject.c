@@ -391,8 +391,6 @@ atk_object_get_parent (AtkObject *accessible)
 {
   AtkObjectClass *klass;
 
-  g_return_val_if_fail (ATK_IS_OBJECT (accessible), 0);
-
   klass = ATK_OBJECT_GET_CLASS (accessible);
   if (klass->get_parent)
     return (klass->get_parent) (accessible);
@@ -608,8 +606,6 @@ atk_object_initialize (AtkObject  *accessible,
                        void*   data)
 {
   AtkObjectClass *klass;
-
-  g_return_if_fail (ATK_IS_OBJECT (accessible));
 
   klass = ATK_OBJECT_GET_CLASS (accessible);
   if (klass->initialize)

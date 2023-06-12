@@ -3,7 +3,11 @@
 #include "atktablecell.h"
 
 typedef AtkTableCellIface AtkTableCellInterface;
-G_DEFINE_INTERFACE (AtkTableCell, atk_table_cell, ATK_TYPE_OBJECT)
+
+long unsigned int atk_table_cell_get_type(void)
+{
+    return 0;
+}
 
 void atk_table_cell_default_init()
 {
