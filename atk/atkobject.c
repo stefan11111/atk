@@ -82,9 +82,8 @@ struct GTypeInfo {
   void* instance_init;
 };
 
-static void* bloat()
+static void atk_object_finalize()
 {
-    return 0;
 }
 
 long unsigned int
@@ -104,7 +103,7 @@ atk_object_get_type (void)
         0,
         sizeof (AtkObject),
         0,
-        atk_object_init,
+        0,
       } ;
       type = g_type_register_static (G_TYPE_OBJECT, "AtkObject", &typeInfo, 0) ;
 
@@ -130,28 +129,28 @@ atk_object_class_init (AtkObjectClass *klass)
   if (AtkObject_private_offset != 0)
     g_type_class_adjust_private_offset (klass, &AtkObject_private_offset);
 
-  gobject_class->set_property = bloat;
-  gobject_class->get_property = bloat;
-  gobject_class->finalize = bloat;
-  gobject_class->notify = bloat;
+  gobject_class->set_property = 0;
+  gobject_class->get_property = 0;
+  gobject_class->finalize = atk_object_finalize;
+  gobject_class->notify = 0;
 
-  klass->get_name = bloat;
-  klass->get_description = bloat;
-  klass->get_parent = bloat;
+  klass->get_name = 0;
+  klass->get_description = 0;
+  klass->get_parent = 0;
   klass->get_n_children = 0;
   klass->ref_child = 0;
   klass->get_index_in_parent = 0;
-  klass->ref_relation_set = bloat;
-  klass->get_role = bloat;
-  klass->get_layer = bloat;
+  klass->ref_relation_set = 0;
+  klass->get_role = 0;
+  klass->get_layer = 0;
   klass->get_mdi_zorder = 0;
-  klass->initialize = bloat;
-  klass->ref_state_set = bloat;
-  klass->set_name = bloat;
-  klass->set_description = bloat;
-  klass->set_parent = bloat;
-  klass->set_role = bloat;
-  klass->get_object_locale = bloat;
+  klass->initialize = 0;
+  klass->ref_state_set = 0;
+  klass->set_name = 0;
+  klass->set_description = 0;
+  klass->set_parent = 0;
+  klass->set_role = 0;
+  klass->get_object_locale = 0;
 
   /*
    * We do not define default signal handlers here
