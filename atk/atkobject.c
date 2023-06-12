@@ -49,40 +49,6 @@ static int AtkObject_private_offset;
 static void            atk_object_class_init        (AtkObjectClass  *klass);
 static void            atk_object_init              (AtkObject       *accessible,
                                                      AtkObjectClass  *klass);
-static AtkRelationSet* atk_object_real_ref_relation_set 
-                                                    (AtkObject       *accessible);
-static void            atk_object_real_initialize   (AtkObject       *accessible,
-                                                     void*        data);
-static void            atk_object_real_set_property (GObject         *object,
-                                                     unsigned int            prop_id,
-                                                     const void*    *value,
-                                                     GParamSpec      *pspec);
-static void            atk_object_real_get_property (GObject         *object,
-                                                     unsigned int            prop_id,
-                                                     void*          *value,
-                                                     GParamSpec      *pspec);
-static void            atk_object_finalize          (GObject         *object);
-static const char*    atk_object_real_get_name     (AtkObject       *object);
-static const char*    atk_object_real_get_description
-                                                   (AtkObject       *object);
-static AtkObject*      atk_object_real_get_parent  (AtkObject       *object);
-static AtkRole         atk_object_real_get_role    (AtkObject       *object);
-static AtkLayer        atk_object_real_get_layer   (AtkObject       *object);
-static AtkStateSet*    atk_object_real_ref_state_set
-                                                   (AtkObject       *object);
-static void            atk_object_real_set_name    (AtkObject       *object,
-                                                    const char     *name);
-static void            atk_object_real_set_description
-                                                   (AtkObject       *object,
-                                                    const char     *description);
-static void            atk_object_real_set_parent  (AtkObject       *object,
-                                                    AtkObject       *parent);
-static void            atk_object_real_set_role    (AtkObject       *object,
-                                                    AtkRole         role);
-static void            atk_object_notify           (GObject         *obj,
-                                                    GParamSpec      *pspec);
-static const char*    atk_object_real_get_object_locale
-                                                   (AtkObject       *object);
 
 static unsigned int atk_object_signals[LAST_SIGNAL] = { 0, };
 
@@ -115,6 +81,11 @@ struct GTypeInfo {
   short n_preallocs;
   void* instance_init;
 };
+
+static void* bloat()
+{
+    return 0;
+}
 
 long unsigned int
 atk_object_get_type (void)
@@ -159,28 +130,28 @@ atk_object_class_init (AtkObjectClass *klass)
   if (AtkObject_private_offset != 0)
     g_type_class_adjust_private_offset (klass, &AtkObject_private_offset);
 
-  gobject_class->set_property = atk_object_real_set_property;
-  gobject_class->get_property = atk_object_real_get_property;
-  gobject_class->finalize = atk_object_finalize;
-  gobject_class->notify = atk_object_notify;
+  gobject_class->set_property = bloat;
+  gobject_class->get_property = bloat;
+  gobject_class->finalize = bloat;
+  gobject_class->notify = bloat;
 
-  klass->get_name = atk_object_real_get_name;
-  klass->get_description = atk_object_real_get_description;
-  klass->get_parent = atk_object_real_get_parent;
+  klass->get_name = bloat;
+  klass->get_description = bloat;
+  klass->get_parent = bloat;
   klass->get_n_children = 0;
   klass->ref_child = 0;
   klass->get_index_in_parent = 0;
-  klass->ref_relation_set = atk_object_real_ref_relation_set;
-  klass->get_role = atk_object_real_get_role;
-  klass->get_layer = atk_object_real_get_layer;
+  klass->ref_relation_set = bloat;
+  klass->get_role = bloat;
+  klass->get_layer = bloat;
   klass->get_mdi_zorder = 0;
-  klass->initialize = atk_object_real_initialize;
-  klass->ref_state_set = atk_object_real_ref_state_set;
-  klass->set_name = atk_object_real_set_name;
-  klass->set_description = atk_object_real_set_description;
-  klass->set_parent = atk_object_real_set_parent;
-  klass->set_role = atk_object_real_set_role;
-  klass->get_object_locale = atk_object_real_get_object_locale;
+  klass->initialize = bloat;
+  klass->ref_state_set = bloat;
+  klass->set_name = bloat;
+  klass->set_description = bloat;
+  klass->set_parent = bloat;
+  klass->set_role = bloat;
+  klass->get_object_locale = bloat;
 
   /*
    * We do not define default signal handlers here
@@ -514,93 +485,6 @@ atk_object_get_attributes (AtkObject                  *accessible)
 	
 }
 
-static AtkRelationSet*
-atk_object_real_ref_relation_set (AtkObject *accessible)
-{
-    return 0;
-}
-
-static void
-atk_object_real_set_property (GObject      *object,
-                              unsigned int         prop_id,
-                              const void* *value,
-                              GParamSpec   *pspec)
-{
-}
-
-static void
-atk_object_real_get_property (GObject      *object,
-                              unsigned int         prop_id,
-                              void*       *value,
-                              GParamSpec   *pspec)
-{
-}
-
-static void
-atk_object_finalize (GObject *object)
-{
-}
-
-static const char*
-atk_object_real_get_name (AtkObject *object)
-{
-  return 0;
-}
-
-static const char*
-atk_object_real_get_description (AtkObject *object)
-{
-  return 0;
-}
-
-static AtkObject*
-atk_object_real_get_parent (AtkObject       *object)
-{
-  return 0;
-}
-
-static AtkRole
-atk_object_real_get_role (AtkObject       *object)
-{
-  return 0;
-}
-
-static AtkLayer
-atk_object_real_get_layer (AtkObject       *object)
-{
-  return 0;
-}
-
-static AtkStateSet*
-atk_object_real_ref_state_set (AtkObject *accessible) 
-{
-    return 0;
-}
-
-static void
-atk_object_real_set_name (AtkObject       *object,
-                          const char     *name)
-{
-}
-
-static void
-atk_object_real_set_description (AtkObject       *object,
-                                 const char     *description)
-{
-}
-
-static void
-atk_object_real_set_parent (AtkObject       *object,
-                            AtkObject       *parent)
-{
-}
-
-static void
-atk_object_real_set_role (AtkObject *object,
-                          AtkRole   role)
-{
-}
-
 void
 atk_object_initialize (AtkObject  *accessible,
                        void*   data)
@@ -612,11 +496,6 @@ atk_object_initialize (AtkObject  *accessible,
     klass->initialize (accessible, data);
 }
 
-static void
-atk_object_notify (GObject     *obj,
-                   GParamSpec  *pspec)
-{
-}
 
 const char*
 atk_role_get_name (AtkRole role)
@@ -626,12 +505,6 @@ atk_role_get_name (AtkRole role)
 
 const char*
 atk_role_get_localized_name (AtkRole role)
-{
-    return 0;
-}
-
-static const char*
-atk_object_real_get_object_locale (AtkObject *object)
 {
     return 0;
 }
@@ -672,11 +545,5 @@ atk_object_get_accessible_id (AtkObject *accessible)
 
 void
 atk_object_set_accessible_id (AtkObject *accessible, const char *id)
-{
-}
-
-static void
-atk_object_real_initialize (AtkObject *accessible,
-                            void*  data)
 {
 }
