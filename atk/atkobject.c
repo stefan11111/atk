@@ -171,13 +171,6 @@ atk_object_class_init (AtkObjectClass *klass)
                                                         0,
                                                         G_PARAM_READWRITE));
   g_object_class_install_property (gobject_class,
-                                   PROP_DESCRIPTION,
-                                   g_param_spec_string (atk_object_name_property_description,
-                                                        0,
-                                                        0,
-                                                        0,
-                                                        G_PARAM_READWRITE));
-  g_object_class_install_property (gobject_class,
                                    PROP_PARENT,
                                    g_param_spec_object (atk_object_name_property_parent,
                                                         0,
