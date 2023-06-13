@@ -82,7 +82,7 @@ struct GTypeInfo {
   void* instance_init;
 };
 
-static void atk_object_finalize()
+static void bloat()
 {
 }
 
@@ -131,7 +131,7 @@ atk_object_class_init (AtkObjectClass *klass)
 
   gobject_class->set_property = 0;
   gobject_class->get_property = 0;
-  gobject_class->finalize = atk_object_finalize;
+  gobject_class->finalize = bloat;
   gobject_class->notify = 0;
 
   klass->get_name = 0;
@@ -144,7 +144,7 @@ atk_object_class_init (AtkObjectClass *klass)
   klass->get_role = 0;
   klass->get_layer = 0;
   klass->get_mdi_zorder = 0;
-  klass->initialize = 0;
+  klass->initialize = bloat;
   klass->ref_state_set = 0;
   klass->set_name = 0;
   klass->set_description = 0;
