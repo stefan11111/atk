@@ -161,8 +161,6 @@ atk_object_class_init (AtkObjectClass *klass)
   klass->visible_data_changed = 0;
   klass->active_descendant_changed = 0;
 
-  _gettext_initialization ();
-
   g_object_class_install_property (gobject_class,
                                    PROP_NAME,
                                    g_param_spec_string (atk_object_name_property_name,
