@@ -20,8 +20,8 @@
 struct _AtkRegistry
 {
   GObject    parent;
-  GHashTable *factory_type_registry;
-  GHashTable *factory_singleton_cache;
+  void *factory_type_registry;
+  void *factory_singleton_cache;
 };
 
 struct _AtkRegistryClass

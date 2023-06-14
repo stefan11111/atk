@@ -75,15 +75,9 @@
 #error "ATK_VERSION_MIN_REQUIRED must be >= ATK_VERSION_2_2"
 #endif
 
-#ifdef ATK_DISABLE_DEPRECATION_WARNINGS
 #define ATK_DEPRECATED extern
 #define ATK_DEPRECATED_FOR(f) extern
 #define ATK_UNAVAILABLE(maj,min) extern
-#else
-#define ATK_DEPRECATED G_DEPRECATED extern
-#define ATK_DEPRECATED_FOR(f) G_DEPRECATED_FOR(f) extern
-#define ATK_UNAVAILABLE(maj,min) G_UNAVAILABLE(maj,min) extern
-#endif
 
 #define ATK_AVAILABLE_IN_ALL extern
 
