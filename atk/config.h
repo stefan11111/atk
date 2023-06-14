@@ -10,6 +10,3 @@
 #define HAVE_BIND_TEXTDOMAIN_CODESET 1
 
 #define VERSION "2.38.1"
-
-#define _ATK_EXTERN __attribute__((visibility("default"))) extern
-

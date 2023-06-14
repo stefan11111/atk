@@ -18,7 +18,7 @@
 #    else /* !ATK_STATIC_COMPILATION */
 #      ifdef ATK_COMPILATION
 #        ifdef DLL_EXPORT
-#          define ATK_VAR _ATK_EXTERN
+#          define ATK_VAR extern
 #        else /* !DLL_EXPORT */
 #          define ATK_VAR extern
 #        endif /* !DLL_EXPORT */
@@ -27,7 +27,7 @@
 #      endif /* !ATK_COMPILATION */
 #    endif /* !ATK_STATIC_COMPILATION */
 #  else /* !G_PLATFORM_WIN32 */
-#    define ATK_VAR _ATK_EXTERN
+#    define ATK_VAR extern
 #  endif /* !G_PLATFORM_WIN32 */
 #endif /* ATK_VAR */
 
