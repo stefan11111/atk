@@ -19,7 +19,7 @@ atk_table_cell_get_column_span (AtkTableCell *cell)
     return 0;
 }
 
-GPtrArray *
+void *
 atk_table_cell_get_column_header_cells (AtkTableCell *cell)
 {
     return 0;
@@ -39,7 +39,7 @@ atk_table_cell_get_row_span (AtkTableCell *cell)
     return 0;
 }
 
-GPtrArray *
+void *
 atk_table_cell_get_row_header_cells (AtkTableCell *cell)
 {
     return 0;

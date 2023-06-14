@@ -49,7 +49,7 @@ atk_relation_get_relation_type (AtkRelation *relation)
     return 0;
 }
 
-GPtrArray*
+void*
 atk_relation_get_target (AtkRelation *relation)
 {
     return 0;

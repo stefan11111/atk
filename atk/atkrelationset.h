@@ -25,7 +25,7 @@ struct _AtkRelationSet
 {
   GObject parent;
 
-  GPtrArray *relations;
+  void *relations;
 };
 
 struct _AtkRelationSetClass

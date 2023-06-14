@@ -25,7 +25,7 @@ struct _AtkRelation
 {
   GObject parent;
 
-  GPtrArray       *target;
+  void       *target;
   AtkRelationType relationship;
 };
 
@@ -61,7 +61,7 @@ AtkRelationType       atk_relation_get_relation_type  (AtkRelation     *relation
  * Returns the target list of a relation.
  */
 ATK_AVAILABLE_IN_ALL
-GPtrArray*            atk_relation_get_target         (AtkRelation     *relation);
+void*            atk_relation_get_target         (AtkRelation     *relation);
 ATK_AVAILABLE_IN_ALL
 void                  atk_relation_add_target         (AtkRelation     *relation,
                                                        AtkObject       *target);

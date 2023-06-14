@@ -1,8 +1,7 @@
-/*
 #ifndef G_ENCODE_VERSION
 # define G_ENCODE_VERSION(major, minor) ((major) << 16 | (minor) << 8)
 #endif
-
+/*
 typedef GObject;
 typedef GObjectClass;
 
