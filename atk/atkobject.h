@@ -440,8 +440,8 @@ struct _AtkAttribute {
 };
 
 #define ATK_TYPE_OBJECT                           (atk_object_get_type ())
-#define ATK_OBJECT(obj)                           (obj)
-#define ATK_OBJECT_CLASS(klass)                   (klass)
+#define ATK_OBJECT(obj)                           ((AtkObject*)(obj))
+#define ATK_OBJECT_CLASS(klass)                   ((AtkObjectClass*)(klass))
 #define ATK_IS_OBJECT(obj)                        0
 #define ATK_IS_OBJECT_CLASS(klass)                0
 #define ATK_OBJECT_GET_CLASS(obj)                 (*(void**)(obj))
