@@ -47,7 +47,7 @@ struct _AtkStreamableContentIface
    * file containing the content, opens the file and then calls
    * g_io_channel_unix_new_fd().
    */
-  GIOChannel*               (* get_stream)        (AtkStreamableContent     *streamable,
+  void*               (* get_stream)        (AtkStreamableContent     *streamable,
                                                    const char              *mime_type);
 
 /*
@@ -59,7 +59,7 @@ struct _AtkStreamableContentIface
  *
  * returns 0 if the mime-type is not supported, or if no URI can be 
  * constructed.  Note that it is possible for get_uri to return 0 but for
- * get_stream to work nonetheless, since not all GIOChannels connect to URIs.
+ * get_stream to work nonetheless, since not all voids connect to URIs.
  */
     const  char*           (* get_uri)           (AtkStreamableContent     *streamable,
                                                    const char              *mime_type);
@@ -79,7 +79,7 @@ ATK_AVAILABLE_IN_ALL
 const char*           atk_streamable_content_get_mime_type    (AtkStreamableContent     *streamable,
                                                                 int                     i);
 ATK_AVAILABLE_IN_ALL
-GIOChannel*             atk_streamable_content_get_stream       (AtkStreamableContent     *streamable,
+void*             atk_streamable_content_get_stream       (AtkStreamableContent     *streamable,
                                                                  const char              *mime_type);
 
 ATK_AVAILABLE_IN_ALL

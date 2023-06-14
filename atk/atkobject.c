@@ -167,14 +167,14 @@ atk_object_class_init (AtkObjectClass *klass)
                                                         0,
                                                         0,
                                                         0,
-                                                        G_PARAM_READWRITE));
+                                                        3));
   g_object_class_install_property (gobject_class,
                                    PROP_PARENT,
                                    g_param_spec_object (atk_object_name_property_parent,
                                                         0,
                                                         0,
                                                         ATK_TYPE_OBJECT,
-                                                        G_PARAM_READWRITE));
+                                                        3));
 }
 
 long unsigned int
@@ -252,7 +252,7 @@ atk_object_get_layer (AtkObject *accessible)
 int
 atk_object_get_mdi_zorder (AtkObject *accessible) 
 {
-    return G_MININT;
+    return -2147483648;
 }
 
 AtkStateSet*

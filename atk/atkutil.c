@@ -45,7 +45,7 @@ atk_focus_tracker_notify (AtkObject       *object)
 }
 
 unsigned int
-atk_add_global_event_listener (GSignalEmissionHook listener,
+atk_add_global_event_listener (void* listener,
 			       const char        *event_type)
 {
     return 0;

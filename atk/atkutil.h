@@ -75,7 +75,7 @@ struct _AtkUtil
 struct _AtkUtilClass
 {
    GObjectClass parent;
-   unsigned int        (* add_global_event_listener)    (GSignalEmissionHook listener,
+   unsigned int        (* add_global_event_listener)    (void* listener,
 						  const char        *event_type);
    void         (* remove_global_event_listener) (unsigned int               listener_id);
    unsigned int	(* add_key_event_listener) 	 (AtkKeySnoopFunc     listener,
@@ -103,7 +103,7 @@ void     atk_focus_tracker_init    (AtkEventListenerInit  init);
 ATK_DEPRECATED_IN_2_10
 void     atk_focus_tracker_notify  (AtkObject            *object);
 ATK_AVAILABLE_IN_ALL
-unsigned int	atk_add_global_event_listener (GSignalEmissionHook listener,
+unsigned int	atk_add_global_event_listener (void* listener,
 				       const char        *event_type);
 ATK_AVAILABLE_IN_ALL
 void	atk_remove_global_event_listener (unsigned int listener_id);

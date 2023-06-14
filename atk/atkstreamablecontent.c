@@ -21,7 +21,7 @@ atk_streamable_content_get_mime_type (AtkStreamableContent *streamable,
     return 0;
 }
 
-GIOChannel*
+void*
 atk_streamable_content_get_stream (AtkStreamableContent *streamable,
                                    const char          *mime_type)
 {
