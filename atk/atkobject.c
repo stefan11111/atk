@@ -116,13 +116,13 @@ atk_object_get_type (void)
 static inline void*
 atk_object_get_instance_private (AtkObject *self)
 {
-  return (G_STRUCT_MEMBER_P (self, AtkObject_private_offset));
+  return (char*)self + AtkObject_private_offset;
 }
 
 static void
 atk_object_class_init (AtkObjectClass *klass)
 {
-  GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+  GObjectClass *gobject_class = klass;
 
   parent_class = g_type_class_peek_parent (klass);
 
