@@ -10,14 +10,14 @@ atk_gobject_accessible_get_type (void)
     return 0;
 }
 
-AtkObject*
-atk_gobject_accessible_for_object (GObject *obj)
+void*
+atk_gobject_accessible_for_object ()
 {
     return 0;
 }
 
-GObject *
-atk_gobject_accessible_get_object (AtkGObjectAccessible *obj)
+void*
+atk_gobject_accessible_get_object ()
 {
     return 0;
 }

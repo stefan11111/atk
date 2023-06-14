@@ -23,7 +23,7 @@ typedef struct _AtkRelationClass       AtkRelationClass;
 
 struct _AtkRelation
 {
-  GObject parent;
+  struct GObject parent;
 
   void       *target;
   AtkRelationType relationship;

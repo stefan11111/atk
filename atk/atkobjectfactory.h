@@ -22,15 +22,15 @@ typedef struct _AtkObjectFactoryClass           AtkObjectFactoryClass;
 
 struct _AtkObjectFactory
 {
-  GObject parent;
+  struct GObject parent;
 };
 
 struct _AtkObjectFactoryClass
 {
   GObjectClass parent_class;
 
-  AtkObject* (* create_accessible) (GObject          *obj);
-  void       (* invalidate)        (AtkObjectFactory *factory);
+  void** (* create_accessible) ();
+  void       (* invalidate)        ();
   long unsigned int      (* get_accessible_type)    (void);
 
   AtkFunction pad1;
@@ -42,11 +42,11 @@ long unsigned int atk_object_factory_get_type(void);
 
 
 ATK_AVAILABLE_IN_ALL
-AtkObject* atk_object_factory_create_accessible (AtkObjectFactory *factory, GObject *obj);
+void* atk_object_factory_create_accessible ();
 ATK_AVAILABLE_IN_ALL
-void       atk_object_factory_invalidate (AtkObjectFactory *factory);
+void       atk_object_factory_invalidate ();
 ATK_AVAILABLE_IN_ALL
-long unsigned int      atk_object_factory_get_accessible_type (AtkObjectFactory *factory);
+long unsigned int      atk_object_factory_get_accessible_type ();
 
 
 

@@ -5,7 +5,7 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
-#include <glib-object.h>
+#include <atk/_glib-object.h>
 #include <atk/atkversion.h>
 
 /* We prefix variable declarations so they can
@@ -49,7 +49,7 @@ typedef struct _AtkMiscClass AtkMiscClass;
 
 struct _AtkMisc
 {
-  GObject parent;
+  struct GObject parent;
 };
 
 ATK_VAR AtkMisc *atk_misc_instance;

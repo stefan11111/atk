@@ -38,7 +38,7 @@ typedef struct _AtkHyperlinkClass                 AtkHyperlinkClass;
 
 struct _AtkHyperlink
 {
-  GObject parent;
+  struct GObject parent;
 };
 
 struct _AtkHyperlinkClass

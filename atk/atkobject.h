@@ -24,7 +24,7 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
-#include <glib-object.h>
+#include <atk/_glib-object.h>
 
 #include <atk/atkversion.h>
 #include <atk/atkstate.h>
@@ -521,7 +521,7 @@ typedef void (*AtkPropertyChangeHandler) (AtkObject* obj, AtkPropertyValues* val
 
 struct _AtkObject
 {
-  GObject parent;
+  struct GObject parent;
 
   char *description;
   char *name;

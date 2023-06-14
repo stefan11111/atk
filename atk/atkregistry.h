@@ -19,7 +19,7 @@
 
 struct _AtkRegistry
 {
-  GObject    parent;
+  struct GObject    parent;
   void *factory_type_registry;
   void *factory_singleton_cache;
 };

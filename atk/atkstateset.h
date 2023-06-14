@@ -23,7 +23,7 @@ typedef struct _AtkStateSetClass       AtkStateSetClass;
 
 struct _AtkStateSet
 {
-  GObject parent;
+  struct GObject parent;
 
 };
 

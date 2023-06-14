@@ -69,7 +69,7 @@ typedef enum
 
 struct _AtkUtil
 {
-  GObject parent;
+  struct GObject parent;
 };
 
 struct _AtkUtilClass

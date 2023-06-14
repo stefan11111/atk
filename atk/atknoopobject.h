@@ -33,7 +33,7 @@ struct _AtkNoOpObjectClass
 };
 
 ATK_AVAILABLE_IN_ALL
-AtkObject *atk_no_op_object_new (GObject  *obj);
+void *atk_no_op_object_new ();
 
 
 
