@@ -80,6 +80,7 @@ struct GTypeInfo {
   short instance_size;
   short n_preallocs;
   void* instance_init;
+  const void* value_table;
 };
 
 static void bloat()
@@ -93,7 +94,7 @@ atk_object_get_type (void)
 
   if (!type)
     {
-      static const GTypeInfo typeInfo =
+      static const struct GTypeInfo typeInfo =
       {
         sizeof (AtkObjectClass),
         0,
@@ -104,6 +105,7 @@ atk_object_get_type (void)
         sizeof (AtkObject),
         0,
         bloat,
+        0
       } ;
       type = g_type_register_static (80, "AtkObject", &typeInfo, 0) ;
 
