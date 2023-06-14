@@ -440,16 +440,16 @@ struct _AtkAttribute {
 };
 
 #define ATK_TYPE_OBJECT                           (atk_object_get_type ())
-#define ATK_OBJECT(obj)                           (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_OBJECT, AtkObject))
-#define ATK_OBJECT_CLASS(klass)                   (G_TYPE_CHECK_CLASS_CAST ((klass), ATK_TYPE_OBJECT, AtkObjectClass))
-#define ATK_IS_OBJECT(obj)                        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_OBJECT))
-#define ATK_IS_OBJECT_CLASS(klass)                (G_TYPE_CHECK_CLASS_TYPE ((klass), ATK_TYPE_OBJECT))
-#define ATK_OBJECT_GET_CLASS(obj)                 (G_TYPE_INSTANCE_GET_CLASS ((obj), ATK_TYPE_OBJECT, AtkObjectClass))
+#define ATK_OBJECT(obj)                           (obj)
+#define ATK_OBJECT_CLASS(klass)                   (klass)
+#define ATK_IS_OBJECT(obj)                        0
+#define ATK_IS_OBJECT_CLASS(klass)                0
+#define ATK_OBJECT_GET_CLASS(obj)                 (*(void**)(obj))
 
 #define ATK_TYPE_IMPLEMENTOR                      (atk_implementor_get_type ())
-#define ATK_IS_IMPLEMENTOR(obj)                   G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_IMPLEMENTOR)
-#define ATK_IMPLEMENTOR(obj)                      G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_IMPLEMENTOR, AtkImplementor)
-#define ATK_IMPLEMENTOR_GET_IFACE(obj)            (G_TYPE_INSTANCE_GET_INTERFACE ((obj), ATK_TYPE_IMPLEMENTOR, AtkImplementorIface))
+#define ATK_IS_IMPLEMENTOR(obj)                   0
+#define ATK_IMPLEMENTOR(obj)                      (obj)
+#define ATK_IMPLEMENTOR_GET_IFACE(obj)            (*(void**)(obj))
 
 
 typedef struct _AtkImplementor            AtkImplementor; /* dummy typedef */
