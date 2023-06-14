@@ -98,7 +98,7 @@ atk_value_get_increment (AtkValue *obj)
     return 0;
 }
 
-GSList*
+void*
 atk_value_get_sub_ranges (AtkValue *obj)
 {
     return 0;

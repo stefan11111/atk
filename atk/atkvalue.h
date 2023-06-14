@@ -62,7 +62,7 @@ struct _AtkValueIface
                                    char  **text);
   AtkRange*(* get_range)          (AtkValue *obj);
   double  (* get_increment)      (AtkValue *obj);
-  GSList*  (* get_sub_ranges)     (AtkValue *obj);
+  void*  (* get_sub_ranges)     (AtkValue *obj);
   void     (* set_value)          (AtkValue     *obj,
                                    const double new_value);
 
@@ -97,7 +97,7 @@ AtkRange* atk_value_get_range          (AtkValue *obj);
 ATK_AVAILABLE_IN_2_12
 double   atk_value_get_increment      (AtkValue *obj);
 ATK_AVAILABLE_IN_2_12
-GSList*   atk_value_get_sub_ranges     (AtkValue *obj);
+void*   atk_value_get_sub_ranges     (AtkValue *obj);
 ATK_AVAILABLE_IN_2_12
 void      atk_value_set_value          (AtkValue     *obj,
                                         const double new_value);

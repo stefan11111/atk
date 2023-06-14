@@ -407,13 +407,13 @@ typedef enum
 /**
  * AtkAttributeSet:
  *
- * This is a singly-linked list (a #GSList) of #AtkAttribute. It is
+ * This is a singly-linked list (a #void) of #AtkAttribute. It is
  * used by atk_text_get_run_attributes(),
  * atk_text_get_default_attributes(),
  * atk_editable_text_set_run_attributes(),
  * atk_document_get_attributes() and atk_object_get_attributes()
  **/
-typedef GSList AtkAttributeSet;
+typedef void AtkAttributeSet;
 
 /**
  * AtkAttribute:
