@@ -30,7 +30,7 @@ struct _AtkRelationSet
 
 struct _AtkRelationSetClass
 {
-  GObjectClass parent;
+  struct GObjectClass parent;
 
   AtkFunction pad1;
   AtkFunction pad2;

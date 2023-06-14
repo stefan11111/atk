@@ -29,7 +29,7 @@ struct _AtkStateSet
 
 struct _AtkStateSetClass
 {
-  GObjectClass parent;
+  struct GObjectClass parent;
 };
 
 ATK_AVAILABLE_IN_ALL

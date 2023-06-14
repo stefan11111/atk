@@ -124,7 +124,8 @@ atk_object_get_instance_private (AtkObject *self)
 static void
 atk_object_class_init (AtkObjectClass *klass)
 {
-  GObjectClass *gobject_class = klass;
+
+  struct GObjectClass *gobject_class = klass;
 
   parent_class = g_type_class_peek_parent (klass);
 

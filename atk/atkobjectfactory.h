@@ -27,7 +27,7 @@ struct _AtkObjectFactory
 
 struct _AtkObjectFactoryClass
 {
-  GObjectClass parent_class;
+  struct GObjectClass parent_class;
 
   void** (* create_accessible) ();
   void       (* invalidate)        ();

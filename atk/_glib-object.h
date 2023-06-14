@@ -12,9 +12,8 @@ struct GObject{
     unsigned int ref_count;
     void* qdata;
 };
-#endif
-/*
-typedef struct{
+
+struct GObjectClass{
     void* g_type_class;
     void* construct_properties;
     void* constructor;
@@ -25,22 +24,9 @@ typedef struct{
     void* dispatch_properties_changed;
     void* notify;
     void* constructed;
-    int flags;
-    int n_construct_properties;
+    void* flags;
+    void* n_construct_properties;
     void* pspecs;
-    int n_pspecs;
-    void* padding[3];
-} GObjectClass;
+    void* n_pspecs;
+};
 #endif
-*/
-/*
-typedef GObject;
-typedef GObjectClass;
-
-typedef struct _GObject                  GObject;
-typedef struct _GObjectClass             GObjectClass;
-typedef struct _GObject                  GInitiallyUnowned;
-typedef struct _GObjectClass             GInitiallyUnownedClass;
-typedef struct _GObjectConstructParam    GObjectConstructParam;
-*/
-

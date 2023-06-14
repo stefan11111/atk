@@ -56,7 +56,7 @@ ATK_VAR AtkMisc *atk_misc_instance;
 
 struct _AtkMiscClass
 {
-   GObjectClass parent;
+   struct GObjectClass parent;
    void   (* threads_enter)                     (AtkMisc *misc);
    void   (* threads_leave)                     (AtkMisc *misc);
    void* vfuncs[32]; /* future bincompat */

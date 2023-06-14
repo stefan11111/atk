@@ -26,7 +26,7 @@ struct _AtkRegistry
 
 struct _AtkRegistryClass
 {
-  GObjectClass    parent_class;
+  struct GObjectClass    parent_class;
 };
 
 typedef struct _AtkRegistry             AtkRegistry;

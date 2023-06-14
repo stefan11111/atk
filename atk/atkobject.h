@@ -548,7 +548,7 @@ struct _AtkObject
  */
 struct _AtkObjectClass
 {
-  GObjectClass parent;
+  struct GObjectClass parent;
 
   /*
    * Gets the accessible name of the object

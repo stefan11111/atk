@@ -31,7 +31,7 @@ struct _AtkRelation
 
 struct _AtkRelationClass
 {
-  GObjectClass parent;
+  struct GObjectClass parent;
 };
 
 ATK_AVAILABLE_IN_ALL

@@ -1,6 +1,6 @@
 .POSIX:
 
-XCFLAGS = ${CPPFLAGS} ${CFLAGS} -Os -nostdlib -std=c99 -fPIC -Wno-incompatible-pointer-types
+XCFLAGS = ${CPPFLAGS} ${CFLAGS} -Os -nostdlib -std=c99 -fPIC -Wno-incompatible-pointer-types -Wno-pedantic
 XLDFLAGS = ${LDFLAGS} -shared -Wl,-soname,libatk-1.0.so.0
 
 INCLUDE = -I. -Iatk -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include

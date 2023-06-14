@@ -74,7 +74,7 @@ struct _AtkUtil
 
 struct _AtkUtilClass
 {
-   GObjectClass parent;
+   struct GObjectClass parent;
    unsigned int        (* add_global_event_listener)    (void* listener,
 						  const char        *event_type);
    void         (* remove_global_event_listener) (unsigned int               listener_id);

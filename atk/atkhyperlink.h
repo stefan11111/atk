@@ -43,7 +43,7 @@ struct _AtkHyperlink
 
 struct _AtkHyperlinkClass
 {
-  GObjectClass parent;
+  struct GObjectClass parent;
 
   char*           (* get_uri)             (AtkHyperlink     *link_,
                                             int             i);
