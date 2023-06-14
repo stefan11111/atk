@@ -24,14 +24,14 @@ ATK_AVAILABLE_IN_2_12
 void         atk_range_free (AtkRange *range);
 
 ATK_AVAILABLE_IN_2_12
-gdouble      atk_range_get_lower_limit  (AtkRange    *range);
+double      atk_range_get_lower_limit  (AtkRange    *range);
 ATK_AVAILABLE_IN_2_12
-gdouble      atk_range_get_upper_limit  (AtkRange    *range);
+double      atk_range_get_upper_limit  (AtkRange    *range);
 ATK_AVAILABLE_IN_2_12
 const char* atk_range_get_description  (AtkRange    *range);
 ATK_AVAILABLE_IN_2_12
-AtkRange*    atk_range_new              (gdouble      lower_limit,
-                                         gdouble      upper_limit,
+AtkRange*    atk_range_new              (double      lower_limit,
+                                         double      upper_limit,
                                          const char *description);
 
 

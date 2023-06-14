@@ -81,7 +81,7 @@ atk_component_get_mdi_zorder (AtkComponent *component)
     return 0;
 }
 
-gdouble
+double
 atk_component_get_alpha (AtkComponent    *component)
 {
     return 0;

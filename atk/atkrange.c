@@ -3,8 +3,8 @@
 #include "atkvalue.h"
 
 struct _AtkRange {
-  gdouble lower;
-  gdouble upper;
+  double lower;
+  double upper;
   char *description;
 };
 
@@ -20,20 +20,20 @@ atk_range_free (AtkRange *range)
 }
 
 AtkRange*
-atk_range_new  (gdouble   lower_limit,
-                gdouble   upper_limit,
+atk_range_new  (double   lower_limit,
+                double   upper_limit,
                 const char *description)
 {
     return 0;
 }
 
-gdouble
+double
 atk_range_get_lower_limit  (AtkRange *range)
 {
     return 0;
 }
 
-gdouble
+double
 atk_range_get_upper_limit (AtkRange *range)
 {
     return 0;

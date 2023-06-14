@@ -81,7 +81,7 @@ atk_value_set_current_value (AtkValue       *obj,
 
 void
 atk_value_get_value_and_text (AtkValue *obj,
-                              gdouble *value,
+                              double *value,
                               char  **text)
 {
 }
@@ -92,7 +92,7 @@ atk_value_get_range (AtkValue *obj)
     return 0;
 }
 
-gdouble
+double
 atk_value_get_increment (AtkValue *obj)
 {
     return 0;
@@ -106,7 +106,7 @@ atk_value_get_sub_ranges (AtkValue *obj)
 
 void
 atk_value_set_value (AtkValue     *obj,
-                     const gdouble new_value)
+                     const double new_value)
 {
 }
 

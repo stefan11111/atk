@@ -14,7 +14,7 @@ struct _AtkUtilListenerInfo
 long unsigned int
 atk_util_get_type (void)
 {
-  return G_TYPE_OBJECT;
+  return 80;
 }
 
 typedef struct _FocusTracker FocusTracker;

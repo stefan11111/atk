@@ -102,7 +102,7 @@ struct _AtkComponentIface
 
   void                     (* bounds_changed)   (AtkComponent   *component,
                                                  AtkRectangle   *bounds);
-  gdouble                  (* get_alpha)        (AtkComponent   *component);
+  double                  (* get_alpha)        (AtkComponent   *component);
 
 
   unsigned char                (*scroll_to)          (AtkComponent   *component,
@@ -173,7 +173,7 @@ unsigned char              atk_component_set_size               (AtkComponent   
                                                             int            width,
                                                             int            height);
 ATK_AVAILABLE_IN_ALL
-gdouble               atk_component_get_alpha              (AtkComponent    *component);
+double               atk_component_get_alpha              (AtkComponent    *component);
 
 ATK_AVAILABLE_IN_2_30
 unsigned char              atk_component_scroll_to              (AtkComponent    *component,

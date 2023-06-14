@@ -105,7 +105,7 @@ atk_object_get_type (void)
         0,
         bloat,
       } ;
-      type = g_type_register_static (G_TYPE_OBJECT, "AtkObject", &typeInfo, 0) ;
+      type = g_type_register_static (80, "AtkObject", &typeInfo, 0) ;
 
       AtkObject_private_offset =
         g_type_add_instance_private (type, sizeof (AtkObjectPrivate));
