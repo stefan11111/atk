@@ -12,11 +12,11 @@
 #include <atk/atkrelation.h>
 
 #define ATK_TYPE_RELATION_SET                     (atk_relation_set_get_type ())
-#define ATK_RELATION_SET(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), ATK_TYPE_RELATION_SET, AtkRelationSet))
-#define ATK_RELATION_SET_CLASS(klass)             (G_TYPE_CHECK_CLASS_CAST ((klass), ATK_TYPE_RELATION_SET, AtkRelationSetClass))
-#define ATK_IS_RELATION_SET(obj)                  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), ATK_TYPE_RELATION_SET))
-#define ATK_IS_RELATION_SET_CLASS(klass)          (G_TYPE_CHECK_CLASS_TYPE ((klass), ATK_TYPE_RELATION_SET))
-#define ATK_RELATION_SET_GET_CLASS(obj)           (G_TYPE_INSTANCE_GET_CLASS ((obj), ATK_TYPE_RELATION_SET, AtkRelationSetClass))
+#define ATK_RELATION_SET(obj)                     (obj)
+#define ATK_RELATION_SET_CLASS(klass)             (klass)
+#define ATK_IS_RELATION_SET(obj)                  0
+#define ATK_IS_RELATION_SET_CLASS(klass)          0
+#define ATK_RELATION_SET_GET_CLASS(obj)           (*(void**)(obj))
 
 typedef struct _AtkRelationSetClass       AtkRelationSetClass;
 
