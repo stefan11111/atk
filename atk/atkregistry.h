@@ -5,10 +5,7 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
-#include <atk/_glib-object.h>
 #include "atkobjectfactory.h"
-
-
 
 #define ATK_TYPE_REGISTRY                (atk_registry_get_type ())
 #define ATK_REGISTRY(obj)                (obj)

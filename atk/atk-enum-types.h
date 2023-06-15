@@ -9,9 +9,6 @@
 #define __ATK_ENUM_TYPES_H__
 
 #include <atk/atkversion.h>
-#include <atk/_glib-object.h>
-
-
 
 /* enumerations from "atkcomponent.h" */
 ATK_AVAILABLE_IN_ALL

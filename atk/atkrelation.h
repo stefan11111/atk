@@ -5,9 +5,6 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
-
-
-#include <atk/_glib-object.h>
 #include <atk/atkrelationtype.h>
 #include <atk/atkversion.h>
 

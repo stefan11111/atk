@@ -1,7 +1,3 @@
-
-
-#include <atk/_glib-object.h>
-
 #include "atk.h"
 
 long unsigned int
