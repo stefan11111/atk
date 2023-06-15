@@ -1,7 +1,3 @@
-
-
-#include <atk/_glib-object.h>
-
 #include "atk.h"
 #include "atkmarshal.h"
 #include "atkprivate.h"
@@ -47,6 +43,13 @@ typedef struct {
 static int AtkObject_private_offset;
 
 static void            atk_object_class_init        (AtkObjectClass  *klass);
+
+extern unsigned long long g_type_register_static();
+extern int g_type_add_instance_private();
+extern void g_type_class_adjust_private_offset();
+extern void g_object_class_install_property();
+extern void* g_param_spec_string();
+extern void* g_param_spec_object();
 
 static unsigned int atk_object_signals[LAST_SIGNAL] = { 0, };
 
