@@ -47,12 +47,8 @@ typedef struct {
 static int AtkObject_private_offset;
 
 static void            atk_object_class_init        (AtkObjectClass  *klass);
-static void            atk_object_init              (AtkObject       *accessible,
-                                                     AtkObjectClass  *klass);
 
 static unsigned int atk_object_signals[LAST_SIGNAL] = { 0, };
-
-static void* parent_class = 0;
 
 static const char* const atk_object_name_property_name = "accessible-name";
 static const char* const atk_object_name_property_description = "accessible-description";
@@ -115,19 +111,11 @@ atk_object_get_type (void)
   return type;
 }
 
-static inline void*
-atk_object_get_instance_private (AtkObject *self)
-{
-  return (char*)self + AtkObject_private_offset;
-}
-
 static void
 atk_object_class_init (AtkObjectClass *klass)
 {
 
   struct GObjectClass *gobject_class = klass;
-
-  parent_class = g_type_class_peek_parent (klass);
 
   if (AtkObject_private_offset != 0)
     g_type_class_adjust_private_offset (klass, &AtkObject_private_offset);
@@ -171,6 +159,15 @@ atk_object_class_init (AtkObjectClass *klass)
                                                         0,
                                                         0,
                                                         3));
+/*
+  g_object_class_install_property (gobject_class,
+                                   PROP_DESCRIPTION,
+                                   g_param_spec_string (atk_object_name_property_description,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        3));
+*/
   g_object_class_install_property (gobject_class,
                                    PROP_PARENT,
                                    g_param_spec_object (atk_object_name_property_parent,

@@ -22,7 +22,3 @@ long unsigned int atk_window_get_type(void)
 {
     return 0;
 }
-
-static void atk_window_default_init()
-{
-}
