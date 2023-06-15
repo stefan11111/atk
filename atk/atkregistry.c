@@ -1,4 +1,4 @@
-#include "config.h"
+
 
 #include "atkregistry.h"
 #include "atknoopobjectfactory.h"

@@ -1,4 +1,4 @@
-#include "config.h"
+
 
 #include "atkwindow.h"
 #include "atkmarshal.h"

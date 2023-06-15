@@ -1,4 +1,4 @@
-#include "config.h"
+
 
 #include <atk/_glib-object.h>
 #include "atk.h"

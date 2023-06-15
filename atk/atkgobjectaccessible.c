@@ -1,4 +1,4 @@
-#include "config.h"
+
 
 #include <atk/atkgobjectaccessible.h>
 #include <atk/atkregistry.h>

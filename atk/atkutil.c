@@ -1,4 +1,4 @@
-#include "config.h"
+
 
 #include "atkutil.h"
 #include "atkmarshal.h"
@@ -93,5 +93,5 @@ atk_get_toolkit_version (void)
 const char *
 atk_get_version (void)
 {
-  return VERSION;
+  return "2.38.1";
 }
