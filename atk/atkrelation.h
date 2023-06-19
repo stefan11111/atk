@@ -20,7 +20,7 @@ typedef struct _AtkRelationClass       AtkRelationClass;
 
 struct _AtkRelation
 {
-  struct GObject parent;
+  GObject parent;
 
   void       *target;
   AtkRelationType relationship;
@@ -28,7 +28,7 @@ struct _AtkRelation
 
 struct _AtkRelationClass
 {
-  struct GObjectClass parent;
+  GObjectClass parent;
 };
 
 ATK_AVAILABLE_IN_ALL

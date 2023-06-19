@@ -1,4 +1,4 @@
-
+#include "config.h"
 
 #include "atk.h"
 #include "atkplug.h"

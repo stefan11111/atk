@@ -20,14 +20,14 @@ typedef struct _AtkRelationSetClass       AtkRelationSetClass;
 
 struct _AtkRelationSet
 {
-  struct GObject parent;
+  GObject parent;
 
   void *relations;
 };
 
 struct _AtkRelationSetClass
 {
-  struct GObjectClass parent;
+  GObjectClass parent;
 
   AtkFunction pad1;
   AtkFunction pad2;

@@ -38,12 +38,12 @@ typedef struct _AtkHyperlinkClass                 AtkHyperlinkClass;
 
 struct _AtkHyperlink
 {
-  struct GObject parent;
+  GObject parent;
 };
 
 struct _AtkHyperlinkClass
 {
-  struct GObjectClass parent;
+  GObjectClass parent;
 
   char*           (* get_uri)             (AtkHyperlink     *link_,
                                             int             i);

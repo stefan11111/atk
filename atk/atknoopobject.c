@@ -1,4 +1,4 @@
-
+#include "config.h"
 
 #include "atk.h"
 #include "atknoopobject.h"
@@ -9,8 +9,8 @@ atk_no_op_object_get_type (void)
     return 0;
 }
 
-void*
-atk_no_op_object_new ()
+AtkObject*
+atk_no_op_object_new (GObject *obj)
 {
     return 0;
 }

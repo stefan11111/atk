@@ -36,9 +36,9 @@ struct _AtkGObjectAccessibleClass
 };
 
 ATK_AVAILABLE_IN_ALL
-void* atk_gobject_accessible_for_object      ();
+AtkObject *atk_gobject_accessible_for_object      (GObject           *obj);
 ATK_AVAILABLE_IN_ALL
-void* atk_gobject_accessible_get_object      ();
+GObject   *atk_gobject_accessible_get_object      (AtkGObjectAccessible *obj);
 
 
 

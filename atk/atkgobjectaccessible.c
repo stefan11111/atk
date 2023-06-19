@@ -1,4 +1,4 @@
-
+#include "config.h"
 
 #include <atk/atkgobjectaccessible.h>
 #include <atk/atkregistry.h>
@@ -10,14 +10,14 @@ atk_gobject_accessible_get_type (void)
     return 0;
 }
 
-void*
-atk_gobject_accessible_for_object ()
+AtkObject*
+atk_gobject_accessible_for_object (GObject *obj)
 {
     return 0;
 }
 
-void*
-atk_gobject_accessible_get_object ()
+GObject *
+atk_gobject_accessible_get_object (AtkGObjectAccessible *obj)
 {
     return 0;
 }

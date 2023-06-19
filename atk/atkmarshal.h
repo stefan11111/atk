@@ -2,18 +2,23 @@
 #pragma once
 
 /* VOID:INT,INT (../atk/atkmarshal.list:25) */
+extern
 void atk_marshal_VOID__INT_INT ();
 
 /* VOID:INT,INT,STRING (../atk/atkmarshal.list:26) */
+extern
 void atk_marshal_VOID__INT_INT_STRING ();
 
 /* VOID:INT,INT,INT,STRING (../atk/atkmarshal.list:27) */
+extern
 void atk_marshal_VOID__INT_INT_INT_STRING ();
 
 /* VOID:STRING,BOOLEAN (../atk/atkmarshal.list:28) */
+extern
 void atk_marshal_VOID__STRING_BOOLEAN ();
 
 /* VOID:DOUBLE,STRING (../atk/atkmarshal.list:29) */
+extern
 void atk_marshal_VOID__DOUBLE_STRING ();
 
 

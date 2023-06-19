@@ -24,37 +24,13 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
+#include <glib-object.h>
+
 #include <atk/atkversion.h>
 #include <atk/atkstate.h>
 #include <atk/atkrelationtype.h>
 
-#ifndef __GOBJECT_BLOAT__
-#define __GOBJECT_BLOAT__
 
-struct GObject{
-    void* g_type_instance;
-    unsigned int ref_count;
-    void* qdata;
-};
-
-struct GObjectClass{
-    void* g_type_class;
-    void* construct_properties;
-    void* constructor;
-    void* set_property;
-    void* get_property;
-    void* dispose;
-    void* finalize;
-    void* dispatch_properties_changed;
-    void* notify;
-    void* constructed;
-    void* flags;
-    void* n_construct_properties;
-    void* pspecs;
-    void* n_pspecs;
-    void* wasted[3];
-};
-#endif
 
 /**
  *AtkRole:
@@ -545,7 +521,7 @@ typedef void (*AtkPropertyChangeHandler) (AtkObject* obj, AtkPropertyValues* val
 
 struct _AtkObject
 {
-  struct GObject parent;
+  GObject parent;
 
   char *description;
   char *name;
@@ -572,7 +548,7 @@ struct _AtkObject
  */
 struct _AtkObjectClass
 {
-  struct GObjectClass parent;
+  GObjectClass parent;
 
   /*
    * Gets the accessible name of the object

@@ -7,8 +7,6 @@
 
 #include <atk/atkversion.h>
 
-
-
 #define ATK_TYPE_RANGE         (atk_range_get_type ())
 
 typedef struct _AtkRange AtkRange;

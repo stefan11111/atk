@@ -69,12 +69,12 @@ typedef enum
 
 struct _AtkUtil
 {
-  struct GObject parent;
+  GObject parent;
 };
 
 struct _AtkUtilClass
 {
-   struct GObjectClass parent;
+   GObjectClass parent;
    unsigned int        (* add_global_event_listener)    (void* listener,
 						  const char        *event_type);
    void         (* remove_global_event_listener) (unsigned int               listener_id);

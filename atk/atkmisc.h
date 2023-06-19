@@ -5,6 +5,7 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
+#include <glib-object.h>
 #include <atk/atkversion.h>
 
 /* We prefix variable declarations so they can
@@ -30,33 +31,7 @@
 #  endif /* !G_PLATFORM_WIN32 */
 #endif /* ATK_VAR */
 
-#ifndef __GOBJECT_BLOAT__
-#define __GOBJECT_BLOAT__
 
-struct GObject{
-    void* g_type_instance;
-    unsigned int ref_count;
-    void* qdata;
-};
-
-struct GObjectClass{
-    void* g_type_class;
-    void* construct_properties;
-    void* constructor;
-    void* set_property;
-    void* get_property;
-    void* dispose;
-    void* finalize;
-    void* dispatch_properties_changed;
-    void* notify;
-    void* constructed;
-    void* flags;
-    void* n_construct_properties;
-    void* pspecs;
-    void* n_pspecs;
-    void* wasted[3];
-};
-#endif
 
 #define ATK_TYPE_MISC                           (atk_misc_get_type ())
 #define ATK_IS_MISC(obj)                        0
@@ -74,14 +49,14 @@ typedef struct _AtkMiscClass AtkMiscClass;
 
 struct _AtkMisc
 {
-  struct GObject parent;
+  GObject parent;
 };
 
 ATK_VAR AtkMisc *atk_misc_instance;
 
 struct _AtkMiscClass
 {
-   struct GObjectClass parent;
+   GObjectClass parent;
    void   (* threads_enter)                     (AtkMisc *misc);
    void   (* threads_leave)                     (AtkMisc *misc);
    void* vfuncs[32]; /* future bincompat */

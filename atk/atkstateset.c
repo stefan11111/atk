@@ -1,4 +1,4 @@
-
+#include "config.h"
 
 #include "atkobject.h"
 #include "atkstateset.h"
@@ -7,7 +7,7 @@
 
 struct _AtkRealStateSet
 {
-  struct GObject parent;
+  GObject parent;
 
   unsigned long long state;
 };
