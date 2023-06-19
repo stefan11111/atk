@@ -124,8 +124,6 @@ atk_object_class_init (AtkObjectClass *klass)
 {
   GObjectClass *gobject_class = klass;
 
-  parent_class = g_type_class_peek_parent (klass);
-
   if (AtkObject_private_offset != 0)
     g_type_class_adjust_private_offset (klass, &AtkObject_private_offset);
 
