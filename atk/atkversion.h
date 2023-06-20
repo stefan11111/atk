@@ -2,6 +2,10 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
+#ifndef G_ENCODE_VERSION
+# define G_ENCODE_VERSION(major, minor) ((major) << 16 | (minor) << 8)
+#endif
+
 #ifndef __ATK_VERSION_H__
 #define __ATK_VERSION_H__
 

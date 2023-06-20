@@ -5,7 +5,6 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
-#include <glib-object.h>
 #include <atk/atkversion.h>
 
 /* We prefix variable declarations so they can
@@ -49,17 +48,14 @@ typedef struct _AtkMiscClass AtkMiscClass;
 
 struct _AtkMisc
 {
-  GObject parent;
 };
 
 ATK_VAR AtkMisc *atk_misc_instance;
 
 struct _AtkMiscClass
 {
-   GObjectClass parent;
    void   (* threads_enter)                     (AtkMisc *misc);
    void   (* threads_leave)                     (AtkMisc *misc);
-   void* vfuncs[32]; /* future bincompat */
 };
 
 ATK_DEPRECATED_IN_2_12
