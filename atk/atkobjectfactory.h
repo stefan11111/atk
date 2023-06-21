@@ -26,7 +26,7 @@ struct _AtkObjectFactoryClass
 {
   GObjectClass parent_class;
 
-  AtkObject* (* create_accessible) (GObject          *obj);
+  AtkObject* (* create_accessible) (void*          obj);
   void       (* invalidate)        (AtkObjectFactory *factory);
   long unsigned int      (* get_accessible_type)    (void);
 
@@ -39,7 +39,7 @@ long unsigned int atk_object_factory_get_type(void);
 
 
 ATK_AVAILABLE_IN_ALL
-AtkObject* atk_object_factory_create_accessible (AtkObjectFactory *factory, GObject *obj);
+AtkObject* atk_object_factory_create_accessible (AtkObjectFactory *factory, void* obj);
 ATK_AVAILABLE_IN_ALL
 void       atk_object_factory_invalidate (AtkObjectFactory *factory);
 ATK_AVAILABLE_IN_ALL

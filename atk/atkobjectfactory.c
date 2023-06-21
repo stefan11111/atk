@@ -5,7 +5,7 @@
 
 AtkObject* 
 atk_object_factory_create_accessible (AtkObjectFactory *factory,
-                                      GObject          *obj)
+                                      void*          obj)
 {
     return 0;
 } 

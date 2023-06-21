@@ -10,7 +10,7 @@ atk_no_op_object_get_type (void)
 }
 
 AtkObject*
-atk_no_op_object_new (GObject *obj)
+atk_no_op_object_new (void* obj)
 {
     return 0;
 }
