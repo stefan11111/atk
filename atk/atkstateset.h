@@ -22,13 +22,13 @@ typedef struct _AtkStateSetClass       AtkStateSetClass;
 
 struct _AtkStateSet
 {
-  GObject parent;
+  __GObject parent;
 
 };
 
 struct _AtkStateSetClass
 {
-  GObjectClass parent;
+  __GObjectClass parent;
 };
 
 ATK_AVAILABLE_IN_ALL

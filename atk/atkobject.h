@@ -24,8 +24,6 @@
 #error "Only <atk/atk.h> can be included directly."
 #endif
 
-#include <glib-object.h>
-
 #include <atk/atkversion.h>
 #include <atk/atkstate.h>
 #include <atk/atkrelationtype.h>
@@ -243,6 +241,33 @@
  * in ATK.  Other roles may be added at runtime, so an AtkRole >=
  * %ATK_ROLE_LAST_DEFINED is not necessarily an error.
  */
+
+#ifndef __GOBJECT_BLOAT__
+#define __GOBJECT_BLOAT__
+typedef struct {
+    void* g_type_instance;
+    unsigned int ref_count;
+    void* qdata;
+} __GObject;
+typedef struct{
+    void* g_type_class;
+    void* construct_properties;
+    void* constructor;
+    void* set_property;
+    void* get_property;
+    void* dispose;
+    void* finalize;
+    void* dispatch_properties_changed;
+    void* notify;
+    void* constructed;
+    void* flags;
+    void* n_construct_properties;
+    void* pspecs;
+    void* n_pspecs;
+    void* wasted[3];
+} __GObjectClass;
+#endif
+
 typedef enum
 {
   ATK_ROLE_INVALID = 0,
@@ -521,7 +546,7 @@ typedef void (*AtkPropertyChangeHandler) (AtkObject* obj, AtkPropertyValues* val
 
 struct _AtkObject
 {
-  GObject parent;
+  __GObject parent;
 
   char *description;
   char *name;
@@ -548,7 +573,7 @@ struct _AtkObject
  */
 struct _AtkObjectClass
 {
-  GObjectClass parent;
+  __GObjectClass parent;
 
   /*
    * Gets the accessible name of the object

@@ -4,6 +4,19 @@
 #include "atkmarshal.h"
 #include "atkprivate.h"
 
+#ifndef __ATK_H_INSIDE__
+#ifndef __function_bloat__
+#define __function_bloat__
+extern unsigned long long g_type_register_static();
+extern int g_type_add_instance_private();
+extern void g_type_class_adjust_private_offset();
+extern void g_object_class_install_property();
+extern void* g_param_spec_string();
+extern void* g_param_spec_object();
+#endif
+#endif
+
+
 enum
 {
   PROP_0,  /* gobject convention */
@@ -122,7 +135,7 @@ atk_object_get_instance_private (AtkObject *self)
 static void
 atk_object_class_init (AtkObjectClass *klass)
 {
-  GObjectClass *gobject_class = klass;
+  __GObjectClass *gobject_class = klass;
 
   if (AtkObject_private_offset != 0)
     g_type_class_adjust_private_offset (klass, &AtkObject_private_offset);

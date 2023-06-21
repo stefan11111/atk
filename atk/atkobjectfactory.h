@@ -19,12 +19,12 @@ typedef struct _AtkObjectFactoryClass           AtkObjectFactoryClass;
 
 struct _AtkObjectFactory
 {
-  GObject parent;
+  __GObject parent;
 };
 
 struct _AtkObjectFactoryClass
 {
-  GObjectClass parent_class;
+  __GObjectClass parent_class;
 
   AtkObject* (* create_accessible) (void*          obj);
   void       (* invalidate)        (AtkObjectFactory *factory);

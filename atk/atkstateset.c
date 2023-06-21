@@ -7,7 +7,7 @@
 
 struct _AtkRealStateSet
 {
-  GObject parent;
+  __GObject parent;
 
   unsigned long long state;
 };

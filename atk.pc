@@ -5,6 +5,6 @@ libdir=${prefix}/lib64
 Name: Atk
 Description: Accessibility Toolkit
 Version: 2.38.0
-Requires: glib-2.0 >=  2.38.0, gobject-2.0 >=  2.38.0
+Requires:
 Libs: -L${libdir} -latk-1.0
 Cflags: -I${includedir}/atk-1.0

@@ -16,14 +16,14 @@
 
 struct _AtkRegistry
 {
-  GObject    parent;
+  __GObject    parent;
   void *factory_type_registry;
   void *factory_singleton_cache;
 };
 
 struct _AtkRegistryClass
 {
-  GObjectClass    parent_class;
+  __GObjectClass    parent_class;
 };
 
 typedef struct _AtkRegistry             AtkRegistry;
