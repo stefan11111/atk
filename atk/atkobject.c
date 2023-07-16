@@ -16,7 +16,6 @@ extern void* g_param_spec_object();
 #endif
 #endif
 
-
 enum
 {
   PROP_0,  /* gobject convention */
