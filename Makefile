@@ -3,6 +3,8 @@
 XCFLAGS = ${CPPFLAGS} ${CFLAGS} -O2 -nostdlib -std=c99 -fPIC -Wno-incompatible-pointer-types -Wno-pedantic
 XLDFLAGS = ${LDFLAGS} -shared -Wl,-soname,libatk-1.0.so.0
 
+LIBDIR ?= /lib64
+
 INCLUDE = -I. -Iatk -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include
 
 OBJ = \
@@ -50,17 +52,17 @@ libatk-1.0.so.0.1: ${OBJ}
 	${CC} ${INCLUDE} ${XCFLAGS} -o $@ ${OBJ} ${XLDFLAGS}
 
 install: libatk-1.0.so.0.1
-	mkdir -p ${DESTDIR}/usr/lib64
-	cp -f libatk-1.0.so.0.1 ${DESTDIR}/usr/lib64
-	ln -rsf ${DESTDIR}/usr/lib64/libatk-1.0.so.0.1 ${DESTDIR}/usr/lib64/libatk-1.0.so.0
-	ln -rsf ${DESTDIR}/usr/lib64/libatk-1.0.so.0 ${DESTDIR}/usr/lib64/libatk-1.0.so
+	mkdir -p ${DESTDIR}/usr${LIBDIR}
+	cp -f libatk-1.0.so.0.1 ${DESTDIR}/usr${LIBDIR}
+	ln -rsf ${DESTDIR}/usr${LIBDIR}/libatk-1.0.so.0.1 ${DESTDIR}/usr${LIBDIR}/libatk-1.0.so.0
+	ln -rsf ${DESTDIR}/usr${LIBDIR}/libatk-1.0.so.0 ${DESTDIR}/usr${LIBDIR}/libatk-1.0.so
 	mkdir -p ${DESTDIR}/usr/include/atk-1.0/atk
 	cp atk/*.h ${DESTDIR}/usr/include/atk-1.0/atk
-	mkdir -p ${DESTDIR}/usr/lib64/pkgconfig
-	cp atk.pc ${DESTDIR}/usr/lib64/pkgconfig
+	mkdir -p ${DESTDIR}/usr${LIBDIR}/pkgconfig
+	cp atk.pc ${DESTDIR}/usr${LIBDIR}/pkgconfig
 
 uninstall:
-	rm -f ${DESTDIR}/usr/lib64/libatk-1.0.so.0.1 ${DESTDIR}/usr/lib64/libatk-1.0.so.0 ${DESTDIR}/usr/lib64/libatk-1.0.so
+	rm -f ${DESTDIR}/usr${LIBDIR}/libatk-1.0.so.0.1 ${DESTDIR}/usr${LIBDIR}/libatk-1.0.so.0 ${DESTDIR}/usr${LIBDIR}/libatk-1.0.so
 
 clean:
 	rm -f libatk-1.0.so.0.1 ${OBJ}
