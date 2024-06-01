@@ -17,9 +17,9 @@
 
 typedef struct _AtkRelation            AtkRelation;
 typedef struct _AtkRelationClass       AtkRelationClass;
-#ifdef ATK_COMPILATION
-typedef void GPtrArray;
-#endif
+
+typedef struct _GPtrArray              GPtrArray;
+
 
 struct _AtkRelation
 {

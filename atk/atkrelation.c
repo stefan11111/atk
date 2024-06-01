@@ -48,7 +48,9 @@ atk_relation_get_relation_type (AtkRelation *relation)
     return 0;
 }
 
-void*
+typedef struct _GPtrArray       GPtrArray;
+
+GPtrArray*
 atk_relation_get_target (AtkRelation *relation)
 {
     return 0;
