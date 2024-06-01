@@ -37,6 +37,11 @@
 #include <atk/atkversion.h>
 #include <atk/atkwindow.h>
 
+#ifndef __GLIB_TYPES__
+#define __GLIB_TYPES__
+typedef int gint;
+#endif
+
 #undef __ATK_H_INSIDE__
 
 #endif /* __ATK_H__ */
