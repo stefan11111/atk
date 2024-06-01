@@ -1,11 +1,11 @@
 .POSIX:
 
-XCFLAGS = ${CPPFLAGS} ${CFLAGS} -O2 -nostdlib -std=c99 -fPIC -Wno-incompatible-pointer-types -Wno-pedantic
+XCFLAGS = ${CPPFLAGS} ${CFLAGS} -O2 -nostdlib -std=c99 -fPIC -Wno-incompatible-pointer-types -Wno-pedantic $(shell pkg-config --libs gobject-2.0)
 XLDFLAGS = ${LDFLAGS} -shared -Wl,-soname,libatk-1.0.so.0
 
 LIBDIR ?= /lib64
 
-INCLUDE = -I. -Iatk -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include
+INCLUDE = -I. -Iatk $(shell pkg-config --cflags glib-2.0)
 
 OBJ = \
 	atk/atkaction.o\
