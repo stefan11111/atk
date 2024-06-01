@@ -17,6 +17,9 @@
 
 typedef struct _AtkRelation            AtkRelation;
 typedef struct _AtkRelationClass       AtkRelationClass;
+#ifdef ATK_COMPILATION
+typedef void GPtrArray;
+#endif
 
 struct _AtkRelation
 {
@@ -58,7 +61,7 @@ AtkRelationType       atk_relation_get_relation_type  (AtkRelation     *relation
  * Returns the target list of a relation.
  */
 ATK_AVAILABLE_IN_ALL
-void*            atk_relation_get_target         (AtkRelation     *relation);
+GPtrArray*            atk_relation_get_target         (AtkRelation     *relation);
 ATK_AVAILABLE_IN_ALL
 void                  atk_relation_add_target         (AtkRelation     *relation,
                                                        AtkObject       *target);
