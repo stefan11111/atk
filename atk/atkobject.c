@@ -134,7 +134,7 @@ atk_object_get_instance_private (AtkObject *self)
 static void
 atk_object_class_init (AtkObjectClass *klass)
 {
-  __GObjectClass *gobject_class = klass;
+  __GObjectClass *gobject_class = (void*)klass;
 
   if (AtkObject_private_offset != 0)
     g_type_class_adjust_private_offset (klass, &AtkObject_private_offset);
@@ -144,23 +144,23 @@ atk_object_class_init (AtkObjectClass *klass)
   gobject_class->finalize = bloat;
   gobject_class->notify = bloat;
 
-  klass->get_name = bloat;
-  klass->get_description = bloat;
-  klass->get_parent = bloat;
+  klass->get_name = (void*)bloat;
+  klass->get_description = (void*)bloat;
+  klass->get_parent = (void*)bloat;
   klass->get_n_children = 0;
   klass->ref_child = 0;
   klass->get_index_in_parent = 0;
-  klass->ref_relation_set = bloat;
-  klass->get_role = bloat;
-  klass->get_layer = bloat;
+  klass->ref_relation_set = (void*)bloat;
+  klass->get_role = (void*)bloat;
+  klass->get_layer = (void*)bloat;
   klass->get_mdi_zorder = 0;
   klass->initialize = bloat;
-  klass->ref_state_set = bloat;
+  klass->ref_state_set = (void*)bloat;
   klass->set_name = bloat;
   klass->set_description = bloat;
   klass->set_parent = bloat;
   klass->set_role = bloat;
-  klass->get_object_locale = bloat;
+  klass->get_object_locale = (void*)bloat;
 
   /*
    * We do not define default signal handlers here
