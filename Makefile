@@ -1,7 +1,13 @@
 .POSIX:
 
-XCFLAGS = ${CPPFLAGS} ${CFLAGS} -O2 -nostdlib -std=c99 -fPIC -Wno-pedantic $(shell pkg-config --libs gobject-2.0) -DATK_COMPILATION
+XCFLAGS = ${CPPFLAGS} ${CFLAGS} -O2 -nostdlib -std=c99 -fPIC -Wno-pedantic -DATK_COMPILATION
 XLDFLAGS = ${LDFLAGS} -shared -Wl,-soname,libatk-1.0.so.0
+
+LINK_TO_GLIB = 0
+
+ifeq ($(LINK_TO_GLIB), 1)
+	XCFLAGS += $(shell pkg-config --libs gobject-2.0)
+endif
 
 LIBDIR ?= /lib64
 
